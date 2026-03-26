@@ -3,50 +3,11 @@ backend:
   repo: cherrytora/micord_offical_site
   branch: main
   auth_type: pkce
-  # 在 GitHub 建立 OAuth App 後，將 Client ID 填入下方
   app_id: Ov23li6aNEDuFyQpOQTn
 
 site_url: https://cherrytora.github.io/micord_offical_site
 media_folder: public/images
 public_folder: /micord_offical_site/images
 
-collections:
-  # ── 更新日誌 ──────────────────────────────────────
-  - name: release-notes
-    label: 更新日誌
-    label_singular: 版本
-    folder: src/content/release-notes
-    create: true
-    slug: "{{version}}"
-    summary: "v{{version}} — {{title}}"
-    fields:
-      - { name: version,  label: 版本號,  widget: string,  hint: "例：1.2.0" }
-      - { name: date,     label: 發布日期, widget: date,    format: "YYYY-MM-DD" }
-      - { name: title,    label: 標題,    widget: string }
-      - { name: summary,  label: 摘要,    widget: string }
-      - { name: body,     label: 內容,    widget: markdown }
-
-  # ── 即將上線功能 ──────────────────────────────────
-  - name: roadmap
-    label: 即將上線功能
-    label_singular: 功能項目
-    folder: src/content/roadmap
-    create: true
-    slug: "{{order}}-{{slug}}"
-    summary: "{{quarter}} — {{title}} ({{status}})"
-    fields:
-      - { name: order,   label: 排序,  widget: number, value_type: int, hint: "數字越小越前面" }
-      - { name: quarter, label: 季度,  widget: string, hint: "例：Q2 2026" }
-      - { name: title,   label: 標題,  widget: string }
-      - { name: desc,    label: 說明,  widget: text }
-      - name: status
-        label: 狀態
-        widget: select
-        options:
-          - { label: "已上線", value: done }
-          - { label: "開發中", value: building }
-          - { label: "規劃中", value: planned }
-      - name: features
-        label: 功能列表
-        widget: list
-        field: { name: item, label: 功能項目, widget: string }
+# Collections 都在 index.html 的 CMS.init() 中定義，此處不重複以避免名稱衝突
+collections: []
