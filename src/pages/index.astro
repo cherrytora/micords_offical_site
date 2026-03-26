@@ -2,38 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getEntry } from 'astro:content';
 
-// 服務下載連結（上線後改為實際 App Store / Play Store URL）
 const APP_URL = 'https://micords.web.app/';
-
-const features = [
-  {
-    icon: '📝',
-    title: '日常點滴',
-    desc: '隨手記下吃飯、喝水、上廁所。在關鍵時刻發現牠最細微的變化。',
-  },
-  {
-    icon: '📈',
-    title: '健康趨勢',
-    desc: '體重與血檢數據自動成長為圖表。不必讀懂數值，看一眼曲線就懂。',
-  },
-  {
-    icon: '🏥',
-    title: '醫療守護',
-    desc: '完整的用藥與醫療病歷。看診時不再手忙腳亂，是與醫生溝通的最佳橋樑。',
-  },
-  {
-    icon: '🔔',
-    title: '智慧提醒',
-    desc: '疫苗、驅蟲、回診或吃藥。Micords 會準時提醒，不再錯過任何重要事件。',
-  },
-];
-
-const painPoints = [
-  { icon: '📊', text: '「上次檢查數值怎麼樣？跟這次比有進步了嗎？」' },
-  { icon: '💧', text: '「牠今天好像沒喝什麼水，是我的錯覺嗎？」' },
-  { icon: '🏥', text: '「在獸醫院面對醫生的詢問，大腦卻一片空白...」' },
-];
+const home = await getEntry('pages', 'home');
+const {
+  heroTitle, heroSubtitle, ctaPrimary,
+  painPointsTitle, painPoints,
+  featuresTitle, featuresSubtitle, features,
+  storyTitle, storyP1, storyP2, storyP3,
+  ctaTitle, ctaSubtitle, ctaButton,
+} = home.data;
 ---
 
 <BaseLayout title="首頁" description="Micords — 讓對貓的愛，更有跡可循">
@@ -44,11 +23,10 @@ const painPoints = [
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div>
         <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-slate-900">
-          懂牠的沈默，<br />更要記住牠每一刻的活潑。
+          {heroTitle}
         </h1>
         <p class="text-lg text-slate-600 mb-8 leading-relaxed">
-          Micords 讓愛不再只是感覺，而是有跡可循的守護。<br />
-          我們把對貓咪的疼愛，轉化為最細膩的健康紀錄。
+          {heroSubtitle}
         </p>
         <!-- 服務下載連結 -->
         <div class="flex flex-wrap gap-4">
@@ -58,7 +36,7 @@ const painPoints = [
             rel="noopener noreferrer"
             class="bg-brand-orange text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-200 hover:scale-105 transition"
           >
-            立即為愛貓建立檔案
+            {ctaPrimary}
           </a>
           <a
             href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/tutorial`}
@@ -91,7 +69,7 @@ const painPoints = [
   <!-- 痛點共鳴 -->
   <section class="py-24 px-6 bg-white">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-16 text-slate-900">照顧貓咪的路上，你是否也曾感到無力？</h2>
+      <h2 class="text-3xl font-bold mb-16 text-slate-900">{painPointsTitle}</h2>
       <div class="grid md:grid-cols-3 gap-8">
         {painPoints.map(({ icon, text }) => (
           <div class="p-6">
@@ -110,8 +88,8 @@ const painPoints = [
   <section class="py-24 px-6 bg-brand-cream">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold mb-4">把愛變簡單</h2>
-        <p class="text-slate-500 italic">不再手忙腳亂，用更科學的方式愛牠</p>
+        <h2 class="text-3xl font-bold mb-4">{featuresTitle}</h2>
+        <p class="text-slate-500 italic">{featuresSubtitle}</p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map(({ icon, title, desc }) => (
@@ -197,7 +175,7 @@ const painPoints = [
   <section class="py-24 px-6 bg-white" id="story">
     <div class="max-w-3xl mx-auto text-center">
       <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-4">Our Story</p>
-      <h2 class="text-3xl font-bold mb-8 text-slate-900">為什麼我們做了 Micords？</h2>
+      <h2 class="text-3xl font-bold mb-8 text-slate-900">{storyTitle}</h2>
       <div class="relative">
         <img
           src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&q=80&w=400"
@@ -206,17 +184,9 @@ const painPoints = [
         />
       </div>
       <div class="text-slate-600 leading-relaxed space-y-4 text-left max-w-2xl mx-auto">
-        <p>
-          一切從一隻腎臟病貓咪開始。每次回診，面對醫生的詢問，我們總是手忙腳亂地翻找筆記、努力回想上週的數值。
-          那種無力感，讓我們決定做點什麼。
-        </p>
-        <p>
-          Micords 不是冷冰冰的健康追蹤工具，它是我們對每一位貓奴心意的回應——<strong>讓愛不再只是感覺，
-          而是有跡可循的守護。</strong>
-        </p>
-        <p>
-          我們相信，當你能清楚知道牠吃了多少、喝了多少、指數有沒有改善，那份安心本身就是對牠最深的陪伴。
-        </p>
+        <p>{storyP1}</p>
+        <p>{storyP2}</p>
+        <p>{storyP3}</p>
       </div>
       <p class="mt-8 text-slate-400 font-medium tracking-widest uppercase text-sm">For every beloved cat</p>
       <p class="text-[10px] text-slate-300 mt-1 tracking-widest">DESIGNED BY RILA LAB</p>
@@ -226,10 +196,9 @@ const painPoints = [
   <!-- CTA -->
   <section class="py-24 px-6 bg-brand-cream text-center">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-4xl font-bold mb-6 text-slate-900">讓陪伴更有力量。</h2>
+      <h2 class="text-4xl font-bold mb-6 text-slate-900">{ctaTitle}</h2>
       <p class="text-xl text-slate-600 mb-10 leading-relaxed">
-        牠的生命只有你，而你的紀錄能讓這份陪伴更長久。<br />
-        不再因為忘記而遺憾，從現在開始守護牠。
+        {ctaSubtitle}
       </p>
       <a
         href={APP_URL}
@@ -237,7 +206,7 @@ const painPoints = [
         rel="noopener noreferrer"
         class="inline-block bg-brand-orange text-white px-12 py-5 rounded-2xl font-bold text-xl shadow-2xl shadow-orange-200 hover:scale-105 transition"
       >
-        免費開始使用 Micords
+        {ctaButton}
       </a>
     </div>
   </section>

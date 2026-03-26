@@ -1,5 +1,26 @@
 import { defineCollection, z } from 'astro:content';
 
+const pages = defineCollection({
+  type: 'data',
+  schema: z.object({
+    heroTitle: z.string(),
+    heroSubtitle: z.string(),
+    ctaPrimary: z.string(),
+    painPointsTitle: z.string(),
+    painPoints: z.array(z.object({ icon: z.string(), text: z.string() })),
+    featuresTitle: z.string(),
+    featuresSubtitle: z.string(),
+    features: z.array(z.object({ icon: z.string(), title: z.string(), desc: z.string() })),
+    storyTitle: z.string(),
+    storyP1: z.string(),
+    storyP2: z.string(),
+    storyP3: z.string(),
+    ctaTitle: z.string(),
+    ctaSubtitle: z.string(),
+    ctaButton: z.string(),
+  }),
+});
+
 const releaseNotes = defineCollection({
   type: 'content',
   schema: z.object({
@@ -25,4 +46,5 @@ const roadmap = defineCollection({
 export const collections = {
   'release-notes': releaseNotes,
   'roadmap': roadmap,
+  'pages': pages,
 };
