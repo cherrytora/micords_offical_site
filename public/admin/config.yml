@@ -2,8 +2,7 @@ backend:
   name: github
   repo: cherrytora/micords_offical_site
   branch: main
-  auth_type: pkce
-  app_id: Ov23li6aNEDuFyQpOQTn
+  base_url: https://round-butterfly-d457.m85592527.workers.dev
 
 media_folder: public/images
 public_folder: /micords_offical_site/images
