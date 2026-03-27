@@ -2,75 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getEntry } from 'astro:content';
 
-// 教學章節資料（之後可抽成 Content Collection）
-const sections = [
-  {
-    id: 'onboarding',
-    title: '建立你的第一個貓咪檔案',
-    desc: '從下載 App 到建立貓咪基本資料，只需 2 分鐘。',
-    steps: [
-      '下載並安裝 Micords App',
-      '註冊帳號或使用 Google / Apple 登入',
-      '點擊「新增貓咪」，填寫名字、品種、生日與照片',
-      '完成！開始紀錄牠的第一筆資料',
-    ],
-    mediaType: 'placeholder', // 之後換成 'image' 或 'video'
-    mediaLabel: '示範影片',
-  },
-  {
-    id: 'daily-log',
-    title: '每日日誌：飲食、飲水與排泄',
-    desc: '掌握牠的每日狀況，讓細微的變化無所遁形。',
-    steps: [
-      '進入貓咪頁面，點擊「新增記錄」',
-      '選擇類型：飲食 / 飲水 / 排泄 / 體重 / 備忘',
-      '填入數量與備註（例如：食慾不佳、顏色異常）',
-      '儲存後可在時間軸回顧所有記錄',
-    ],
-    mediaType: 'placeholder',
-    mediaLabel: '功能示意圖',
-  },
-  {
-    id: 'health-trend',
-    title: '健康趨勢圖：體重與血檢數據',
-    desc: '用曲線說話，讓數字不再讓你看不懂。',
-    steps: [
-      '進入「健康」頁籤',
-      '點擊「新增血檢報告」，輸入日期與各項數值',
-      '系統自動繪製趨勢曲線，標示正常範圍',
-      '與上次數值比較，一眼得知進步或退步',
-    ],
-    mediaType: 'placeholder',
-    mediaLabel: '圖表示意',
-  },
-  {
-    id: 'reminders',
-    title: '智慧提醒：疫苗、驅蟲、回診',
-    desc: '從此不漏接任何重要的醫療事件。',
-    steps: [
-      '進入「提醒」頁籤，點擊「＋新增提醒」',
-      '選擇類型：疫苗 / 驅蟲 / 回診 / 用藥',
-      '設定日期、時間與重複週期',
-      '到時收到推播通知，確認後自動標記完成',
-    ],
-    mediaType: 'placeholder',
-    mediaLabel: '設定流程示意',
-  },
-  {
-    id: 'medical-records',
-    title: '醫療病歷：完整就診記錄',
-    desc: '擁有貓咪的完整醫療歷史，看診時再也不慌張。',
-    steps: [
-      '進入「病歷」頁籤，點擊「新增就診紀錄」',
-      '填寫就診日期、獸醫師、診斷與用藥資訊',
-      '可上傳報告照片或文件',
-      '每次就診皆有完整時間軸，方便向醫生說明',
-    ],
-    mediaType: 'placeholder',
-    mediaLabel: '病歷頁面示意',
-  },
-];
+const tutorial = await getEntry('tutorial', 'page');
+const { pageTitle, pageSubtitle, sections, ctaTitle, ctaSubtitle, ctaButton } = tutorial.data;
 ---
 
 <BaseLayout title="教學" description="學習如何使用 Micords 的各項功能，守護你的愛貓健康">
@@ -82,8 +17,8 @@ const sections = [
       <!-- 頁面標題 -->
       <div class="text-center mb-16">
         <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Tutorial</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">使用教學</h1>
-        <p class="text-slate-500 text-lg">照著步驟，幾分鐘就能上手 Micords 的所有功能。</p>
+        <h1 class="text-4xl font-bold text-slate-900 mb-4">{pageTitle}</h1>
+        <p class="text-slate-500 text-lg">{pageSubtitle}</p>
       </div>
 
       <!-- 快速跳轉 -->
@@ -144,15 +79,15 @@ const sections = [
 
       <!-- 底部 CTA -->
       <div class="mt-20 text-center bg-brand-cream rounded-3xl p-10">
-        <h3 class="text-2xl font-bold text-slate-900 mb-3">看完教學，準備好了嗎？</h3>
-        <p class="text-slate-500 mb-6">立即開始為你的愛貓建立專屬健康檔案。</p>
+        <h3 class="text-2xl font-bold text-slate-900 mb-3">{ctaTitle}</h3>
+        <p class="text-slate-500 mb-6">{ctaSubtitle}</p>
         <a
           href="https://micords.web.app/"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition shadow-lg shadow-orange-200"
         >
-          立即免費使用
+          {ctaButton}
         </a>
       </div>
 

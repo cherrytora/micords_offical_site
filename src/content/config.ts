@@ -43,8 +43,27 @@ const roadmap = defineCollection({
   }),
 });
 
+const tutorial = defineCollection({
+  type: 'data',
+  schema: z.object({
+    pageTitle: z.string(),
+    pageSubtitle: z.string(),
+    sections: z.array(z.object({
+      id: z.string(),
+      title: z.string(),
+      desc: z.string(),
+      steps: z.array(z.string()),
+      mediaLabel: z.string(),
+    })),
+    ctaTitle: z.string(),
+    ctaSubtitle: z.string(),
+    ctaButton: z.string(),
+  }),
+});
+
 export const collections = {
   'release-notes': releaseNotes,
   'roadmap': roadmap,
   'pages': pages,
+  'tutorial': tutorial,
 };

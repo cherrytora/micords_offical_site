@@ -78,3 +78,25 @@ collections:
           - {name: ctaTitle, label: "CTA 標題", widget: string}
           - {name: ctaSubtitle, label: "CTA 副標題", widget: text}
           - {name: ctaButton, label: "CTA 按鈕文字", widget: string}
+
+      - name: tutorial
+        label: "使用教學頁"
+        file: src/content/tutorial/page.yaml
+        fields:
+          - {name: pageTitle, label: "頁面標題", widget: string}
+          - {name: pageSubtitle, label: "頁面副標題", widget: text}
+          - name: sections
+            label: "教學章節"
+            widget: list
+            fields:
+              - {name: id, label: "錨點 ID（英文，勿改）", widget: string}
+              - {name: title, label: "章節標題", widget: string}
+              - {name: desc, label: "章節說明", widget: text}
+              - name: steps
+                label: "步驟列表"
+                widget: list
+                field: {name: step, label: "步驟", widget: string}
+              - {name: mediaLabel, label: "媒體說明文字", widget: string}
+          - {name: ctaTitle, label: "底部 CTA 標題", widget: string}
+          - {name: ctaSubtitle, label: "底部 CTA 副標題", widget: text}
+          - {name: ctaButton, label: "底部 CTA 按鈕文字", widget: string}
