@@ -6,6 +6,21 @@
     <title>Micords CMS</title>
   </head>
   <body>
+    <script>
+      // BroadcastChannel bridge: workaround for GitHub COOP breaking window.opener
+      (function () {
+        var bc = new BroadcastChannel('decap_oauth');
+        bc.onmessage = function (e) {
+          if (e.data && e.data.token) {
+            var msg = 'authorization:github:success:' + JSON.stringify({ token: e.data.token, provider: 'github' });
+            window.dispatchEvent(new MessageEvent('message', {
+              data: msg,
+              origin: 'https://round-butterfly-d457.m85592527.workers.dev'
+            }));
+          }
+        };
+      })();
+    </script>
     <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
   </body>
 </html>

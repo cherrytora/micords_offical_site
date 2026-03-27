@@ -9,18 +9,16 @@
     var error = params.get('error');
 
     if (error) {
-      document.body.textContent = 'Login error: ' + decodeURIComponent(error);
+      document.body.textContent = 'OAuth error: ' + decodeURIComponent(error);
       return;
     }
 
-    if (token && window.opener) {
-      var message = 'authorization:github:success:' + JSON.stringify({ token: token, provider: 'github' });
-      window.opener.postMessage(message, '*');
-      window.close();
-    } else if (!token) {
-      document.body.textContent = 'Error: No token received.';
+    if (token) {
+      var bc = new BroadcastChannel('decap_oauth');
+      bc.postMessage({ token: decodeURIComponent(token), provider: 'github' });
+      setTimeout(function () { window.close(); }, 300);
     } else {
-      document.body.textContent = 'Error: Cannot communicate with CMS window. Please close this and try again.';
+      document.body.textContent = 'Error: No token received. Check Worker logs.';
     }
   })();
 </script>
