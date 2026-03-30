@@ -6,8 +6,8 @@ sections:
     title: "建立你的第一個貓咪檔案"
     desc: "從下載 App 到建立貓咪基本資料，只需 2 分鐘。"
     steps:
-      - "下載並安裝 Micords App"
-      - "註冊帳號或使用 Google / Apple 登入"
+      - "安裝 Micords App"
+      - "使用 Google 登入，無需註冊"
       - "點擊「新增貓咪」，填寫名字、品種、生日與照片"
       - "完成！開始紀錄牠的第一筆資料"
     mediaLabel: "示範影片"
