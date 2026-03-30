@@ -86,6 +86,7 @@ collections:
                 widget: list
                 field: {name: step, label: "步驟", widget: string}
               - {name: mediaLabel, label: "媒體說明文字", widget: string}
+              - {name: youtubeId, label: "YouTube 影片 ID（選填）", widget: string, required: false, hint: "例如網址 https://youtu.be/abc123 的 ID 為 abc123"}
           - {name: ctaTitle, label: "底部 CTA 標題", widget: string}
           - {name: ctaSubtitle, label: "底部 CTA 副標題", widget: text}
           - {name: ctaButton, label: "底部 CTA 按鈕文字", widget: string}

@@ -56,6 +56,7 @@ const tutorial = defineCollection({
       desc: z.string(),
       steps: z.array(z.string()),
       mediaLabel: z.string(),
+      youtubeId: z.string().optional(),
     })),
     ctaTitle: z.string(),
     ctaSubtitle: z.string(),

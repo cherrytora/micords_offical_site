@@ -35,7 +35,7 @@ const { pageTitle, pageSubtitle, sections, ctaTitle, ctaSubtitle, ctaButton, cta
 
       <!-- 教學章節 -->
       <div class="space-y-20">
-        {sections.map(({ id, title, desc, steps, mediaLabel }, index) => (
+        {sections.map(({ id, title, desc, steps, mediaLabel, youtubeId }, index) => (
           <section id={id} class="scroll-mt-24">
             <div class="flex items-center gap-4 mb-6">
               <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
@@ -60,14 +60,27 @@ const { pageTitle, pageSubtitle, sections, ctaTitle, ctaSubtitle, ctaButton, cta
                 ))}
               </ol>
 
-              <!-- 媒體佔位區（之後放截圖或影片） -->
-              <div class="bg-slate-100 rounded-3xl aspect-video flex flex-col items-center justify-center text-slate-400 border-2 border-dashed border-slate-200">
-                <svg class="w-10 h-10 mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
-                </svg>
-                <p class="text-sm font-medium">{mediaLabel}</p>
-                <p class="text-xs mt-1 opacity-60">即將加入</p>
-              </div>
+              <!-- 媒體區 -->
+              {youtubeId ? (
+                <div class="rounded-3xl overflow-hidden aspect-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${youtubeId}`}
+                    title={mediaLabel}
+                    class="w-full h-full"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              ) : (
+                <div class="bg-slate-100 rounded-3xl aspect-video flex flex-col items-center justify-center text-slate-400 border-2 border-dashed border-slate-200">
+                  <svg class="w-10 h-10 mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+                  </svg>
+                  <p class="text-sm font-medium">{mediaLabel}</p>
+                  <p class="text-xs mt-1 opacity-60">即將加入</p>
+                </div>
+              )}
             </div>
 
             {index < sections.length - 1 && (
