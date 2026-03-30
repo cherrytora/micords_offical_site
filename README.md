@@ -92,18 +92,7 @@ summary: "支援多隻貓咪帳戶切換。"
 
 ### 新增教學步驟
 
-編輯 `src/pages/tutorial.astro` 頂端的 `sections` 陣列，新增一個物件即可：
-
-```js
-{
-  id: 'my-feature',       // 錨點 ID
-  title: '功能名稱',
-  desc: '一行說明',
-  steps: ['步驟一', '步驟二'],
-  mediaType: 'placeholder',
-  mediaLabel: '示意圖',   // 之後換成 <img> 或 <video>
-},
-```
+在 Decap CMS 後台的「使用教學頁」新增章節，或直接編輯 `src/content/tutorial/page.yaml`。
 
 ### 更新 Roadmap 時程
 
@@ -112,19 +101,17 @@ summary: "支援多隻貓咪帳戶切換。"
 - `building` — 開發中（橘色）
 - `planned` — 規劃中（灰色）
 
-### 新增教學媒體（截圖 / 影片）
+### 新增教學影片（YouTube 嵌入）
 
-找到 `tutorial.astro` 中對應章節的媒體佔位區，把 `<div class="bg-slate-100 ...">` 整段換成：
+在 Decap CMS 後台的「使用教學頁」，每個章節都有一個 **「YouTube 影片 ID（選填）」** 欄位。
 
-```astro
-<!-- 截圖 -->
-<img src="/micord_offical_site/截圖檔名.png" alt="說明" class="rounded-3xl w-full" />
+**使用方式：**
 
-<!-- 或影片 -->
-<video src="/micord_offical_site/demo.mp4" controls class="rounded-3xl w-full" />
-```
+- YouTube 網址 `https://youtu.be/abc123` → 填入 `abc123`
+- YouTube 網址 `https://www.youtube.com/watch?v=abc123` → 填入 `abc123`
+- 沒填的話會保留原本的 placeholder（「即將加入」）
 
-將圖片或影片放在 `public/` 資料夾下即可。
+不需要上傳任何檔案，只要貼 YouTube ID 就好。填完後 commit，重新部署即可在前端顯示影片。
 
 ---
 
