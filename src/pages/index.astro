@@ -4,18 +4,20 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { getEntry } from 'astro:content';
 
-const APP_URL = 'https://micords.web.app/';
 const home = await getEntry('pages', 'home');
 const {
-  heroTitle, heroSubtitle, ctaPrimary,
+  navCtaText, navCtaLink,
+  heroTitle, heroSubtitle,
+  ctaPrimary, ctaPrimaryLink,
+  ctaSecondary, ctaSecondaryLink,
   featuresTitle, features,
   storyTitle, storyContent,
-  ctaTitle, ctaButton,
+  ctaTitle, ctaButton, ctaButtonLink,
 } = home.data;
 ---
 
 <BaseLayout title="Micords 貓咪健康紀錄 APP｜飲食、體重、血檢、用藥一站管理" description="Micords 是專為貓咪設計的健康紀錄 APP，記錄飲食、體重、血檢與用藥，自動生成趨勢圖表，看診時一鍵出示完整病歷。免費使用。">
-  <Nav />
+  <Nav navCtaText={navCtaText} navCtaLink={navCtaLink} />
 
   <!-- Hero -->
   <section class="hero-gradient pt-32 pb-20 px-6">
@@ -29,7 +31,7 @@ const {
         </p>
         <div class="flex flex-wrap gap-4">
           <a
-            href={APP_URL}
+            href={ctaPrimaryLink}
             target="_blank"
             rel="noopener noreferrer"
             class="bg-brand-orange text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-200 hover:scale-105 transition"
@@ -37,10 +39,11 @@ const {
             {ctaPrimary}
           </a>
           <a
-            href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/tutorial`}
+            href={ctaSecondaryLink.startsWith('http') ? ctaSecondaryLink : `${import.meta.env.BASE_URL.replace(/\/$/, '')}${ctaSecondaryLink}`}
             class="border-2 border-brand-orange text-brand-orange px-8 py-4 rounded-2xl font-bold text-lg hover:bg-orange-50 transition"
+            {...(!ctaSecondaryLink.startsWith('http') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
           >
-            查看教學
+            {ctaSecondary}
           </a>
         </div>
       </div>
@@ -90,7 +93,7 @@ const {
     <div class="max-w-3xl mx-auto">
       <h2 class="text-3xl font-bold mb-8 text-slate-900">{ctaTitle}</h2>
       <a
-        href={APP_URL}
+        href={ctaButtonLink}
         target="_blank"
         rel="noopener noreferrer"
         class="inline-block bg-brand-orange text-white px-12 py-5 rounded-2xl font-bold text-xl shadow-lg shadow-orange-200 hover:scale-105 transition"

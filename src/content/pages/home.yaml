@@ -1,6 +1,12 @@
+navCtaText: "立即申請體驗"
+navCtaLink: "https://micords.web.app/"
+
 heroTitle: "Micords — 貓咪健康紀錄 APP"
 heroSubtitle: "飲食、體重、血檢、用藥，一個 APP 全部記好。看診時一鍵出示完整紀錄，和獸醫溝通不再手忙腳亂。"
-ctaPrimary: "免費開始使用"
+ctaPrimary: "立即申請體驗"
+ctaPrimaryLink: "https://micords.web.app/"
+ctaSecondary: "查看教學"
+ctaSecondaryLink: "/tutorial"
 
 featuresTitle: "一個 APP，照顧牠的每一天"
 features:
@@ -21,4 +27,5 @@ storyTitle: "為什麼做 Micords？"
 storyContent: "起因是一隻腎臟病貓咪。每次回診面對醫生詢問，總是翻找筆記、努力回想上週數值。那種無力感，讓我們決定做一個工具：把對貓咪的愛，變成有跡可循的健康紀錄。Micords 由 RiLa Lab 打造，獻給每一位認真照顧毛孩的你。"
 
 ctaTitle: "開始記錄，就是最好的陪伴。"
-ctaButton: "免費開始使用 Micords"
+ctaButton: "立即申請體驗 Micords"
+ctaButtonLink: "https://micords.web.app/"

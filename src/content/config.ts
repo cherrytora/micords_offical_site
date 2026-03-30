@@ -3,15 +3,21 @@ import { defineCollection, z } from 'astro:content';
 const pages = defineCollection({
   type: 'data',
   schema: z.object({
+    navCtaText: z.string(),
+    navCtaLink: z.string(),
     heroTitle: z.string(),
     heroSubtitle: z.string(),
     ctaPrimary: z.string(),
+    ctaPrimaryLink: z.string(),
+    ctaSecondary: z.string(),
+    ctaSecondaryLink: z.string(),
     featuresTitle: z.string(),
     features: z.array(z.object({ icon: z.string(), title: z.string(), desc: z.string() })),
     storyTitle: z.string(),
     storyContent: z.string(),
     ctaTitle: z.string(),
     ctaButton: z.string(),
+    ctaButtonLink: z.string(),
   }),
 });
 
@@ -52,6 +58,7 @@ const tutorial = defineCollection({
     ctaTitle: z.string(),
     ctaSubtitle: z.string(),
     ctaButton: z.string(),
+    ctaButtonLink: z.string(),
   }),
 });
 
