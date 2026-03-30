@@ -6,6 +6,7 @@ import { getEntry } from 'astro:content';
 
 const home = await getEntry('pages', 'home');
 const {
+  seoTitle, seoDescription,
   navCtaText, navCtaLink,
   heroTitle, heroSubtitle,
   ctaPrimary, ctaPrimaryLink,
@@ -16,7 +17,7 @@ const {
 } = home.data;
 ---
 
-<BaseLayout title="Micords 貓咪健康紀錄 APP｜飲食、體重、血檢、用藥一站管理" description="Micords 是專為貓咪設計的健康紀錄 APP，記錄飲食、體重、血檢與用藥，自動生成趨勢圖表，看診時一鍵出示完整病歷。免費使用。">
+<BaseLayout title={seoTitle} description={seoDescription}>
   <Nav navCtaText={navCtaText} navCtaLink={navCtaLink} />
 
   <!-- Hero -->
@@ -53,8 +54,11 @@ const {
           <!-- TODO: 換成自己的圖片，把 src 改成 /micords_offical_site/images/你的檔名.svg -->
           <img
             src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=800"
-            alt="貓咪健康紀錄 APP Micords"
+            alt="貓咪健康紀錄簿 Micords"
             class="w-full h-full object-cover"
+            width="800"
+            height="400"
+            decoding="async"
             loading="eager"
           />
         </div>

@@ -4,9 +4,18 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
 }
 
-const { title, description = 'Micords — 讓對貓的愛，更有跡可循' } = Astro.props;
+const {
+  title,
+  description = 'Micords 是專為貓咪設計的健康紀錄 APP，記錄飲食、體重、血檢與用藥，自動生成趨勢圖表，看診時一鍵出示完整病歷。免費使用。',
+  keywords = '貓咪APP,貓咪健康紀錄,寵物APP,貓咪體重記錄,貓咪血檢,貓咪用藥紀錄,寵物健康管理,Micords',
+} = Astro.props;
+
+const siteUrl = 'https://cherrytora.github.io/micords_offical_site';
+const currentUrl = `${siteUrl}${Astro.url.pathname}`;
+const ogImage = `${siteUrl}/Micords.png`;
 ---
 
 <!doctype html>
@@ -15,11 +24,50 @@ const { title, description = 'Micords — 讓對貓的愛，更有跡可循' } =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} — Micords</title>
+    <meta name="keywords" content={keywords} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:locale" content="zh_TW" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <title>{title}</title>
+    <link rel="canonical" href={currentUrl} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- 結構化資料：讓 Google 知道這是一個 APP -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Micords 貓咪健康紀錄簿",
+      "description": description,
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, Android, iOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TWD"
+      },
+      "aggregateRating": undefined,
+      "author": {
+        "@type": "Organization",
+        "name": "RiLa Lab"
+      }
+    })} />
   </head>
   <body>
     <slot />

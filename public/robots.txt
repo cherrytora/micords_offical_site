@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cherrytora.github.io/micords_offical_site/sitemap-index.xml

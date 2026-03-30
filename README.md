@@ -68,7 +68,7 @@ npm run dev
 const APP_URL = 'https://micords.web.app/';
 ```
 
-改這裡就會同步更新所有「立即申請體驗」按鈕。
+改這裡就會同步更新所有「立即體驗」按鈕。
 
 ### 新增 Release Note
 
