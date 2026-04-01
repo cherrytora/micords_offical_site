@@ -19,7 +19,6 @@ collections:
       - {name: version, label: "版本號", widget: string}
       - {name: date, label: "發佈日期", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
       - {name: title, label: "標題", widget: string}
-      - {name: summary, label: "摘要", widget: string}
       - {name: body, label: "內容", widget: markdown}
 
   - name: roadmap
@@ -52,9 +51,16 @@ collections:
         label: "首頁"
         file: src/content/pages/home.yaml
         fields:
+          - {name: seoTitle, label: "SEO 標題", widget: string}
+          - {name: seoDescription, label: "SEO 描述", widget: text}
+          - {name: navCtaText, label: "導覽列按鈕文字", widget: string}
+          - {name: navCtaLink, label: "導覽列按鈕連結", widget: string}
           - {name: heroTitle, label: "Hero 大標題", widget: string}
           - {name: heroSubtitle, label: "Hero 副標題", widget: text}
           - {name: ctaPrimary, label: "主要按鈕文字", widget: string}
+          - {name: ctaPrimaryLink, label: "主要按鈕連結", widget: string}
+          - {name: ctaSecondary, label: "次要按鈕文字", widget: string}
+          - {name: ctaSecondaryLink, label: "次要按鈕連結", widget: string}
           - {name: featuresTitle, label: "功能區標題", widget: string}
           - name: features
             label: "功能列表"
@@ -67,6 +73,7 @@ collections:
           - {name: storyContent, label: "品牌故事內容", widget: text}
           - {name: ctaTitle, label: "CTA 標題", widget: string}
           - {name: ctaButton, label: "CTA 按鈕文字", widget: string}
+          - {name: ctaButtonLink, label: "CTA 按鈕連結", widget: string}
 
       - name: tutorial
         label: "使用教學頁"
@@ -90,3 +97,4 @@ collections:
           - {name: ctaTitle, label: "底部 CTA 標題", widget: string}
           - {name: ctaSubtitle, label: "底部 CTA 副標題", widget: text}
           - {name: ctaButton, label: "底部 CTA 按鈕文字", widget: string}
+          - {name: ctaButtonLink, label: "底部 CTA 按鈕連結", widget: string}

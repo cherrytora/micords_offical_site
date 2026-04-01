@@ -29,7 +29,7 @@ const releaseNotes = defineCollection({
     version: z.string(),
     date: z.union([z.string(), z.date().transform(d => d.toISOString().slice(0, 10))]),
     title: z.string(),
-    summary: z.string(),
+    summary: z.string().optional(),
   }),
 });
 
