@@ -1,34 +1,45 @@
-seoTitle: "Micords 貓咪健康紀錄 APP｜飲食、體重、血檢、用藥一站管理"
-seoDescription: "Micords 是專為貓咪設計的健康紀錄 APP，支援手機安裝（PWA），記錄飲食、體重、血檢與用藥，自動生成趨勢圖表，看診時一鍵出示完整病歷。免費下載使用。"
-
-navCtaText: "立即體驗"
-navCtaLink: "https://micords.web.app/"
-
-heroTitle: "Micords — 貓咪健康紀錄簿"
-heroSubtitle: "飲食、體重、血檢、用藥，一個 APP 全部記好。看診時快速查閱日常紀錄，和獸醫溝通不再手忙腳亂，在家正確掌握血檢數據與趨勢，每一步都有跡可循，奴才更安心。"
-ctaPrimary: "立即體驗"
-ctaPrimaryLink: "https://micords.web.app/"
-ctaSecondary: "查看教學"
-ctaSecondaryLink: "/tutorial"
-
-featuresTitle: "一個 APP，照顧牠的每一天"
+heroTitle: Micords — 貓咪健康紀錄簿
+heroSubtitle: 飲食、體重、血檢、用藥，一個 APP 全部記好。看診時快速查閱日常紀錄，和獸醫溝通不再手忙腳亂，在家正確掌握血檢數據與趨勢，每一步都有跡可循，奴才更安心。
+ctaPrimary: 立即體驗
+featuresTitle: 一個 APP，照顧牠的每一天
 features:
-  - icon: "📝"
-    title: "日常紀錄"
-    desc: "飲食、飲水、排泄，隨手記、自動整理。"
-  - icon: "📈"
-    title: "健康趨勢圖表"
-    desc: "體重與血檢數據視覺化，看一眼就掌握變化。"
-  - icon: "🏥"
-    title: "完整醫療病歷"
-    desc: "用藥、診斷、血檢紀錄，全部整理在一起，再也不用到處找紀錄。"
-  - icon: "🔔"
-    title: "智慧提醒"
-    desc: "疫苗、驅蟲、回診、餵藥，時間到了自動通知。"
+  - icon: 📝
+    title: 日常紀錄
+    desc: 飲食、飲水、排泄，隨手記、自動整理。
+  - icon: 📈
+    title: 健康趨勢圖表
+    desc: 體重與血檢數據視覺化，看一眼就掌握變化。
+  - icon: 🏥
+    title: 完整醫療病歷
+    desc: 用藥、診斷、血檢紀錄，全部整理在一起，再也不用到處找紀錄。
+  - icon: 🔔
+    title: 智慧提醒
+    desc: 疫苗、驅蟲、回診、餵藥，時間到了自動通知。
+storyTitle: 為什麼做 Micords？
+storyContent: >-
+  事情的一開始是先發現橘貓拉拉甲亢，結果過沒兩天，也發現白貓利利不吃不喝，帶去檢查才發現胰臟炎和慢性腎病2期，剛好兩隻貓幾乎同時發病，也同時都需要長期追蹤。
 
-storyTitle: "為什麼做 Micords？"
-storyContent: "起因是家裡的兩隻貓咪差不多時間生病，先發現橘貓甲亢，接著白貓不吃不喝卻胰臟炎和慢性腎病2期，都是需要長期追蹤。不論是回診時或在家裡查資料，總是翻找筆記、努力回想之前數值和醫生說什麼，不確定這幾個禮拜下來數值到底有沒有變好，貓咪回診時間剛好很接近的時候有時候又會記錯貓咪。那種手忙腳亂的感覺，讓我們決定做一個工具：把對貓咪的愛，變成有跡可循的健康紀錄。Micords 由 RiLa Lab 打造，分享給每一位認真照顧毛孩的你。"
 
-ctaTitle: "開始記錄，就是最好的陪伴。"
-ctaButton: "立即體驗 Micords"
-ctaButtonLink: "https://micords.web.app/"
+  那段好幾家醫院、診所來回跑的過程，因為個想檢查數值、基礎數值、正常數值都不一樣，變成在就醫的過程前後都要不斷的翻筆記、回想之前數值和醫生說過什麼。
+
+
+  檢查報告出來之後，也沒辦法馬上確定這幾個禮拜下來的回診，數值是變好了嗎？還是其實沒有？尤其兩隻貓咪回診時間在周間差不到兩天，變成醫生問問題的時候會記錯貓咪，給出一個連醫生都會狐疑的答案。
+
+
+  那種手忙腳亂的感覺，讓我們決定做一個工具：「把對貓咪的愛，變成有跡可循的健康紀錄」。無論是想記錄日常或是需要看病紀錄醫療數據，都能透過Micords輕鬆完成。
+
+
+  Micords 由兩隻貓的奴才和被她血緣壓制的弟弟一起打造，分享給每一位照顧毛孩的爸媽。
+
+
+  貓咪紀錄，就找Micords。
+ctaTitle: 記錄，就是最好照顧。
+ctaButton: 立即體驗 Micords
+ctaSecondary: 查看教學
+navCtaLink: https://micords.web.app/
+ctaPrimaryLink: https://micords.web.app/
+navCtaText: 立即體驗
+seoTitle: Micords 貓咪健康紀錄 APP｜飲食、體重、血檢、用藥一站管理
+ctaButtonLink: https://micords.web.app/
+ctaSecondaryLink: /tutorial
+seoDescription: Micords 是專為貓咪設計的健康紀錄 APP，支援手機安裝（PWA），記錄飲食、體重、血檢與用藥，自動生成趨勢圖表，看診時一鍵出示完整病歷。免費下載使用。
