@@ -3,13 +3,13 @@ pageSubtitle: 照著步驟，幾分鐘就能上手 Micords 的所有功能。
 sections:
   - id: onboarding
     title: 建立你的第一個貓咪檔案
-    desc: 從下載 App 到建立貓咪基本資料，只需 2 分鐘。
+    desc: 從登入到建立貓咪基本資料，只需 2 分鐘。
     steps:
-      - 安裝 Micords App
       - 使用 Google 登入，無需註冊
       - 點擊「新增貓咪」，填寫名字、品種、生日與照片
-      - 完成！開始紀錄牠的第一筆資料
-    mediaLabel: 示範影片
+      - 完成！開始紀錄第一筆資料
+    mediaLabel: Micords 貓咪健康紀錄簿｜開始使用
+    youtubeId: MPBkb3XG68o
   - id: daily-log
     title: 每日日誌：飲食、飲水與排泄
     desc: 掌握牠的每日狀況，讓細微的變化無所遁形。
