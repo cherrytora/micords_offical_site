@@ -1,6 +1,17 @@
 pageTitle: 使用教學
 pageSubtitle: 照著步驟，幾分鐘就能上手 Micords 的所有功能。
 sections:
+  - id: add-as-app
+    title: 新增至主畫面
+    desc: |-
+      新增至主畫面就可以當APP用囉！
+      ** 注意 ** Iphone 只有 safari 支援新增至主畫面，用 chrome 會失敗
+    steps:
+      - 點選右下角分享
+      - 往下拉到「加至主畫面」
+      - 取一個你喜歡的名字點選加入就會出現在畫面上了
+    mediaLabel: 新增至主畫面教學
+    youtubeId: _DVWjWsdaEw
   - id: onboarding
     title: 建立你的第一個貓咪檔案
     desc: 從登入到建立貓咪基本資料，只需 2 分鐘。
