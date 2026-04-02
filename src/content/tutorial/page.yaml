@@ -6,7 +6,7 @@ sections:
     desc: 從登入到建立貓咪基本資料，只需 2 分鐘。
     steps:
       - 使用 Google 登入，無需註冊
-      - 點擊「新增貓咪」，填寫名字、品種、生日與照片
+      - 點「新增貓咪」，填寫貓咪資訊和上傳貓咪照片
       - 完成！開始紀錄第一筆資料
     mediaLabel: Micords 貓咪健康紀錄簿｜開始使用
     youtubeId: MPBkb3XG68o
@@ -14,40 +14,40 @@ sections:
     title: 每日日誌：飲食、飲水與排泄
     desc: 掌握每日狀況，讓細微的變化無所遁形。
     steps:
-      - 進入日常紀錄頁面，點擊「新增記錄」
-      - 選擇類型：飲食 / 飲水 / 排泄 / 體重 / 備忘
+      - 進入日常紀錄頁面，點「+」
+      - 選擇類型：飲食 / 飲水 / 大便 / 尿尿 /  體重
       - 填入數量與備註（例如：食慾不佳、顏色異常）
-      - 儲存後可在時間軸回顧所有記錄
+      - 儲存後可以在首頁的健康指標趨勢看數值與變化
     mediaLabel: Micords 貓咪健康紀錄簿｜日常紀錄
     youtubeId: r_bwPmumRzs
-  - id: health-trend
-    title: 健康趨勢圖：體重與血檢數據
-    desc: 用曲線說話，讓數字不再讓你看不懂。
+  - id: medical-records
+    title: 看診紀錄：完整的看診與血檢趨勢資訊
+    desc: 擁有貓咪的完整血檢資訊與趨勢，快速掌握貓咪狀況。
     steps:
-      - ""
-      - 點擊「新增血檢報告」，輸入日期與各項數值
-      - 系統自動繪製趨勢曲線，標示正常範圍
-      - 與上次數值比較，一眼得知進步或退步
+      - 進入看診頁面，點「＋」
+      - 填寫就診日期、診斷與生理檢查或血檢資料
+      - 儲存後可以在首頁的健康指標趨勢看數值與變化
+    mediaLabel: 看診頁面示意
+    youtubeId: 6e-yohCMo2w
+  - id: health-trend
+    title: 健康趨勢圖：體重 / 日常紀錄 / 血檢數據
+    desc: 用圖表說話，讓數字不再讓你看不懂。
+    steps:
+      - 在日常紀錄或看診紀錄中輸入項目和數值
+      - 系統自動繪製趨勢曲線，進步或退步一目了然
+      - 點詳細記錄可以看全部指標
     mediaLabel: 圖表示意
   - id: reminders
     title: 智慧提醒：疫苗、驅蟲、回診
     desc: 從此不漏接任何重要事件。
     steps:
-      - 進入「提醒」點「＋新增提醒」
-      - 選擇類型：疫苗 / 驅蟲 / 回診 / 用藥
+      - 進入「提醒」點「＋」
+      - 選擇類型：吃藥 / 看診 / 打疫苗 / 驅蟲  / 打皮下  / 自訂
       - 設定日期與時間
-      - 確認完成
-    mediaLabel: 設定流程示意
+      - 加入提醒
+    mediaLabel: 提醒設定教學
     youtubeId: CpWpw-cQhLo
-  - id: medical-records
-    title: 看診紀錄：完整的血檢資訊
-    desc: 擁有貓咪的完整血檢資訊與趨勢，快速掌握貓咪狀況。
-    steps:
-      - 進入看診頁面，點「＋」
-      - 填寫就診日期、診斷與生理檢查或血檢資料
-    mediaLabel: 看診頁面示意
-    youtubeId: 6e-yohCMo2w
 ctaTitle: 看完教學，準備好了嗎？
-ctaSubtitle: 立即開始為你的愛貓建立專屬健康檔案。
+ctaSubtitle: 立即開始為你的貓貓建立專屬健康檔案。
 ctaButton: 立即體驗
 ctaButtonLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM
