@@ -79,7 +79,7 @@ const articles = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    publishDate: z.string(),
+    publishDate: z.union([z.string(), z.date().transform((d) => d.toISOString().slice(0, 10))]),
     excerpt: z.string(),
     tags: z.array(z.string()).optional(),
     coverImage: z.string().optional(),
