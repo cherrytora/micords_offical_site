@@ -65,9 +65,32 @@ const tutorial = defineCollection({
   }),
 });
 
+const faq = defineCollection({
+  type: 'data',
+  schema: z.object({
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })),
+  }),
+});
+
+const articles = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    publishDate: z.string(),
+    excerpt: z.string(),
+    tags: z.array(z.string()).optional(),
+    coverImage: z.string().optional(),
+  }),
+});
+
 export const collections = {
   'release-notes': releaseNotes,
   'roadmap': roadmap,
   'pages': pages,
   'tutorial': tutorial,
+  'articles': articles,
+  'faq': faq,
 };

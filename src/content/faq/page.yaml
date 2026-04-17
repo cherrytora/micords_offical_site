@@ -1,0 +1,30 @@
+faqs:
+  - question: Micords 是什麼？
+    answer: Micords 是一款專為貓咪設計的健康紀錄 APP，名稱來自「貓（Mi）+ Records」。支援飲食紀錄、體重追蹤、血檢管理、用藥提醒、記帳簿、物品倉庫等功能，幫助每位貓奴全面掌握毛孩的健康狀況。
+
+  - question: Micords 是免費的嗎？
+    answer: Micords 基本功能完全免費使用。你可以直接在手機瀏覽器開啟，也支援安裝為 PWA（漸進式網頁應用程式），使用起來就像原生 APP 一樣流暢。
+
+  - question: 什麼是 PWA？需要去 App Store 下載嗎？
+    answer: 不需要！Micords 是 PWA（Progressive Web App），直接用手機瀏覽器開啟網址，點選「加入主畫面」就可以安裝到手機桌面。iOS（Safari）和 Android（Chrome）都支援，完全不需要透過 App Store 或 Google Play 下載。
+
+  - question: 可以同時記錄多隻貓嗎？
+    answer: 多貓管理功能正在開發中，即將上線。目前你可以用不同帳號分別管理不同貓咪的健康紀錄。
+
+  - question: 血檢紀錄怎麼使用？
+    answer: 每次看診拿到血檢報告後，在 Micords 的「血檢紀錄」功能中輸入各項數值（如 BUN、Creatinine、ALT 等）。APP 會自動生成趨勢圖表，讓你一眼看出數值變化方向，下次看診時可以直接給獸醫參考。
+
+  - question: Micords 有記帳功能嗎？
+    answer: 有！Micords 內建記帳簿功能，可以記錄每次看診費用、買貓糧、貓砂、藥品等各類支出，幫助你掌握養貓的花費，做好財務規劃。
+
+  - question: 物品倉庫功能是什麼？
+    answer: 物品倉庫可以管理家裡的貓咪用品庫存，例如貓糧、貓砂、藥品、保健品等。你可以記錄品項、數量、效期，快用完時就能提早補貨，再也不用臨時找不到東西或記不住什麼時候到期。
+
+  - question: 看診時怎麼用 Micords 幫助溝通？
+    answer: 看診前，可以在 Micords 查看最近的飲食、體重、血檢和用藥紀錄；看診時，直接把手機遞給獸醫，或口頭說明近期趨勢。完整的紀錄讓你不再只能說「好像有點瘦」，而是秀出三個月的體重趨勢圖，讓溝通更精準有效率。
+
+  - question: 我的資料安全嗎？
+    answer: Micords 重視用戶隱私與資料安全。你的寵物健康數據僅供你個人使用，不會被分享給第三方。如有任何疑慮，歡迎透過官方 Threads @rela2cats 或意見表單聯絡我們。
+
+  - question: 如何提供功能建議或回報問題？
+    answer: 歡迎透過官方 Threads（@rela2cats）或意見回饋表單聯絡我們。你的每一個建議都會被認真考量，並可能成為下一個版本的新功能！

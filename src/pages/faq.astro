@@ -1,0 +1,76 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const faqData = await getEntry('faq', 'page');
+const { faqs } = faqData.data;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="Micords FAQ｜貓咪健康紀錄 APP 常見問題"
+  description="Micords 常見問題解答，包含 APP 功能介紹、血檢紀錄使用方式、記帳簿、物品倉庫、PWA 安裝教學等，幫你快速上手毛孩健康管理。"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Nav />
+
+  <div class="pt-28 pb-20 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- 頁面標題 -->
+      <div class="text-center mb-16">
+        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">FAQ</p>
+        <h1 class="text-4xl font-bold text-slate-900 mb-4">FAQ</h1>
+        <p class="text-slate-500 text-lg">找不到答案？歡迎直接聯絡我們。</p>
+      </div>
+
+      <!-- FAQ 列表 -->
+      <div class="space-y-4">
+        {faqs.map(({ question, answer }) => (
+          <details class="group bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between gap-4 px-8 py-6 cursor-pointer list-none">
+              <h2 class="font-bold text-slate-900 text-base leading-snug">{question}</h2>
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-50 flex items-center justify-center text-brand-orange transition-transform group-open:rotate-45">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14" />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-8 pb-6 text-slate-500 text-sm leading-relaxed border-t border-slate-50 pt-4">
+              {answer}
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <!-- 底部 CTA -->
+      <div class="mt-16 bg-brand-cream rounded-3xl p-10 text-center">
+        <h2 class="text-xl font-bold text-slate-900 mb-2">還有其他問題？</h2>
+        <p class="text-slate-500 mb-6">歡迎透過 Threads 或意見表單直接找我們。</p>
+        <a
+          href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/contact`}
+          class="inline-block border-2 border-brand-orange text-brand-orange px-8 py-3 rounded-2xl font-bold hover:bg-orange-50 transition"
+        >
+          聯絡我們
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>

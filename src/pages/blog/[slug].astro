@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+const { title, publishDate, excerpt, tags } = article.data;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout title={`${title}｜Micords 毛孩日記`} description={excerpt}>
+  <Nav />
+
+  <div class="pt-28 pb-20 px-6">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- 返回 -->
+      <a
+        href={`${base}/blog`}
+        class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-brand-orange transition mb-10"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        回到毛孩日記
+      </a>
+
+      <!-- 文章頭部 -->
+      <header class="mb-10">
+        {tags && tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mb-5">
+            {tags.map((tag) => (
+              <span class="px-3 py-1 bg-orange-50 text-brand-orange text-xs font-medium rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+        <h1 class="text-3xl font-bold text-slate-900 leading-snug mb-4">{title}</h1>
+        <time class="text-sm text-slate-400 font-medium" datetime={publishDate}>
+          {formatDate(publishDate)}
+        </time>
+      </header>
+
+      <!-- 文章內容 -->
+      <article class="prose prose-slate max-w-none
+        prose-headings:font-bold prose-headings:text-slate-900
+        prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4
+        prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
+        prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-4
+        prose-li:text-slate-600 prose-li:leading-relaxed
+        prose-strong:text-slate-800
+        prose-a:text-brand-orange prose-a:no-underline hover:prose-a:underline
+        prose-hr:border-slate-100 prose-hr:my-10
+      ">
+        <Content />
+      </article>
+
+      <!-- 底部 CTA -->
+      <div class="mt-16 bg-brand-cream rounded-3xl p-10 text-center">
+        <p class="text-brand-orange font-bold text-sm tracking-widest mb-3">想試試看？</p>
+        <h2 class="text-2xl font-bold text-slate-900 mb-3">用 Micords 開始記錄毛孩健康</h2>
+        <p class="text-slate-500 mb-6">飲食、體重、血檢、用藥、記帳，一個 APP 全部管好。</p>
+        <a
+          href="https://micords.web.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition shadow-lg shadow-orange-200"
+        >
+          免費體驗 Micords
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>

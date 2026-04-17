@@ -8,6 +8,25 @@ media_folder: public/images
 public_folder: /micords_offical_site/images
 
 collections:
+  - name: articles
+    label: "毛孩日記"
+    label_singular: "文章"
+    folder: src/content/articles
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{publishDate}})"
+    fields:
+      - {name: title, label: "文章標題", widget: string}
+      - {name: publishDate, label: "發佈日期", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+      - {name: excerpt, label: "文章摘要", widget: text, hint: "顯示在列表頁與 Google 搜尋結果，建議 50–120 字"}
+      - name: tags
+        label: "標籤"
+        widget: list
+        required: false
+        field: {name: tag, label: "標籤", widget: string}
+      - {name: coverImage, label: "封面圖片（選填）", widget: image, required: false}
+      - {name: body, label: "文章內容", widget: markdown}
+
   - name: release-notes
     label: "更新日誌"
     label_singular: "版本"
@@ -43,6 +62,20 @@ collections:
         label: "功能列表"
         widget: list
         field: {name: item, label: "功能", widget: string}
+
+  - name: faq
+    label: "FAQ"
+    files:
+      - name: page
+        label: "FAQ 問答列表"
+        file: src/content/faq/page.yaml
+        fields:
+          - name: faqs
+            label: "問答列表"
+            widget: list
+            fields:
+              - {name: question, label: "問題", widget: string}
+              - {name: answer, label: "答案", widget: text}
 
   - name: pages
     label: "頁面內容"
