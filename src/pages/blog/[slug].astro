@@ -14,9 +14,34 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await article.render();
-const { title, publishDate, excerpt, tags } = article.data;
+const { title, publishDate, excerpt, tags, coverImage } = article.data;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const siteUrl = 'https://cherrytora.github.io/micords_offical_site';
+const articleUrl = `${siteUrl}/blog/${article.slug}`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: excerpt,
+  datePublished: publishDate,
+  url: articleUrl,
+  image: coverImage ? `${siteUrl}${coverImage}` : `${siteUrl}/Micords.png`,
+  author: {
+    '@type': 'Organization',
+    name: 'Micords',
+    url: siteUrl,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Micords',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/Micords-icon.png`,
+    },
+  },
+};
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('zh-TW', {
@@ -28,6 +53,7 @@ function formatDate(dateStr: string) {
 ---
 
 <BaseLayout title={`${title}｜Micords 毛孩日記`} description={excerpt}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <Nav />
 
   <div class="pt-28 pb-20 px-6">
