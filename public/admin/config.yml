@@ -17,6 +17,7 @@ collections:
     summary: "{{title}} ({{publishDate}})"
     fields:
       - {name: title, label: "文章標題", widget: string}
+      - {name: slug, label: "網址 Slug（英文）", widget: string, hint: "例如：cat-hyperthyroidism-part-1，用小寫英文與連字號，決定文章網址"}
       - {name: publishDate, label: "發佈日期", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
       - {name: excerpt, label: "文章摘要", widget: text, hint: "顯示在列表頁與 Google 搜尋結果，建議 50–120 字"}
       - name: tags
