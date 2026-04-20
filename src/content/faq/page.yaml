@@ -10,6 +10,8 @@ faqs:
     answer: 不需要！Micords 是 PWA（Progressive Web
       App），直接用手機瀏覽器開啟網址，點選「加入主畫面」就可以安裝到手機桌面。iOS（Safari）和
       Android（Chrome）都支援，完全不需要透過 App Store 或 Google Play 下載。
+  - question: 狗狗也可以用嗎？
+    answer: 可以！Micords 支援貓咪和狗狗的日常紀錄，包含飲食、體重、用藥、看診等功能都適用。不過血檢參考數值目前僅提供貓咪的標準範圍，狗狗飼主仍可輸入數值並追蹤趨勢，只是需要自行對照獸醫提供的參考範圍。
   - question: 可以同時記錄多隻貓嗎？
     answer: 支援多貓完全沒問題！參與測試的使用者貓口數無上限！
   - question: 血檢紀錄怎麼使用？
