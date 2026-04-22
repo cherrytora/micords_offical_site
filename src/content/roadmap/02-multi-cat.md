@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 quarter: Q2 2026
 title: 新功能與許願池項目
 desc: 2026年6月底前會分批上線
