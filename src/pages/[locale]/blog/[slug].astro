@@ -1,28 +1,39 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Nav from '../../../components/Nav.astro';
+import Footer from '../../../components/Footer.astro';
+import type { Locale } from '../../../i18n/index';
+import { localePath } from '../../../i18n/index';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
-  // Only zh-tw articles (no locale prefix in URL)
-  return articles
-    .filter((a) => a.id.startsWith('zh-tw/'))
-    .map((article) => ({
-      params: { slug: article.slug.replace('zh-tw/', '') },
-      props: { article },
-    }));
+  const locales = ['en', 'ja'] as const;
+  return locales.flatMap((locale) =>
+    articles
+      .filter((a) => a.id.startsWith(`${locale}/`))
+      .map((article) => ({
+        params: { locale, slug: article.slug.replace(`${locale}/`, '') },
+        props: { article },
+      }))
+  );
 }
 
+const { locale } = Astro.params as { locale: Locale };
 const { article } = Astro.props;
 const { Content } = await article.render();
 const { title, publishDate, excerpt, tags, coverImage } = article.data;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteUrl = 'https://cherrytora.github.io/micords_offical_site';
-const pureSlug = article.slug.replace('zh-tw/', '');
-const articleUrl = `${siteUrl}/blog/${pureSlug}`;
+const pureSlug = article.slug.replace(`${locale}/`, '');
+const articleUrl = `${siteUrl}/${locale}/blog/${pureSlug}`;
+
+const blogLabels = {
+  en: { back: 'Back to Cat Diary', cta_pre: 'Want to try it?', cta_title: 'Start tracking your cat with Micords', cta_desc: 'Diet, weight, blood tests, medications — all in one app.', cta_btn: 'Try Micords Free' },
+  ja: { back: '猫日記に戻る', cta_pre: '試してみませんか？', cta_title: 'Micordsで猫の健康記録を始めよう', cta_desc: '食事・体重・血液検査・投薬、すべて1つのアプリで管理。', cta_btn: 'Micordsを無料で試す' },
+};
+const labels = blogLabels[locale];
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -32,49 +43,39 @@ const articleSchema = {
   datePublished: publishDate,
   url: articleUrl,
   image: coverImage ? `${siteUrl}${coverImage}` : `${siteUrl}/Micords.png`,
-  author: {
-    '@type': 'Organization',
-    name: 'Micords',
-    url: siteUrl,
-  },
+  author: { '@type': 'Organization', name: 'Micords', url: siteUrl },
   publisher: {
     '@type': 'Organization',
     name: 'Micords',
-    logo: {
-      '@type': 'ImageObject',
-      url: `${siteUrl}/Micords-icon.png`,
-    },
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/Micords-icon.png` },
   },
 };
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('zh-TW', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  const localeMap: Record<Locale, string> = { 'zh-tw': 'zh-TW', 'en': 'en-US', 'ja': 'ja-JP' };
+  return new Date(dateStr).toLocaleDateString(localeMap[locale] ?? 'en-US', {
+    year: 'numeric', month: 'long', day: 'numeric',
   });
 }
 ---
 
-<BaseLayout title={`${title}｜Micords 毛孩日記`} description={excerpt}>
+<BaseLayout title={`${title} | Micords`} description={excerpt}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <Nav />
 
   <div class="pt-28 pb-20 px-6">
     <div class="max-w-2xl mx-auto">
 
-      <!-- 返回 -->
       <a
-        href={`${base}/blog`}
+        href={localePath(locale, '/blog', base)}
         class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-brand-orange transition mb-10"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
-        回到毛孩日記
+        {labels.back}
       </a>
 
-      <!-- 文章頭部 -->
       <header class="mb-10">
         {tags && tags.length > 0 && (
           <div class="flex flex-wrap gap-2 mb-5">
@@ -86,12 +87,14 @@ function formatDate(dateStr: string) {
           </div>
         )}
         <h1 class="text-3xl font-bold text-slate-900 leading-snug mb-4">{title}</h1>
+        {coverImage && (
+          <img src={coverImage} alt={title} class="w-full rounded-3xl shadow-lg mb-6 object-cover max-h-80" loading="eager" />
+        )}
         <time class="text-sm text-slate-400 font-medium" datetime={publishDate}>
           {formatDate(publishDate)}
         </time>
       </header>
 
-      <!-- 文章內容 -->
       <article class="prose prose-slate max-w-none
         prose-headings:font-bold prose-headings:text-slate-900
         prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4
@@ -109,18 +112,17 @@ function formatDate(dateStr: string) {
         <Content />
       </article>
 
-      <!-- 底部 CTA -->
       <div class="mt-16 bg-brand-cream rounded-3xl p-10 text-center">
-        <p class="text-brand-orange font-bold text-sm tracking-widest mb-3">想試試看？</p>
-        <h2 class="text-2xl font-bold text-slate-900 mb-3">用 Micords 開始記錄毛孩健康</h2>
-        <p class="text-slate-500 mb-6">飲食、體重、血檢、用藥、記帳，一個 APP 全部管好。</p>
+        <p class="text-brand-orange font-bold text-sm tracking-widest mb-3">{labels.cta_pre}</p>
+        <h2 class="text-2xl font-bold text-slate-900 mb-3">{labels.cta_title}</h2>
+        <p class="text-slate-500 mb-6">{labels.cta_desc}</p>
         <a
           href="https://micords.web.app/"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition shadow-lg shadow-orange-200"
         >
-          免費體驗 Micords
+          {labels.cta_btn}
         </a>
       </div>
 

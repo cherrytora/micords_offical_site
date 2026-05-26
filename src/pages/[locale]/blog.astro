@@ -19,7 +19,9 @@ const b = t.blog;
 
 // Articles are currently only in Traditional Chinese
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const articles = (await getCollection('articles')).sort(
+const articles = (await getCollection('articles'))
+  .filter((a) => a.id.startsWith(`${locale}/`))
+  .sort(
   (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
 );
 
@@ -53,7 +55,7 @@ function formatDate(dateStr: string) {
         <div class="grid gap-8 md:grid-cols-2">
           {articles.map((article) => (
             <a
-              href={`${base}/blog/${article.slug}`}
+              href={`${base}/${locale}/blog/${article.slug.replace(`${locale}/`, '')}`}
               class="group bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden hover:-translate-y-1 transition-transform duration-300 flex flex-col"
             >
               {article.data.coverImage && (
