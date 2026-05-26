@@ -4,8 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-// 依日期降序（最新在前）
-const notes = (await getCollection('release-notes')).sort(
+// 依日期降序（最新在前），只取 zh-tw 版本
+const notes = (await getCollection('release-notes')).filter(n => n.id.startsWith('zh-tw/')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 

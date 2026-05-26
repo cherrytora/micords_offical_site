@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 type Status = 'done' | 'building' | 'planned';
 
-const roadmap = (await getCollection('roadmap')).sort(
+const roadmap = (await getCollection('roadmap')).filter(r => r.id.startsWith(`${locale}/`)).sort(
   (a, b) => a.data.order - b.data.order
 );
 

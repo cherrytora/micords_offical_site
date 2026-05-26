@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 
 type Status = 'done' | 'building' | 'planned';
 
-const roadmap = (await getCollection('roadmap')).sort(
+const roadmap = (await getCollection('roadmap')).filter(r => r.id.startsWith('zh-tw/')).sort(
   (a, b) => a.data.order - b.data.order
 );
 

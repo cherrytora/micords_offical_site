@@ -17,7 +17,7 @@ const { locale } = Astro.params as { locale: Locale };
 const t = useTranslations(locale);
 const r = t.releaseNotes;
 
-const notes = (await getCollection('release-notes')).sort(
+const notes = (await getCollection('release-notes')).filter(n => n.id.startsWith(`${locale}/`)).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
