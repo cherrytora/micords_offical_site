@@ -1,0 +1,65 @@
+pageTitle: チュートリアル
+pageSubtitle: この手順に従って、数分でMicordsのすべての機能を使いこなしましょう。
+sections:
+  - id: add-as-app
+    title: ホーム画面に追加する
+    desc: |-
+      ホーム画面に追加すればアプリとして使えます！
+      ※ iPhoneはSafariのみ「ホーム画面に追加」に対応しています。Chromeは使えません。
+    steps:
+      - 右下の共有ボタンをタップ
+      - 下にスクロールして「ホーム画面に追加」を選択
+      - 好きな名前を付けて「追加」をタップすると画面に表示されます
+    mediaLabel: ホーム画面に追加するチュートリアル
+    youtubeId: _DVWjWsdaEw
+  - id: onboarding
+    title: 最初の猫プロフィールを作成する
+    desc: ログインから猫の基本情報登録まで、わずか2分で完了。
+    steps:
+      - Googleアカウントでログイン（登録不要）
+      - 「猫を追加」をタップし、猫の情報を入力して写真をアップロード
+      - 完了！最初のデータを記録し始めましょう
+    mediaLabel: Micords — 使い始め方
+    youtubeId: MPBkb3XG68o
+  - id: daily-log
+    title: 日常記録 — 食事・飲水・排泄
+    desc: 毎日の状況を把握して、微妙な変化を見逃さないようにしましょう。
+    steps:
+      - 日常記録ページを開き「＋」をタップ
+      - 種類を選択 — 食事 / 飲水 / 大便 / 尿 / 体重
+      - 量とメモを入力（例：食欲低下、色の異常など）
+      - 保存後、ホーム画面の健康トレンドで数値と変化を確認
+    mediaLabel: Micords — 日常記録
+    youtubeId: r_bwPmumRzs
+  - id: medical-records
+    title: 診察記録 — 完全な血液検査履歴とトレンド
+    desc: 猫の完全な血液検査データとトレンドを把握して、状態を素早く理解しましょう。
+    steps:
+      - 診察ページを開き「＋」をタップ
+      - 診察日・診断・身体検査や血液検査データを入力
+      - 保存後、ホーム画面の健康トレンドで確認
+    mediaLabel: 診察ページの概要
+    youtubeId: 6e-yohCMo2w
+  - id: health-trend
+    title: 健康トレンド — 体重 / 日常記録 / 血液検査
+    desc: グラフで語らせよう — 数字をわかりやすく。
+    steps:
+      - 日常記録または診察記録に項目と数値を入力
+      - システムが自動でトレンドカーブを描画 — 改善か悪化かひと目でわかる
+      - 詳細記録をタップしてすべての指標を確認
+    mediaLabel: 健康トレンドの見方
+    youtubeId: MqXxGNL_-Ds
+  - id: reminders
+    title: スマートリマインダー — ワクチン・駆虫・診察
+    desc: 重要なイベントを二度と見逃さないために。
+    steps:
+      - 「リマインダー」を開き「＋」をタップ
+      - 種類を選択 — 投薬 / 診察 / ワクチン / 駆虫 / 皮下輸液 / カスタム
+      - 日時を設定
+      - リマインダーを追加
+    mediaLabel: リマインダー設定チュートリアル
+    youtubeId: CpWpw-cQhLo
+ctaTitle: チュートリアルを見て、準備はできましたか？
+ctaSubtitle: 今すぐあなたの猫専用の健康ファイルを作り始めましょう。
+ctaButton: 今すぐ試す
+ctaButtonLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM

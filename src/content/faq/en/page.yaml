@@ -1,0 +1,23 @@
+faqs:
+  - question: What is Micords?
+    answer: Micords is a health record tool designed specifically for cats. The name comes from "Mi (cat) + Records." It supports food logging, weight tracking, blood test management, medication reminders, expense tracking, supplies inventory, and more — helping every cat owner fully manage their pet's health. Built with PWA technology, it works on both iPhone and Android — just add it to your home screen and use it like a native app, or open it in any browser.
+  - question: Is Micords free?
+    answer: Micords is currently in beta testing, and participants will enjoy completely free access forever. You can open it directly in your mobile browser, or install it as a PWA (Progressive Web App) for a native app-like experience.
+  - question: What is a PWA? Do I need to download it from the App Store?
+    answer: No! Micords is a PWA (Progressive Web App). Just open the URL in your mobile browser and tap "Add to Home Screen" to install it on your phone. Both iOS (Safari) and Android (Chrome) are supported — no App Store or Google Play download needed.
+  - question: Can I use it for dogs too?
+    answer: Yes! Micords supports daily records for both cats and dogs, including diet, weight, medications, and vet visits. Note that blood test reference ranges are currently provided for cats only. Dog owners can still enter values and track trends, but will need to compare against reference ranges provided by their vet.
+  - question: Can I record multiple cats?
+    answer: Multiple cats are fully supported! Beta users have no limit on the number of cats.
+  - question: How do I use the blood test record feature?
+    answer: After each vet visit, enter the test values (such as BUN, Creatinine, ALT, etc.) in Micords' "Blood Test Records" section. AI-assisted input is also supported — just upload a photo of the blood test report and the values will be filled in automatically! Micords will generate trend charts so you can see changes at a glance, and share them directly with your vet at the next visit.
+  - question: Does Micords have an expense tracking feature?
+    answer: Yes! Micords has a built-in expense tracker where you can log vet fees, cat food, litter, medications, and other expenses — helping you understand your cat care costs and manage finances.
+  - question: What is the Supplies Inventory feature?
+    answer: The Supplies Inventory lets you manage your cat supply stock — cat food, litter, medications, supplements, and more. You can record items, quantities, and expiration dates. Get alerts before things run out so you never have to scramble for supplies or forget when something expires.
+  - question: How does Micords help with vet communication?
+    answer: Before a vet visit, review recent diet, weight, blood test, and medication records in Micords. During the visit, hand your phone to the vet or describe recent trends. Instead of saying "I think she lost a bit of weight," show a three-month weight trend chart — making communication more precise and efficient.
+  - question: Is my data safe?
+    answer: Micords takes user privacy and data security seriously. Your pet health data is for your personal use only and will never be shared with third parties. Micords developers will not access any data you enter. If you have any concerns, please contact us via official Threads @rela2cats or the feedback form.
+  - question: How do I submit feature requests or report issues?
+    answer: Contact us via official Threads (@rela2cats) or the feedback form. Every suggestion is carefully considered and may become a new feature in the next version!

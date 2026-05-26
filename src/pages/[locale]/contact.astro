@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import type { Locale } from '../../i18n/index';
+import { useTranslations } from '../../i18n/index';
+
+export function getStaticPaths() {
+  return [
+    { params: { locale: 'en' } },
+    { params: { locale: 'ja' } },
+  ];
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const t = useTranslations(locale);
+const { contact: c } = t;
+---
+
+<BaseLayout title={c.seoTitle} description={c.seoDescription}>
+  <Nav />
+
+  <div class="pt-28 pb-20 px-6">
+    <div class="max-w-2xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">{c.badge}</p>
+        <h1 class="text-4xl font-bold text-slate-900 mb-4">{c.title}</h1>
+        <p class="text-slate-500 text-lg">{c.subtitle}</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        {c.channels.map(({ icon, title, handle, href, desc, cta }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group bg-white rounded-3xl border border-slate-100 shadow-sm p-8 hover:-translate-y-1 transition-transform duration-300 flex flex-col gap-4"
+          >
+            <div class="text-4xl">{icon}</div>
+            <div>
+              <h2 class="font-bold text-slate-900 text-lg">{title}</h2>
+              <p class="text-brand-orange text-sm font-medium">{handle}</p>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed flex-1">{desc}</p>
+            <span class="inline-flex items-center gap-1.5 text-brand-orange font-medium text-sm group-hover:gap-3 transition-all">
+              {cta}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>

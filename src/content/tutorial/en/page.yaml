@@ -1,0 +1,65 @@
+pageTitle: Tutorial
+pageSubtitle: Follow these steps and get started with all Micords features in minutes.
+sections:
+  - id: add-as-app
+    title: Add to Home Screen
+    desc: |-
+      Add to your home screen and use it just like an app!
+      ** Note ** On iPhone, only Safari supports "Add to Home Screen" — Chrome will not work.
+    steps:
+      - Tap the Share button at the bottom right
+      - Scroll down to "Add to Home Screen"
+      - Give it a name you like and tap Add — it will appear on your screen
+    mediaLabel: Add to Home Screen Tutorial
+    youtubeId: _DVWjWsdaEw
+  - id: onboarding
+    title: Create Your First Cat Profile
+    desc: From login to setting up your cat's profile — takes just 2 minutes.
+    steps:
+      - Sign in with Google — no registration needed
+      - Tap "Add Cat," fill in your cat's info and upload a photo
+      - Done! Start logging your first entry
+    mediaLabel: Micords — Getting Started
+    youtubeId: MPBkb3XG68o
+  - id: daily-log
+    title: Daily Journal — Food, Water & Litter
+    desc: Track daily status so no subtle change goes unnoticed.
+    steps:
+      - Go to the Daily Log page and tap "+"
+      - Choose type — Food / Water / Poop / Pee / Weight
+      - Enter amount and notes (e.g., poor appetite, abnormal color)
+      - After saving, check the Health Trend on the home screen for values and changes
+    mediaLabel: Micords — Daily Log
+    youtubeId: r_bwPmumRzs
+  - id: medical-records
+    title: Vet Visits — Complete Blood Test History & Trends
+    desc: Have your cat's full blood test data and trends — understand your cat's condition quickly.
+    steps:
+      - Go to the Vet Visits page and tap "+"
+      - Enter visit date, diagnosis, physical exam, and blood test data
+      - After saving, check the Health Trend on the home screen
+    mediaLabel: Vet Visit Overview
+    youtubeId: 6e-yohCMo2w
+  - id: health-trend
+    title: Health Trends — Weight / Daily Logs / Blood Tests
+    desc: Let the charts do the talking — numbers made easy.
+    steps:
+      - Enter items and values in Daily Log or Vet Visit records
+      - The system automatically draws trend curves — improvement or decline at a glance
+      - Tap Detailed Records to see all indicators
+    mediaLabel: How to Read Health Trends
+    youtubeId: MqXxGNL_-Ds
+  - id: reminders
+    title: Smart Reminders — Vaccines, Deworming, Check-ups
+    desc: Never miss an important event again.
+    steps:
+      - Go to "Reminders" and tap "+"
+      - Choose type — Medication / Vet Visit / Vaccine / Deworming / Subcutaneous Fluids / Custom
+      - Set the date and time
+      - Add reminder
+    mediaLabel: Reminder Setup Tutorial
+    youtubeId: CpWpw-cQhLo
+ctaTitle: Ready after watching the tutorial?
+ctaSubtitle: Start building a dedicated health profile for your cat right now.
+ctaButton: Try Now
+ctaButtonLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM

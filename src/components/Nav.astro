@@ -1,24 +1,35 @@
 ---
+import type { Locale } from '../i18n/index';
+import { useTranslations, localeNames, localeShort, localePath, getPagePath, locales } from '../i18n/index';
+
 interface Props {
   navCtaText?: string;
   navCtaLink?: string;
 }
 
-const { navCtaText = '立即體驗', navCtaLink = 'https://micords.web.app/' } = Astro.props;
+const { navCtaText, navCtaLink } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const locale = (Astro.currentLocale ?? 'zh-tw') as Locale;
+const t = useTranslations(locale);
+
+// Use prop overrides if provided, else use translations
+const ctaText = navCtaText ?? t.nav.cta;
+const ctaHref = navCtaLink ?? 'https://micords.web.app/';
 
 const navLinks = [
-  { href: `${base}/`,               label: '首頁' },
-  { href: `${base}/blog`,           label: '毛孩日記' },
-  { href: `${base}/tutorial`,       label: '教學' },
-  { href: `${base}/faq`,            label: 'FAQ' },
-  { href: `${base}/roadmap`,        label: '即將上線' },
-  { href: `${base}/release-notes`,  label: '更新日誌' },
-  { href: `${base}/contact`,        label: '聯絡我們' },
+  { href: localePath(locale, '/',              base), label: t.nav.home },
+  { href: localePath(locale, '/blog',          base), label: t.nav.blog },
+  { href: localePath(locale, '/tutorial',      base), label: t.nav.tutorial },
+  { href: localePath(locale, '/faq',           base), label: t.nav.faq },
+  { href: localePath(locale, '/roadmap',       base), label: t.nav.roadmap },
+  { href: localePath(locale, '/release-notes', base), label: t.nav.releaseNotes },
+  { href: localePath(locale, '/contact',       base), label: t.nav.contact },
 ];
 
 const currentPath = Astro.url.pathname;
+// Current page path without locale prefix (for language switcher)
+const pagePath = getPagePath(currentPath, base);
 ---
 
 <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-orange-100">
@@ -52,17 +63,48 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- CTA -->
-    <a
-      href={navCtaLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="bg-brand-orange text-white px-5 py-2 rounded-full font-medium hover:bg-orange-600 transition text-sm"
-    >
-      {navCtaText}
-    </a>
+    <div class="hidden md:flex items-center gap-3">
+      <!-- Language switcher -->
+      <div class="relative group">
+        <button
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-slate-500 hover:text-brand-orange hover:bg-orange-50 transition"
+          aria-label={t.langSwitcher}
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+          {localeShort[locale]}
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <!-- Dropdown -->
+        <div class="absolute right-0 top-full mt-1 py-1 bg-white rounded-2xl border border-slate-100 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 min-w-[140px] z-50">
+          {locales.map((loc) => (
+            <a
+              href={localePath(loc, pagePath, base)}
+              class={`flex items-center gap-2 px-4 py-2 text-sm transition hover:bg-orange-50 ${loc === locale ? 'text-brand-orange font-medium' : 'text-slate-600 hover:text-brand-orange'}`}
+            >
+              {loc === locale && <span class="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>}
+              {loc !== locale && <span class="w-1.5 h-1.5 flex-shrink-0"></span>}
+              {localeNames[loc]}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <a
+        href={ctaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-brand-orange text-white px-5 py-2 rounded-full font-medium hover:bg-orange-600 transition text-sm"
+      >
+        {ctaText}
+      </a>
+    </div>
 
     <!-- Mobile hamburger (pure CSS toggle) -->
-    <label class="md:hidden cursor-pointer ml-4 text-slate-600" for="mobile-menu-toggle" aria-label="開啟選單">
+    <label class="md:hidden cursor-pointer ml-4 text-slate-600" for="mobile-menu-toggle" aria-label="Open menu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
@@ -84,5 +126,20 @@ const currentPath = Astro.url.pathname;
         {label}
       </a>
     ))}
+    <!-- Mobile language switcher -->
+    <div class="pt-3 mt-2 border-t border-slate-100 flex gap-2 flex-wrap">
+      {locales.map((loc) => (
+        <a
+          href={localePath(loc, pagePath, base)}
+          class={`px-3 py-1.5 rounded-full text-xs font-medium transition ${
+            loc === locale
+              ? 'bg-orange-100 text-brand-orange'
+              : 'text-slate-500 bg-slate-100 hover:bg-orange-50 hover:text-brand-orange'
+          }`}
+        >
+          {localeNames[loc]}
+        </a>
+      ))}
+    </div>
   </div>
 </nav>

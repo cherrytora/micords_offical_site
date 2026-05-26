@@ -1,0 +1,45 @@
+seoTitle: Micords — 猫の健康・医療記録、インストール不要
+seoDescription: MicordsはPWA技術を使用した猫専用の健康記録アプリです。食事・体重・血液検査・投薬を記録し、自動でトレンドグラフを生成。診察時にワンタップで完全な記録を表示。コア機能は無料。
+navCtaText: 今すぐ試す
+navCtaLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM
+heroTitle: Micords — 猫の健康・医療記録、インストール不要
+heroSubtitle: 食事・体重・血液検査・投薬、すべて1つのアプリで管理。診察時に日常記録をすぐに確認でき、獣医との会話もスムーズ。自宅で血液検査のトレンドを把握。すべての記録が残ることで、飼い主も安心。
+ctaPrimary: 今すぐ試す
+ctaPrimaryLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM
+ctaSecondary: チュートリアルを見る
+ctaSecondaryLink: /tutorial
+featuresTitle: 1つのアプリで、毎日のケアを
+features:
+  - icon: 📝
+    title: 日常記録
+    desc: 食事・飲水・排泄を手軽に記録、自動で整理。
+  - icon: 📈
+    title: 健康トレンドグラフ
+    desc: 体重・血液検査データを可視化。変化がひと目でわかる。
+  - icon: 🏥
+    title: 完全な医療記録
+    desc: 投薬・診断・血液検査、すべてを一元管理。もう記録を探し回る必要なし。
+  - icon: 🔔
+    title: スマートリマインダー
+    desc: ワクチン・駆虫・診察・投薬、時間になったら自動通知。
+storyTitle: ブランドストーリー
+storyContent: >-
+  きっかけは、オレンジ猫のラーラに甲状腺機能亢進症が見つかったことでした。その数日後、白猫のリーリーが食欲・飲水ともに低下し、病院へ連れて行くと膵炎と慢性腎臓病2期と診断されました。ほぼ同時に2匹が発症し、長期的なモニタリングが必要になりました。
+
+
+  何ヶ月もの通院を重ねる中、クリニックごとに参考値が異なるため、毎回ノートをめくって以前の数値や医師の言葉を思い出そうとしていました。
+
+
+  検査結果が出ても、ここ数週間で改善しているのかどうかすぐに判断できませんでした。2匹の診察日が平日で2日しか違わないため、医師も混乱してしまうことがありました。
+
+
+  そのバタバタした経験が、このツールを作るきっかけになりました：「猫への愛を、追跡可能な健康記録に変えよう」。日常記録でも医療データでも、Micordsで簡単に管理できます。
+
+
+  Micordsは、2匹の猫の飼い主と、巻き込まれた弟の3人で作りました。すべてのペット親に贈ります。
+
+
+  猫の記録は、Micordsで。
+ctaTitle: 記録することが、最高のケア。
+ctaButton: Micordsを今すぐ試す
+ctaButtonLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM
