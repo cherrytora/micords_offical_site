@@ -8,16 +8,18 @@ media_folder: public/images
 public_folder: /micords_offical_site/images
 
 collections:
-  - name: articles
-    label: "毛孩日記"
-    label_singular: "文章"
-    folder: src/content/articles
+
+  # ── 繁體中文文章 ──────────────────────────
+  - name: articles-zh-tw
+    label: "毛孩日記 [繁中]"
+    label_singular: "文章（繁中）"
+    folder: src/content/articles/zh-tw
     create: true
     slug: "{{slug}}"
     summary: "{{title}} ({{publishDate}})"
     fields:
       - {name: title, label: "文章標題", widget: string}
-      - {name: slug, label: "網址 Slug（英文）", widget: string, hint: "例如：cat-hyperthyroidism-part-1，用小寫英文與連字號，決定文章網址"}
+      - {name: slug, label: "網址 Slug（英文）", widget: string, hint: "例如：cat-hyperthyroidism-part-1，用小寫英文與連字號"}
       - {name: publishDate, label: "發佈日期", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
       - {name: excerpt, label: "文章摘要", widget: text, hint: "顯示在列表頁與 Google 搜尋結果，建議 50–120 字"}
       - name: tags
@@ -28,6 +30,49 @@ collections:
       - {name: coverImage, label: "封面圖片（選填）", widget: image, required: false}
       - {name: body, label: "文章內容", widget: markdown}
 
+  # ── 英文文章 ──────────────────────────────
+  - name: articles-en
+    label: "Cat Diary [English]"
+    label_singular: "Article (EN)"
+    folder: src/content/articles/en
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{publishDate}})"
+    fields:
+      - {name: title, label: "Article Title", widget: string}
+      - {name: slug, label: "URL Slug", widget: string, hint: "Use the SAME slug as the zh-tw version, e.g. cat-hyperthyroidism-part-1"}
+      - {name: publishDate, label: "Publish Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+      - {name: excerpt, label: "Excerpt", widget: text}
+      - name: tags
+        label: "Tags"
+        widget: list
+        required: false
+        field: {name: tag, label: "Tag", widget: string}
+      - {name: coverImage, label: "Cover Image (optional)", widget: image, required: false}
+      - {name: body, label: "Article Content", widget: markdown}
+
+  # ── 日文文章 ──────────────────────────────
+  - name: articles-ja
+    label: "猫日記 [日本語]"
+    label_singular: "記事（日本語）"
+    folder: src/content/articles/ja
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{publishDate}})"
+    fields:
+      - {name: title, label: "記事タイトル", widget: string}
+      - {name: slug, label: "URLスラッグ", widget: string, hint: "繁中版と同じスラッグを使用 例：cat-hyperthyroidism-part-1"}
+      - {name: publishDate, label: "公開日", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+      - {name: excerpt, label: "記事概要", widget: text}
+      - name: tags
+        label: "タグ"
+        widget: list
+        required: false
+        field: {name: tag, label: "タグ", widget: string}
+      - {name: coverImage, label: "カバー画像（任意）", widget: image, required: false}
+      - {name: body, label: "記事内容", widget: markdown}
+
+  # ── 更新日誌（繁中即可）─────────────────────
   - name: release-notes
     label: "更新日誌"
     label_singular: "版本"
@@ -41,6 +86,7 @@ collections:
       - {name: title, label: "標題", widget: string}
       - {name: body, label: "內容", widget: markdown}
 
+  # ── Roadmap（繁中即可）──────────────────────
   - name: roadmap
     label: "即將上線功能"
     label_singular: "功能項目"
@@ -64,12 +110,13 @@ collections:
         widget: list
         field: {name: item, label: "功能", widget: string}
 
+  # ── FAQ（三語）──────────────────────────────
   - name: faq
     label: "FAQ"
     files:
-      - name: page
-        label: "FAQ 問答列表"
-        file: src/content/faq/page.yaml
+      - name: faq-zh-tw
+        label: "FAQ（繁中）"
+        file: src/content/faq/zh-tw/page.yaml
         fields:
           - name: faqs
             label: "問答列表"
@@ -77,13 +124,34 @@ collections:
             fields:
               - {name: question, label: "問題", widget: string}
               - {name: answer, label: "答案", widget: text}
+      - name: faq-en
+        label: "FAQ (English)"
+        file: src/content/faq/en/page.yaml
+        fields:
+          - name: faqs
+            label: "Q&A List"
+            widget: list
+            fields:
+              - {name: question, label: "Question", widget: string}
+              - {name: answer, label: "Answer", widget: text}
+      - name: faq-ja
+        label: "FAQ（日本語）"
+        file: src/content/faq/ja/page.yaml
+        fields:
+          - name: faqs
+            label: "Q&Aリスト"
+            widget: list
+            fields:
+              - {name: question, label: "質問", widget: string}
+              - {name: answer, label: "回答", widget: text}
 
+  # ── 頁面內容（三語）────────────────────────
   - name: pages
     label: "頁面內容"
     files:
-      - name: home
-        label: "首頁"
-        file: src/content/pages/home.yaml
+      - name: home-zh-tw
+        label: "首頁（繁中）"
+        file: src/content/pages/zh-tw/home.yaml
         fields:
           - {name: seoTitle, label: "SEO 標題", widget: string}
           - {name: seoDescription, label: "SEO 描述", widget: text}
@@ -108,27 +176,57 @@ collections:
           - {name: ctaTitle, label: "CTA 標題", widget: string}
           - {name: ctaButton, label: "CTA 按鈕文字", widget: string}
           - {name: ctaButtonLink, label: "CTA 按鈕連結", widget: string}
-
-      - name: tutorial
-        label: "使用教學頁"
-        file: src/content/tutorial/page.yaml
+      - name: home-en
+        label: "Home Page (English)"
+        file: src/content/pages/en/home.yaml
         fields:
-          - {name: pageTitle, label: "頁面標題", widget: string}
-          - {name: pageSubtitle, label: "頁面副標題", widget: text}
-          - name: sections
-            label: "教學章節"
+          - {name: seoTitle, label: "SEO Title", widget: string}
+          - {name: seoDescription, label: "SEO Description", widget: text}
+          - {name: navCtaText, label: "Nav CTA Text", widget: string}
+          - {name: navCtaLink, label: "Nav CTA Link", widget: string}
+          - {name: heroTitle, label: "Hero Title", widget: string}
+          - {name: heroSubtitle, label: "Hero Subtitle", widget: text}
+          - {name: ctaPrimary, label: "Primary Button Text", widget: string}
+          - {name: ctaPrimaryLink, label: "Primary Button Link", widget: string}
+          - {name: ctaSecondary, label: "Secondary Button Text", widget: string}
+          - {name: ctaSecondaryLink, label: "Secondary Button Link", widget: string}
+          - {name: featuresTitle, label: "Features Title", widget: string}
+          - name: features
+            label: "Features"
             widget: list
             fields:
-              - {name: id, label: "錨點 ID（英文，勿改）", widget: string}
-              - {name: title, label: "章節標題", widget: string}
-              - {name: desc, label: "章節說明", widget: text}
-              - name: steps
-                label: "步驟列表"
-                widget: list
-                field: {name: step, label: "步驟", widget: string}
-              - {name: mediaLabel, label: "媒體說明文字", widget: string}
-              - {name: youtubeId, label: "YouTube 影片 ID（選填）", widget: string, required: false, hint: "例如網址 https://youtu.be/abc123 的 ID 為 abc123"}
-          - {name: ctaTitle, label: "底部 CTA 標題", widget: string}
-          - {name: ctaSubtitle, label: "底部 CTA 副標題", widget: text}
-          - {name: ctaButton, label: "底部 CTA 按鈕文字", widget: string}
-          - {name: ctaButtonLink, label: "底部 CTA 按鈕連結", widget: string}
+              - {name: icon, label: Emoji, widget: string}
+              - {name: title, label: "Feature Name", widget: string}
+              - {name: desc, label: "Description", widget: text}
+          - {name: storyTitle, label: "Story Title", widget: string}
+          - {name: storyContent, label: "Story Content", widget: text}
+          - {name: ctaTitle, label: "CTA Title", widget: string}
+          - {name: ctaButton, label: "CTA Button Text", widget: string}
+          - {name: ctaButtonLink, label: "CTA Button Link", widget: string}
+      - name: home-ja
+        label: "ホームページ（日本語）"
+        file: src/content/pages/ja/home.yaml
+        fields:
+          - {name: seoTitle, label: "SEOタイトル", widget: string}
+          - {name: seoDescription, label: "SEO説明文", widget: text}
+          - {name: navCtaText, label: "ナビCTAテキスト", widget: string}
+          - {name: navCtaLink, label: "ナビCTAリンク", widget: string}
+          - {name: heroTitle, label: "ヒーロータイトル", widget: string}
+          - {name: heroSubtitle, label: "ヒーローサブタイトル", widget: text}
+          - {name: ctaPrimary, label: "メインボタンテキスト", widget: string}
+          - {name: ctaPrimaryLink, label: "メインボタンリンク", widget: string}
+          - {name: ctaSecondary, label: "サブボタンテキスト", widget: string}
+          - {name: ctaSecondaryLink, label: "サブボタンリンク", widget: string}
+          - {name: featuresTitle, label: "機能タイトル", widget: string}
+          - name: features
+            label: "機能リスト"
+            widget: list
+            fields:
+              - {name: icon, label: Emoji, widget: string}
+              - {name: title, label: "機能名", widget: string}
+              - {name: desc, label: "説明", widget: text}
+          - {name: storyTitle, label: "ストーリータイトル", widget: string}
+          - {name: storyContent, label: "ストーリー内容", widget: text}
+          - {name: ctaTitle, label: "CTAタイトル", widget: string}
+          - {name: ctaButton, label: "CTAボタン", widget: string}
+          - {name: ctaButtonLink, label: "CTAリンク", widget: string}
