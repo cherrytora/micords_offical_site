@@ -9,6 +9,148 @@ public_folder: /micords_offical_site/images
 
 collections:
 
+  # ── 方案與定價（三語）────────────────────────
+  - name: pricing
+    label: "方案與定價"
+    files:
+      - name: pricing-zh-tw
+        label: "方案與定價（繁中）"
+        file: src/content/pricing/zh-tw/page.yaml
+        fields:
+          - {name: seoTitle, label: "SEO 標題", widget: string}
+          - {name: seoDescription, label: "SEO 描述", widget: text}
+          - {name: pageTitle, label: "頁面標題", widget: string}
+          - {name: pageSubtitle, label: "頁面副標題", widget: string}
+          - {name: trialBadge, label: "試用期說明（Badge 文字）", widget: string}
+          - {name: periodMonthly, label: "月繳標籤", widget: string}
+          - {name: periodAnnual, label: "年繳標籤", widget: string}
+          - {name: periodAnnualSave, label: "年繳折扣說明", widget: string}
+          - {name: threadsHandle, label: "Threads 帳號", widget: string}
+          - {name: threadsHref, label: "Threads 連結", widget: string}
+          - name: plans
+            label: "方案列表"
+            widget: list
+            fields:
+              - {name: id, label: "ID (free/pro/premium)", widget: string}
+              - {name: label, label: "方案名稱標籤 (FREE/PRO/PREMIUM)", widget: string}
+              - {name: tag, label: "副標語（如：最受歡迎）", widget: string}
+              - {name: monthlyPrice, label: "月繳價格", widget: string}
+              - {name: annualPrice, label: "年繳等效月費", widget: string}
+              - {name: annualTotal, label: "年繳總價（如：NT$708/年）", widget: string, required: false}
+              - {name: annualSaveNote, label: "年繳省幾%說明", widget: string, required: false}
+              - {name: popular, label: "顯示「最受歡迎」Banner", widget: boolean, default: false}
+              - {name: dark, label: "深色卡片樣式（Premium 用）", widget: boolean, default: false}
+              - {name: cta, label: "按鈕文字", widget: string}
+              - name: features
+                label: "功能列表（方案卡片顯示）"
+                widget: list
+                field: {name: item, label: "功能說明", widget: string}
+          - name: notes
+            label: "說明區塊（訂閱/退款/服務說明/聯絡）"
+            widget: list
+            fields:
+              - {name: title, label: "區塊標題（含 Emoji）", widget: string}
+              - name: items
+                label: "說明項目"
+                widget: list
+                field: {name: item, label: "說明文字", widget: text}
+          - {name: ctaTitle, label: "底部 CTA 標題", widget: string}
+          - {name: ctaSubtitle, label: "底部 CTA 副標題", widget: string}
+          - {name: ctaButton, label: "底部 CTA 按鈕文字", widget: string}
+          - {name: ctaLink, label: "底部 CTA 按鈕連結", widget: string}
+
+      - name: pricing-en
+        label: "Plans & Pricing (English)"
+        file: src/content/pricing/en/page.yaml
+        fields:
+          - {name: seoTitle, label: "SEO Title", widget: string}
+          - {name: seoDescription, label: "SEO Description", widget: text}
+          - {name: pageTitle, label: "Page Title", widget: string}
+          - {name: pageSubtitle, label: "Page Subtitle", widget: string}
+          - {name: trialBadge, label: "Trial Badge Text", widget: string}
+          - {name: periodMonthly, label: "Monthly Label", widget: string}
+          - {name: periodAnnual, label: "Annual Label", widget: string}
+          - {name: periodAnnualSave, label: "Annual Save Note", widget: string}
+          - {name: threadsHandle, label: "Threads Handle", widget: string}
+          - {name: threadsHref, label: "Threads URL", widget: string}
+          - name: plans
+            label: "Plans"
+            widget: list
+            fields:
+              - {name: id, label: "ID (free/pro/premium)", widget: string}
+              - {name: label, label: "Plan Label (FREE/PRO/PREMIUM)", widget: string}
+              - {name: tag, label: "Tagline", widget: string}
+              - {name: monthlyPrice, label: "Monthly Price", widget: string}
+              - {name: annualPrice, label: "Annual Equivalent Monthly Price", widget: string}
+              - {name: annualTotal, label: "Annual Total (e.g. NT$708/year)", widget: string, required: false}
+              - {name: annualSaveNote, label: "Annual Save Note", widget: string, required: false}
+              - {name: popular, label: "Show Popular Banner", widget: boolean, default: false}
+              - {name: dark, label: "Dark Card Style (for Premium)", widget: boolean, default: false}
+              - {name: cta, label: "CTA Button Text", widget: string}
+              - name: features
+                label: "Feature List (shown on plan card)"
+                widget: list
+                field: {name: item, label: "Feature", widget: string}
+          - name: notes
+            label: "Note Blocks (subscription/refund/service/contact)"
+            widget: list
+            fields:
+              - {name: title, label: "Block Title (with Emoji)", widget: string}
+              - name: items
+                label: "Note Items"
+                widget: list
+                field: {name: item, label: "Note Text", widget: text}
+          - {name: ctaTitle, label: "CTA Title", widget: string}
+          - {name: ctaSubtitle, label: "CTA Subtitle", widget: string}
+          - {name: ctaButton, label: "CTA Button Text", widget: string}
+          - {name: ctaLink, label: "CTA Button Link", widget: string}
+
+      - name: pricing-ja
+        label: "料金プラン（日本語）"
+        file: src/content/pricing/ja/page.yaml
+        fields:
+          - {name: seoTitle, label: "SEOタイトル", widget: string}
+          - {name: seoDescription, label: "SEO説明文", widget: text}
+          - {name: pageTitle, label: "ページタイトル", widget: string}
+          - {name: pageSubtitle, label: "サブタイトル", widget: string}
+          - {name: trialBadge, label: "トライアルバッジ", widget: string}
+          - {name: periodMonthly, label: "月払いラベル", widget: string}
+          - {name: periodAnnual, label: "年払いラベル", widget: string}
+          - {name: periodAnnualSave, label: "年払い割引説明", widget: string}
+          - {name: threadsHandle, label: "Threadsアカウント", widget: string}
+          - {name: threadsHref, label: "ThreadsのURL", widget: string}
+          - name: plans
+            label: "プランリスト"
+            widget: list
+            fields:
+              - {name: id, label: "ID (free/pro/premium)", widget: string}
+              - {name: label, label: "プランラベル (FREE/PRO/PREMIUM)", widget: string}
+              - {name: tag, label: "タグライン", widget: string}
+              - {name: monthlyPrice, label: "月払い価格", widget: string}
+              - {name: annualPrice, label: "年払い換算月額", widget: string}
+              - {name: annualTotal, label: "年払い合計", widget: string, required: false}
+              - {name: annualSaveNote, label: "節約額説明", widget: string, required: false}
+              - {name: popular, label: "人気バナーを表示", widget: boolean, default: false}
+              - {name: dark, label: "ダークカードスタイル（Premium用）", widget: boolean, default: false}
+              - {name: cta, label: "ボタンテキスト", widget: string}
+              - name: features
+                label: "機能リスト（プランカードに表示）"
+                widget: list
+                field: {name: item, label: "機能説明", widget: string}
+          - name: notes
+            label: "説明ブロック（サブスク/返金/サービス/連絡先）"
+            widget: list
+            fields:
+              - {name: title, label: "ブロックタイトル（絵文字含む）", widget: string}
+              - name: items
+                label: "説明項目"
+                widget: list
+                field: {name: item, label: "説明テキスト", widget: text}
+          - {name: ctaTitle, label: "CTA タイトル", widget: string}
+          - {name: ctaSubtitle, label: "CTA サブタイトル", widget: string}
+          - {name: ctaButton, label: "CTA ボタンテキスト", widget: string}
+          - {name: ctaLink, label: "CTA ボタンリンク", widget: string}
+
   # ── 繁體中文文章 ──────────────────────────
   - name: articles-zh-tw
     label: "毛孩日記 [繁中]"

@@ -1,0 +1,101 @@
+seoTitle: "Micords 猫の健康記録アプリ | 料金プラン"
+seoDescription: "MicordsはFree・Pro・Premiumの3プランをご用意。月額NT$79から。新規ユーザーは30日間Proプランを無料でお試しいただけます。"
+pageTitle: "料金プラン"
+pageSubtitle: "すべての猫好きのためのシンプルな料金体系"
+trialBadge: "🎉 新規ユーザーは30日間Proプランを無料体験"
+periodMonthly: "月払い"
+periodAnnual: "年払い"
+periodAnnualSave: "約24%お得"
+threadsHandle: "@rela2cats"
+threadsHref: "https://www.threads.com/@rela2cats"
+
+plans:
+  - id: free
+    label: "FREE"
+    tag: "永続無料"
+    monthlyPrice: "NT$0"
+    annualPrice: "NT$0"
+    annualTotal: ""
+    annualSaveNote: ""
+    popular: false
+    dark: false
+    cta: "無料で始める"
+    features:
+      - "猫2匹まで"
+      - "毎日の記録（食事・飲水・排泄・体重）"
+      - "体重 / 食事 / 飲水グラフ（6ヶ月）"
+      - "診察記録・血液検査値の記録"
+      - "OCRスキャン（2回/月）"
+      - "写真アップロード（1記録につき1枚）"
+      - "シングルリマインダー（ワクチン / 再診）"
+      - "支出記録・医療基金管理"
+
+  - id: pro
+    label: "PRO"
+    tag: "最も人気"
+    monthlyPrice: "NT$79"
+    annualPrice: "NT$59"
+    annualTotal: "NT$708/年"
+    annualSaveNote: "(月払い比25%お得)"
+    popular: true
+    dark: false
+    cta: "Proにアップグレード"
+    features:
+      - "猫の数無制限"
+      - "グラフ履歴（1年間）"
+      - "排泄 / 血液検査トレンドグラフ"
+      - "グラフ書き出し（PDF / 画像）"
+      - "OCRスキャン（10回/月）"
+      - "写真アップロード（1記録につき5枚）"
+      - "繰り返しリマインダー + 薬管理"
+      - "完全な支出分類と分析"
+      - "AI日常健康サマリー（5回/月）"
+
+  - id: premium
+    label: "PREMIUM"
+    tag: "フル機能"
+    monthlyPrice: "NT$169"
+    annualPrice: "NT$129"
+    annualTotal: "NT$1,548/年"
+    annualSaveNote: "(月払い比24%お得)"
+    popular: false
+    dark: true
+    cta: "Premiumにアップグレード"
+    features:
+      - "Proのすべての機能"
+      - "完全なグラフ履歴（無制限）"
+      - "血液検査参照範囲の表示"
+      - "複数指標の重ね合わせグラフ"
+      - "OCRスキャン（無制限）"
+      - "完全なデータ書き出し（PDF / CSV）"
+      - "AI日常サマリー（5回/月）"
+      - "AI医療サマリー（5回/月）"
+
+notes:
+  - title: "📅 サブスクリプション"
+    items:
+      - "新規ユーザーは30日間のProトライアルが利用可能（1アカウントにつき1回）。"
+      - "月払いは毎月自動更新。年払いは12ヶ月分を一括払いで自動更新。"
+      - "キャンセル後も現在の期間終了まで利用可能。"
+      - "年払いは月払いより約24%お得です。"
+
+  - title: "💳 返金ポリシー"
+    items:
+      - "購入後14日以内は全額返金対応。"
+      - "14日以降は次回自動更新のキャンセルのみ可能。現在の期間の返金は不可。"
+      - "返金希望の場合はThreads @rela2cats またはフィードバックフォームでお問い合わせください。"
+
+  - title: "☁️ サービスについて"
+    items:
+      - "MicordsはSaaSクラウドサービスです。物理的な商品の発送はありません。"
+      - "サブスクリプション後、インターネット経由ですぐにご利用いただけます。"
+      - "すべてのデータはクラウドに保存され、複数のデバイスからアクセス可能です。"
+
+  - title: "🧵 お問い合わせ"
+    items:
+      - "料金のご質問、返金申請、機能のご提案は以下よりご連絡ください。"
+
+ctaTitle: "猫の健康を守り始めよう"
+ctaSubtitle: "無料から始められます。いつでもアップグレード可能。新規ユーザーは30日間Proトライアル付き。"
+ctaButton: "無料で試す"
+ctaLink: "https://micords.web.app/"

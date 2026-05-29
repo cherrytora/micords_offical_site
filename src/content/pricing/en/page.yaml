@@ -1,0 +1,101 @@
+seoTitle: "Micords Cat Health App | Plans & Pricing"
+seoDescription: "Micords offers Free, Pro, and Premium plans starting from NT$79/month. New users enjoy a 30-day free Pro trial."
+pageTitle: "Plans & Pricing"
+pageSubtitle: "Simple, honest pricing for every cat parent."
+trialBadge: "🎉 New users get a 30-day free Pro trial"
+periodMonthly: "Monthly"
+periodAnnual: "Annual"
+periodAnnualSave: "Save ~24%"
+threadsHandle: "@rela2cats"
+threadsHref: "https://www.threads.com/@rela2cats"
+
+plans:
+  - id: free
+    label: "FREE"
+    tag: "Free forever"
+    monthlyPrice: "NT$0"
+    annualPrice: "NT$0"
+    annualTotal: ""
+    annualSaveNote: ""
+    popular: false
+    dark: false
+    cta: "Get Started"
+    features:
+      - "Up to 2 cats"
+      - "Daily records (food, water, elimination, weight)"
+      - "Weight / food / water charts (6 months)"
+      - "Vet visit records & blood test values"
+      - "OCR blood test scan (2/month)"
+      - "Photo upload (1 per record)"
+      - "Single reminders (vaccine / follow-up)"
+      - "Expense tracking & medical fund"
+
+  - id: pro
+    label: "PRO"
+    tag: "Most Popular"
+    monthlyPrice: "NT$79"
+    annualPrice: "NT$59"
+    annualTotal: "NT$708/year"
+    annualSaveNote: "(save 25% vs monthly)"
+    popular: true
+    dark: false
+    cta: "Upgrade to Pro"
+    features:
+      - "Unlimited cats"
+      - "Full chart history (1 year)"
+      - "Elimination / blood test trend charts"
+      - "Chart export (PDF / image)"
+      - "OCR blood test scan (10/month)"
+      - "Photo upload (5 per record)"
+      - "Repeat reminders + medication management"
+      - "Full expense categories & analysis"
+      - "AI daily health summary (5/month)"
+
+  - id: premium
+    label: "PREMIUM"
+    tag: "Full Power"
+    monthlyPrice: "NT$169"
+    annualPrice: "NT$129"
+    annualTotal: "NT$1,548/year"
+    annualSaveNote: "(save 24% vs monthly)"
+    popular: false
+    dark: true
+    cta: "Upgrade to Premium"
+    features:
+      - "Everything in Pro"
+      - "Complete chart history (unlimited)"
+      - "Blood test reference range labels"
+      - "Multi-metric overlay charts"
+      - "OCR blood test scan (unlimited)"
+      - "Full data export (PDF / CSV)"
+      - "AI daily summary (5/month)"
+      - "AI medical summary (5/month)"
+
+notes:
+  - title: "📅 Subscription & Billing"
+    items:
+      - "New users get a 30-day free Pro trial — one per account."
+      - "Monthly plans auto-renew each month. Annual plans are billed once for 12 months."
+      - "After cancellation, access continues until the end of the current billing period."
+      - "Annual saves ~24% compared to monthly billing."
+
+  - title: "💳 Refund Policy"
+    items:
+      - "Full refund available within 14 days of purchase."
+      - "After 14 days, you may cancel future renewals only — no refund for the current period."
+      - "To request a refund, contact us on Threads @rela2cats or via our feedback form."
+
+  - title: "☁️ Service Notice"
+    items:
+      - "Micords is a SaaS cloud subscription. No physical goods are shipped."
+      - "Service activates immediately upon subscription via the internet."
+      - "All data is stored in the cloud and accessible across devices."
+
+  - title: "🧵 Contact"
+    items:
+      - "For billing questions, refund requests, or feature suggestions, feel free to reach out."
+
+ctaTitle: "Start protecting your cat's health"
+ctaSubtitle: "Free to start. Upgrade anytime. 30-day Pro trial for new users."
+ctaButton: "Try for Free"
+ctaLink: "https://micords.web.app/"

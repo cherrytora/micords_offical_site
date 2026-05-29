@@ -1,0 +1,403 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { getEntry } from 'astro:content';
+
+const p = await getEntry('pricing', 'zh-tw/page');
+const {
+  seoTitle, seoDescription,
+  pageTitle, pageSubtitle, trialBadge,
+  periodMonthly, periodAnnual, periodAnnualSave,
+  threadsHandle, threadsHref,
+  plans, notes,
+  ctaTitle, ctaSubtitle, ctaButton, ctaLink,
+} = p.data;
+---
+
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+>
+  <Nav />
+
+  <div class="pt-28 pb-20 px-6">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- 頁首 -->
+      <div class="text-center mb-14">
+        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Pricing</p>
+        <h1 class="text-4xl font-bold text-slate-900 mb-4">{pageTitle}</h1>
+        <p class="text-slate-500 text-lg mb-2">{pageSubtitle}</p>
+        <p class="inline-block bg-orange-50 text-brand-orange text-sm font-semibold px-4 py-1.5 rounded-full">
+          {trialBadge}
+        </p>
+      </div>
+
+      <!-- 月繳 / 年繳 切換 -->
+      <div class="flex justify-center mb-10">
+        <div class="bg-slate-100 rounded-2xl p-1 flex gap-1" id="period-toggle">
+          <button
+            id="btn-monthly"
+            class="px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm"
+            onclick="setPeriod('monthly')"
+          >{periodMonthly}</button>
+          <button
+            id="btn-annual"
+            class="px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500"
+            onclick="setPeriod('annual')"
+          >{periodAnnual} <span class="text-brand-orange ml-1">{periodAnnualSave}</span></button>
+        </div>
+      </div>
+
+      <!-- 方案卡片 -->
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+        {plans.map((plan) => (
+          <div class={`rounded-3xl p-8 flex flex-col relative ${
+            plan.dark
+              ? 'bg-slate-900'
+              : plan.popular
+                ? 'bg-white border-2 border-brand-orange shadow-lg shadow-orange-100'
+                : 'bg-white border border-slate-100 shadow-sm'
+          }`}>
+            {plan.popular && (
+              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                <span class="bg-brand-orange text-white text-xs font-bold px-4 py-1.5 rounded-full shadow">{plan.tag}</span>
+              </div>
+            )}
+            <div class="mb-6">
+              <span class={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 ${
+                plan.dark
+                  ? 'bg-amber-100 text-amber-700'
+                  : plan.popular
+                    ? 'bg-blue-100 text-blue-600'
+                    : 'bg-slate-100 text-slate-600'
+              }`}>{plan.label}</span>
+              {!plan.popular && !plan.dark && (
+                <p class="text-slate-500 text-xs font-semibold mb-2">{plan.tag}</p>
+              )}
+              <div class="flex items-end gap-1 mb-1">
+                <span
+                  class={`text-4xl font-bold ${plan.dark ? 'text-white' : 'text-slate-900'}`}
+                  data-plan-id={plan.id}
+                  data-monthly-price={plan.monthlyPrice}
+                  data-annual-price={plan.annualPrice}
+                >{plan.monthlyPrice}</span>
+                <span class="text-slate-400 text-sm mb-1">/月</span>
+                <span class="text-slate-400 text-xs mb-1.5 ml-1" data-plan-annual-note={plan.id}></span>
+              </div>
+              <p class="text-slate-400 text-sm" data-plan-subtitle={plan.id} data-monthly-subtitle={periodMonthly} data-annual-subtitle={`${periodAnnual}${plan.annualTotal ? ` ${plan.annualTotal}` : ''}`}>{periodMonthly}</p>
+            </div>
+            <ul class={`space-y-3 text-sm flex-1 mb-8 ${plan.dark ? 'text-slate-300' : 'text-slate-600'}`}>
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-2">
+                  <span class={`mt-0.5 ${plan.dark ? 'text-amber-400' : 'text-brand-orange'}`}>✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={ctaLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`block text-center py-3 rounded-2xl font-semibold hover:scale-105 transition ${
+                plan.dark
+                  ? 'bg-amber-400 text-slate-900'
+                  : plan.popular
+                    ? 'bg-brand-orange text-white shadow-lg shadow-orange-200'
+                    : 'border-2 border-slate-200 text-slate-600 hover:border-brand-orange hover:text-brand-orange'
+              }`}
+            >{plan.cta}</a>
+          </div>
+        ))}
+
+      </div>
+
+      <!-- 功能比較表 -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-slate-900 text-center mb-8">完整功能比較</h2>
+        <div class="overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-100">
+                <th class="text-left px-6 py-4 font-semibold text-slate-500 w-1/2">功能</th>
+                <th class="text-center px-4 py-4 font-semibold text-slate-600">Free</th>
+                <th class="text-center px-4 py-4 font-semibold text-blue-600">Pro</th>
+                <th class="text-center px-4 py-4 font-semibold text-amber-600">Premium</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-50">
+              <!-- 基本 -->
+              <tr class="bg-orange-50/40">
+                <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">基本限制</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">貓咪數量</td>
+                <td class="text-center px-4 py-3.5 text-slate-600">2 隻</td>
+                <td class="text-center px-4 py-3.5 text-blue-600 font-semibold">無限</td>
+                <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">無限</td>
+              </tr>
+              <!-- 每日記錄 -->
+              <tr class="bg-orange-50/40">
+                <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">每日記錄</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">飲食 / 飲水 / 排泄 / 體重</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <!-- 健康圖表 -->
+              <tr class="bg-orange-50/40">
+                <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">健康圖表</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">體重趨勢圖</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">飲食 / 飲水圖表</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">圖表顯示範圍</td>
+                <td class="text-center px-4 py-3.5 text-slate-500">6 個月</td>
+                <td class="text-center px-4 py-3.5 text-slate-600">1 年</td>
+                <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">無限</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">排泄趨勢圖</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">血檢趨勢圖</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">血檢參考範圍標示</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">多指標疊合比較</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">匯出圖表（PDF / 圖片）</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <!-- 就診紀錄 -->
+              <tr class="bg-orange-50/40">
+                <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">就診紀錄</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">就診紀錄（純文字）</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">血檢數值紀錄</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">OCR 掃描血檢報告</td>
+                <td class="text-center px-4 py-3.5 text-slate-500">2 次/月</td>
+                <td class="text-center px-4 py-3.5 text-slate-600">10 次/月</td>
+                <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">不限</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">就診照片上傳</td>
+                <td class="text-center px-4 py-3.5 text-slate-500">每筆 1 張</td>
+                <td class="text-center px-4 py-3.5 text-slate-600">每筆 5 張</td>
+                <td class="text-center px-4 py-3.5 text-slate-600">每筆 5 張</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">照片總上限</td>
+                <td class="text-center px-4 py-3.5 text-slate-500">50 張</td>
+                <td class="text-center px-4 py-3.5 text-blue-600 font-semibold">無限</td>
+                <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">無限</td>
+              </tr>
+              <!-- 提醒 -->
+              <tr class="bg-orange-50/40">
+                <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">提醒通知</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">單次提醒（疫苗/回診）</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">重複提醒</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">藥品管理</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <!-- 記帳 -->
+              <tr class="bg-orange-50/40">
+                <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">貓咪記帳簿</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">記帳 + 月花費總覽</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">醫療基金餘額追蹤</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">完整花費分類 + 圓餅圖</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <!-- AI -->
+              <tr class="bg-orange-50/40">
+                <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">AI 功能</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">AI 日常健康摘要</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5 text-slate-600">5 次/月</td>
+                <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">5 次/月</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">AI 醫療摘要（看診報告）</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">5 次/月</td>
+              </tr>
+              <!-- 匯出 -->
+              <tr class="bg-orange-50/40">
+                <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">資料匯出</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">圖表匯出（PDF / 圖片）</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition">
+                <td class="px-6 py-3.5 text-slate-700">完整資料匯出（PDF / CSV）</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
+                <td class="text-center px-4 py-3.5">✓</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 訂閱說明 -->
+      <div class="grid md:grid-cols-2 gap-6 mb-16">
+        {notes.map((note, i) => (
+          <div class="bg-brand-cream rounded-3xl p-8">
+            <h3 class="text-lg font-bold text-slate-900 mb-4">{note.title}</h3>
+            <ul class="space-y-3 text-sm text-slate-600">
+              {note.items.map((item) => (
+                <li class="flex items-start gap-2">
+                  <span class="text-brand-orange font-bold mt-0.5">•</span>
+                  {i === notes.length - 1 && item.includes(threadsHandle) ? (
+                    <span set:html={item.replace(
+                      threadsHandle,
+                      `<a href="${threadsHref}" target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">${threadsHandle}</a>`
+                    )} />
+                  ) : (
+                    item
+                  )}
+                </li>
+              ))}
+              {i === notes.length - 1 && (
+                <li class="flex items-start gap-2">
+                  <span class="text-brand-orange font-bold mt-0.5">•</span>
+                  Threads：<a href={threadsHref} target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">{threadsHandle}</a>
+                </li>
+              )}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <!-- 底部 CTA -->
+      <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-12 text-center">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">{ctaTitle}</h2>
+        <p class="text-slate-500 mb-8">{ctaSubtitle}</p>
+        <a
+          href={ctaLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-200 hover:scale-105 transition"
+        >
+          {ctaButton}
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  function setPeriod(period: 'monthly' | 'annual') {
+    // Update all plan price displays
+    document.querySelectorAll<HTMLElement>('[data-monthly-price]').forEach((el) => {
+      el.textContent = period === 'monthly'
+        ? el.dataset.monthlyPrice!
+        : el.dataset.annualPrice!;
+    });
+
+    // Update subtitles
+    document.querySelectorAll<HTMLElement>('[data-plan-subtitle]').forEach((el) => {
+      el.textContent = period === 'monthly'
+        ? el.dataset.monthlySubtitle!
+        : el.dataset.annualSubtitle!;
+    });
+
+    // Update annual notes
+    document.querySelectorAll<HTMLElement>('[data-plan-annual-note]').forEach((el) => {
+      el.textContent = '';
+    });
+
+    // Update toggle buttons
+    const btnMonthly = document.getElementById('btn-monthly')!;
+    const btnAnnual  = document.getElementById('btn-annual')!;
+    if (period === 'monthly') {
+      btnMonthly.className = 'px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm';
+      btnAnnual.className  = 'px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500';
+    } else {
+      btnAnnual.className  = 'px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm';
+      btnMonthly.className = 'px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500';
+    }
+  }
+
+  // Expose to global scope for onclick handlers
+  (window as any).setPeriod = setPeriod;
+</script>

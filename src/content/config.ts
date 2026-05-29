@@ -86,6 +86,43 @@ const articles = defineCollection({
   }),
 });
 
+const pricing = defineCollection({
+  type: 'data',
+  schema: z.object({
+    seoTitle: z.string(),
+    seoDescription: z.string(),
+    pageTitle: z.string(),
+    pageSubtitle: z.string(),
+    trialBadge: z.string(),
+    periodMonthly: z.string(),
+    periodAnnual: z.string(),
+    periodAnnualSave: z.string(),
+    threadsHandle: z.string(),
+    threadsHref: z.string().url(),
+    plans: z.array(z.object({
+      id: z.string(),
+      label: z.string(),
+      tag: z.string(),
+      monthlyPrice: z.string(),
+      annualPrice: z.string(),
+      annualTotal: z.string().optional().default(''),
+      annualSaveNote: z.string().optional().default(''),
+      popular: z.boolean().default(false),
+      dark: z.boolean().default(false),
+      cta: z.string(),
+      features: z.array(z.string()),
+    })),
+    notes: z.array(z.object({
+      title: z.string(),
+      items: z.array(z.string()),
+    })),
+    ctaTitle: z.string(),
+    ctaSubtitle: z.string(),
+    ctaButton: z.string(),
+    ctaLink: z.string(),
+  }),
+});
+
 export const collections = {
   'release-notes': releaseNotes,
   'roadmap': roadmap,
@@ -93,4 +130,5 @@ export const collections = {
   'tutorial': tutorial,
   'articles': articles,
   'faq': faq,
+  'pricing': pricing,
 };
