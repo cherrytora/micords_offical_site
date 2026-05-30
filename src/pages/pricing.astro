@@ -29,9 +29,11 @@ const {
         <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Pricing</p>
         <h1 class="text-4xl font-bold text-slate-900 mb-4">{pageTitle}</h1>
         <p class="text-slate-500 text-lg mb-2">{pageSubtitle}</p>
-        <p class="inline-block bg-orange-50 text-brand-orange text-sm font-semibold px-4 py-1.5 rounded-full">
-          {trialBadge}
-        </p>
+        {trialBadge && (
+          <p class="inline-block bg-orange-50 text-brand-orange text-sm font-semibold px-4 py-1.5 rounded-full">
+            {trialBadge}
+          </p>
+        )}
       </div>
 
       <!-- 月繳 / 年繳 切換 -->
@@ -135,7 +137,7 @@ const {
               <tr class="hover:bg-slate-50 transition">
                 <td class="px-6 py-3.5 text-slate-700">貓咪數量</td>
                 <td class="text-center px-4 py-3.5 text-slate-600">2 隻</td>
-                <td class="text-center px-4 py-3.5 text-blue-600 font-semibold">無限</td>
+                <td class="text-center px-4 py-3.5 text-blue-600 font-semibold">5 隻</td>
                 <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">無限</td>
               </tr>
               <!-- 每日記錄 -->
@@ -183,19 +185,7 @@ const {
                 <td class="text-center px-4 py-3.5">✓</td>
               </tr>
               <tr class="hover:bg-slate-50 transition">
-                <td class="px-6 py-3.5 text-slate-700">血檢參考範圍標示</td>
-                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                <td class="text-center px-4 py-3.5">✓</td>
-              </tr>
-              <tr class="hover:bg-slate-50 transition">
-                <td class="px-6 py-3.5 text-slate-700">多指標疊合比較</td>
-                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                <td class="text-center px-4 py-3.5">✓</td>
-              </tr>
-              <tr class="hover:bg-slate-50 transition">
-                <td class="px-6 py-3.5 text-slate-700">匯出圖表（PDF / 圖片）</td>
+                <td class="px-6 py-3.5 text-slate-700">匯出紀錄（PDF）</td>
                 <td class="text-center px-4 py-3.5 text-slate-300">—</td>
                 <td class="text-center px-4 py-3.5">✓</td>
                 <td class="text-center px-4 py-3.5">✓</td>
@@ -217,7 +207,7 @@ const {
                 <td class="text-center px-4 py-3.5">✓</td>
               </tr>
               <tr class="hover:bg-slate-50 transition">
-                <td class="px-6 py-3.5 text-slate-700">OCR 掃描血檢報告</td>
+                <td class="px-6 py-3.5 text-slate-700">掃描血檢報告</td>
                 <td class="text-center px-4 py-3.5 text-slate-500">2 次/月</td>
                 <td class="text-center px-4 py-3.5 text-slate-600">10 次/月</td>
                 <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">不限</td>
@@ -304,45 +294,41 @@ const {
                 <td class="text-center px-4 py-3.5">✓</td>
                 <td class="text-center px-4 py-3.5">✓</td>
               </tr>
-              <tr class="hover:bg-slate-50 transition">
-                <td class="px-6 py-3.5 text-slate-700">完整資料匯出（PDF / CSV）</td>
-                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                <td class="text-center px-4 py-3.5">✓</td>
-              </tr>
             </tbody>
           </table>
         </div>
       </div>
 
       <!-- 訂閱說明 -->
-      <div class="grid md:grid-cols-2 gap-6 mb-16">
-        {notes.map((note, i) => (
-          <div class="bg-brand-cream rounded-3xl p-8">
-            <h3 class="text-lg font-bold text-slate-900 mb-4">{note.title}</h3>
-            <ul class="space-y-3 text-sm text-slate-600">
-              {note.items.map((item) => (
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-orange font-bold mt-0.5">•</span>
-                  {i === notes.length - 1 && item.includes(threadsHandle) ? (
-                    <span set:html={item.replace(
-                      threadsHandle,
-                      `<a href="${threadsHref}" target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">${threadsHandle}</a>`
-                    )} />
-                  ) : (
-                    item
-                  )}
-                </li>
-              ))}
-              {i === notes.length - 1 && (
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-orange font-bold mt-0.5">•</span>
-                  Threads：<a href={threadsHref} target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">{threadsHandle}</a>
-                </li>
-              )}
-            </ul>
-          </div>
-        ))}
+      <div class="space-y-6 mb-16">
+        <!-- 訂閱與計費 + 退款政策（合併） -->
+        <div class="bg-brand-cream rounded-3xl p-8 grid md:grid-cols-2 gap-8">
+          {[notes[0], notes[1]].map((note) => (
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 mb-4">{note.title}</h3>
+              <ul class="space-y-3 text-sm text-slate-600">
+                {note.items.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-brand-orange font-bold mt-0.5">•</span>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <!-- 服務型態說明 -->
+        <div class="bg-brand-cream rounded-3xl p-8">
+          <h3 class="text-lg font-bold text-slate-900 mb-4">{notes[2].title}</h3>
+          <ul class="space-y-3 text-sm text-slate-600">
+            {notes[2].items.map((item) => (
+              <li class="flex items-start gap-2">
+                <span class="text-brand-orange font-bold mt-0.5">•</span>
+                <span set:html={item} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <!-- 底部 CTA -->

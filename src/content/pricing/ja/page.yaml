@@ -5,7 +5,7 @@ pageSubtitle: "すべての猫好きのためのシンプルな料金体系"
 trialBadge: "🎉 新規ユーザーは30日間Proプランを無料体験"
 periodMonthly: "月払い"
 periodAnnual: "年払い"
-periodAnnualSave: "約24%お得"
+periodAnnualSave: "約20%お得"
 threadsHandle: "@rela2cats"
 threadsHref: "https://www.threads.com/@rela2cats"
 
@@ -25,7 +25,7 @@ plans:
       - "毎日の記録（食事・飲水・排泄・体重）"
       - "体重 / 食事 / 飲水グラフ（6ヶ月）"
       - "診察記録・血液検査値の記録"
-      - "OCRスキャン（2回/月）"
+      - "血液検査スキャン（2回/月）"
       - "写真アップロード（1記録につき1枚）"
       - "シングルリマインダー（ワクチン / 再診）"
       - "支出記録・医療基金管理"
@@ -34,40 +34,37 @@ plans:
     label: "PRO"
     tag: "最も人気"
     monthlyPrice: "NT$79"
-    annualPrice: "NT$59"
-    annualTotal: "NT$708/年"
-    annualSaveNote: "(月払い比25%お得)"
+    annualPrice: "NT$65"
+    annualTotal: "NT$780/年"
+    annualSaveNote: "(月払い比20%お得)"
     popular: true
     dark: false
     cta: "Proにアップグレード"
     features:
-      - "猫の数無制限"
+      - "猫5匹まで"
       - "グラフ履歴（1年間）"
       - "排泄 / 血液検査トレンドグラフ"
       - "グラフ書き出し（PDF / 画像）"
-      - "OCRスキャン（10回/月）"
+      - "血液検査スキャン（10回/月）"
       - "写真アップロード（1記録につき5枚）"
       - "繰り返しリマインダー + 薬管理"
-      - "完全な支出分類と分析"
-      - "AI日常健康サマリー（5回/月）"
+      - "完全な支出分類と分析"      - "健康スコア"      - "AI日常健康サマリー（5回/月）"
 
   - id: premium
     label: "PREMIUM"
     tag: "フル機能"
-    monthlyPrice: "NT$169"
-    annualPrice: "NT$129"
-    annualTotal: "NT$1,548/年"
-    annualSaveNote: "(月払い比24%お得)"
+    monthlyPrice: "NT$99"
+    annualPrice: "NT$79"
+    annualTotal: "NT$948/年"
+    annualSaveNote: "(月払い比20%お得)"
     popular: false
     dark: true
     cta: "Premiumにアップグレード"
     features:
       - "Proのすべての機能"
+      - "猫の数無制限"
       - "完全なグラフ履歴（無制限）"
-      - "血液検査参照範囲の表示"
-      - "複数指標の重ね合わせグラフ"
-      - "OCRスキャン（無制限）"
-      - "完全なデータ書き出し（PDF / CSV）"
+      - "血液検査スキャン（無制限）"
       - "AI日常サマリー（5回/月）"
       - "AI医療サマリー（5回/月）"
 
@@ -75,9 +72,11 @@ notes:
   - title: "📅 サブスクリプション"
     items:
       - "新規ユーザーは30日間のProトライアルが利用可能（1アカウントにつき1回）。"
-      - "月払いは毎月自動更新。年払いは12ヶ月分を一括払いで自動更新。"
+      - "無料トライアル期間中にキャンセルしない場合、期間終了後に月払い料金が自動請求されます。"
+      - "月払いは毎月自動更新。年払いは12ヶ月分を一括払いで自動更新（年払い）。"
       - "キャンセル後も現在の期間終了まで利用可能。"
       - "年払いは月払いより約24%お得です。"
+      - "Micords はプラン内容を変更する権利を留保します。"
 
   - title: "💳 返金ポリシー"
     items:

@@ -5,7 +5,7 @@ pageSubtitle: "Simple, honest pricing for every cat parent."
 trialBadge: "🎉 New users get a 30-day free Pro trial"
 periodMonthly: "Monthly"
 periodAnnual: "Annual"
-periodAnnualSave: "Save ~24%"
+periodAnnualSave: "Save ~20%"
 threadsHandle: "@rela2cats"
 threadsHref: "https://www.threads.com/@rela2cats"
 
@@ -25,7 +25,7 @@ plans:
       - "Daily records (food, water, elimination, weight)"
       - "Weight / food / water charts (6 months)"
       - "Vet visit records & blood test values"
-      - "OCR blood test scan (2/month)"
+      - "Blood test scan (2/month)"
       - "Photo upload (1 per record)"
       - "Single reminders (vaccine / follow-up)"
       - "Expense tracking & medical fund"
@@ -34,40 +34,39 @@ plans:
     label: "PRO"
     tag: "Most Popular"
     monthlyPrice: "NT$79"
-    annualPrice: "NT$59"
-    annualTotal: "NT$708/year"
-    annualSaveNote: "(save 25% vs monthly)"
+    annualPrice: "NT$65"
+    annualTotal: "NT$780/year"
+    annualSaveNote: "(save 20% vs monthly)"
     popular: true
     dark: false
     cta: "Upgrade to Pro"
     features:
-      - "Unlimited cats"
+      - "Up to 5 cats"
       - "Full chart history (1 year)"
       - "Elimination / blood test trend charts"
       - "Chart export (PDF / image)"
-      - "OCR blood test scan (10/month)"
+      - "Blood test scan (10/month)"
       - "Photo upload (5 per record)"
       - "Repeat reminders + medication management"
       - "Full expense categories & analysis"
+      - "Health Score"
       - "AI daily health summary (5/month)"
 
   - id: premium
     label: "PREMIUM"
     tag: "Full Power"
-    monthlyPrice: "NT$169"
-    annualPrice: "NT$129"
-    annualTotal: "NT$1,548/year"
-    annualSaveNote: "(save 24% vs monthly)"
+    monthlyPrice: "NT$99"
+    annualPrice: "NT$79"
+    annualTotal: "NT$948/year"
+    annualSaveNote: "(save 20% vs monthly)"
     popular: false
     dark: true
     cta: "Upgrade to Premium"
     features:
       - "Everything in Pro"
+      - "Unlimited cats"
       - "Complete chart history (unlimited)"
-      - "Blood test reference range labels"
-      - "Multi-metric overlay charts"
-      - "OCR blood test scan (unlimited)"
-      - "Full data export (PDF / CSV)"
+      - "Blood test scan (unlimited)"
       - "AI daily summary (5/month)"
       - "AI medical summary (5/month)"
 
@@ -75,9 +74,11 @@ notes:
   - title: "📅 Subscription & Billing"
     items:
       - "New users get a 30-day free Pro trial — one per account."
-      - "Monthly plans auto-renew each month. Annual plans are billed once for 12 months."
+      - "If you don't cancel before the trial ends, you will be automatically charged the monthly rate."
+      - "Monthly plans auto-renew each month. Annual plans are billed once for 12 months and auto-renew annually."
       - "After cancellation, access continues until the end of the current billing period."
       - "Annual saves ~24% compared to monthly billing."
+      - "Micords reserves the right to modify plan content."
 
   - title: "💳 Refund Policy"
     items:

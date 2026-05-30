@@ -20,6 +20,14 @@ const contacts = [
     desc: '功能建議、Bug 回報、或任何想對我們說的話。',
     cta: '填寫表單',
   },
+  {
+    icon: '💳',
+    title: '退款申請表單',
+    handle: 'Google 表單',
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLSct6PAw6GrwWH1swOEKO6GtUQQYo6Zqme5l8JHT9LgQTU9QmQ/viewform',
+    desc: '付款後 7 日內可申請全額退款。請一並提供註冊 Email、付款日期與退款原因，填寫後 3 個工作日內以 Email 回覆。',
+    cta: '填寫退款表單',
+  },
 ];
 ---
 
@@ -27,7 +35,7 @@ const contacts = [
   <Nav />
 
   <div class="pt-28 pb-20 px-6">
-    <div class="max-w-2xl mx-auto">
+    <div class="max-w-4xl mx-auto">
 
       <!-- 頁面標題 -->
       <div class="text-center mb-16">
@@ -37,7 +45,7 @@ const contacts = [
       </div>
 
       <!-- 聯絡卡片 -->
-      <div class="grid sm:grid-cols-2 gap-6">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {contacts.map(({ icon, title, handle, href, desc, cta }) => (
           <div class="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col gap-4">
             <div class="text-3xl">{icon}</div>
