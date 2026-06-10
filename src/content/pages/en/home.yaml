@@ -22,6 +22,12 @@ features:
   - icon: 🔔
     title: Smart Reminders
     desc: Vaccines, deworming, check-ups, medications — automatic notifications when it's time.
+  - icon: 💯
+    title: Health Score
+    desc: Auto-calculated from daily records. One score to understand your cat's overall condition.
+  - icon: ⚠️
+    title: Health Risk Alerts
+    desc: Cats can't say when something's wrong. Get proactive alerts when data trends raise a flag.
 storyTitle: Our Story
 storyContent: >-
   It started when we discovered our orange cat Lara had hyperthyroidism. A few days later, our white cat Lily stopped eating and drinking — a trip to the vet revealed pancreatitis and Stage 2 chronic kidney disease. Both cats fell ill almost simultaneously and needed long-term monitoring.
