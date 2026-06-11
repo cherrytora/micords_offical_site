@@ -2,7 +2,7 @@ seoTitle: "Micords Cat Health App | Plans & Pricing"
 seoDescription: "Micords offers Free, Pro, and Premium plans starting from NT$79/month. New users enjoy a 30-day free Pro trial."
 pageTitle: "Plans & Pricing"
 pageSubtitle: "Simple, honest pricing for every cat parent."
-trialBadge: "🎉 New users get a 30-day free Pro trial"
+trialBadge: ""
 periodMonthly: "Monthly"
 periodAnnual: "Annual"
 periodAnnualSave: "Save ~20%"
@@ -42,12 +42,13 @@ plans:
       - "Up to 5 cats"
       - "Full chart history (1 year)"
       - "Elimination / blood test trend charts"
-      - "Chart export (PDF / image)"
+      - "Record export (PDF)"
       - "Blood test scan (10/month)"
       - "Photo upload (5 per record)"
       - "Repeat reminders + medication management"
       - "Full expense categories & analysis"
-      - "Health Score"
+      - "Health Index"
+      - "Risk Alerts"
       - "AI daily health summary (5/month)"
 
   - id: premium
@@ -75,14 +76,18 @@ notes:
       - "If you don't cancel before the trial ends, you will be automatically charged the monthly rate."
       - "Monthly plans auto-renew each month. Annual plans are billed once for 12 months and auto-renew annually."
       - "After cancellation, access continues until the end of the current billing period."
-      - "Annual saves ~24% compared to monthly billing."
+      - "Annual saves ~20% compared to monthly billing."
       - "Micords reserves the right to modify plan content."
 
   - title: "💳 Refund Policy"
     items:
-      - "Full refund available within 14 days of purchase."
-      - "After 14 days, you may cancel future renewals only — no refund for the current period."
-      - "To request a refund, contact us on Threads @rela2cats or via our feedback form."
+      - "Applies to both monthly and annual plans."
+      - "Within 7 days of payment: full refund available."
+      - "After 7 days: no refunds, but you may cancel future renewals at any time."
+      - "Access continues until the end of the current billing period after cancellation."
+      - "Special exceptions: duplicate charges from system errors / service outage exceeding 72 hours / billing errors confirmed by support."
+      - 'To request a refund, fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSct6PAw6GrwWH1swOEKO6GtUQQYo6Zqme5l8JHT9LgQTU9QmQ/viewform" target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">refund form</a> (include registered email, payment date, and reason) → email reply within 3 business days → refund to card within 14 business days.'
+      - 'For subscription or refund inquiries, visit our <a href="/contact" class="text-brand-orange hover:underline font-semibold">Contact Us</a> page for more options.'
 
   - title: "☁️ Service Notice"
     items:
@@ -90,10 +95,6 @@ notes:
       - "Service activates immediately upon subscription via the internet."
       - "All data is stored in the cloud and accessible across devices."
 
-  - title: "🧵 Contact"
-    items:
-      - "For billing questions, refund requests, or feature suggestions, feel free to reach out."
-
 ctaTitle: "Start protecting your cat's health"
-ctaSubtitle: "Free to start. Upgrade anytime. 30-day Pro trial for new users."
+ctaSubtitle: "Free to start. Upgrade anytime."
 ctaButton: "Try for Free"
