@@ -7,7 +7,75 @@ backend:
 media_folder: public/images
 public_folder: /micords_offical_site/images
 
+# ── YAML anchors for reusable field definitions ──────────────────────────────
+
+_pricing_plan_fields: &pricing_plan_fields
+  - {name: id, label: "ID (free/pro/premium)", widget: string}
+  - {name: label, label: "Plan Label (FREE/PRO/PREMIUM)", widget: string}
+  - {name: tag, label: "Tagline", widget: string}
+  - {name: monthlyPrice, label: "Monthly Price", widget: string}
+  - {name: annualPrice, label: "Annual Equivalent Monthly Price", widget: string}
+  - {name: annualTotal, label: "Annual Total (e.g. NT$780/year)", widget: string, required: false}
+  - {name: annualSaveNote, label: "Annual Save Note", widget: string, required: false}
+  - {name: popular, label: "Show Popular Banner", widget: boolean, default: false}
+  - {name: dark, label: "Dark Card Style (for Premium)", widget: boolean, default: false}
+  - {name: cta, label: "CTA Button Text", widget: string}
+  - name: features
+    label: "Feature List (shown on plan card)"
+    widget: list
+    field: {name: item, label: "Feature", widget: string}
+
+_pricing_notes_fields: &pricing_notes_fields
+  - {name: title, label: "Block Title (with Emoji)", widget: string}
+  - name: items
+    label: "Note Items"
+    widget: list
+    field: {name: item, label: "Note Text", widget: text}
+
+_article_fields: &article_fields
+  - {name: title, label: "Article Title", widget: string}
+  - {name: slug, label: "URL Slug", widget: string}
+  - {name: publishDate, label: "Publish Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+  - {name: excerpt, label: "Excerpt", widget: text}
+  - name: tags
+    label: "Tags"
+    widget: list
+    required: false
+    field: {name: tag, label: "Tag", widget: string}
+  - {name: coverImage, label: "Cover Image (optional)", widget: image, required: false}
+  - {name: body, label: "Article Content", widget: markdown}
+
+_faq_fields: &faq_fields
+  - {name: question, label: "Question", widget: string}
+  - {name: answer, label: "Answer", widget: text}
+
+_tutorial_section_fields: &tutorial_section_fields
+  - {name: id, label: "Section ID", widget: string}
+  - {name: title, label: "Section Title", widget: string}
+  - {name: desc, label: "Section Description", widget: text}
+  - name: steps
+    label: "Steps"
+    widget: list
+    field: {name: step, label: "Step", widget: string}
+  - {name: mediaLabel, label: "Media Label", widget: string}
+  - {name: youtubeId, label: "YouTube ID (optional)", widget: string, required: false}
+
+# ── Collections ───────────────────────────────────────────────────────────────
+
 collections:
+
+  # ── 全站設定（CTA URL 統一管理）──────────────
+  - name: global
+    label: "全站設定"
+    files:
+      - name: settings
+        label: "CTA 按鈕連結"
+        file: src/content/global/settings.yaml
+        fields:
+          - name: ctaUrl
+            label: "所有體驗按鈕的連結 URL"
+            widget: string
+            hint: "修改此欄位即可同步更新全站所有「立即體驗」、「Try Now」、「今すぐ試す」等按鈕的連結"
 
   # ── 方案與定價（三語）────────────────────────
   - name: pricing
@@ -25,39 +93,17 @@ collections:
           - {name: periodMonthly, label: "月繳標籤", widget: string}
           - {name: periodAnnual, label: "年繳標籤", widget: string}
           - {name: periodAnnualSave, label: "年繳折扣說明", widget: string}
-          - {name: threadsHandle, label: "Threads 帳號", widget: string}
-          - {name: threadsHref, label: "Threads 連結", widget: string}
           - name: plans
             label: "方案列表"
             widget: list
-            fields:
-              - {name: id, label: "ID (free/pro/premium)", widget: string}
-              - {name: label, label: "方案名稱標籤 (FREE/PRO/PREMIUM)", widget: string}
-              - {name: tag, label: "副標語（如：最受歡迎）", widget: string}
-              - {name: monthlyPrice, label: "月繳價格", widget: string}
-              - {name: annualPrice, label: "年繳等效月費", widget: string}
-              - {name: annualTotal, label: "年繳總價（如：NT$708/年）", widget: string, required: false}
-              - {name: annualSaveNote, label: "年繳省幾%說明", widget: string, required: false}
-              - {name: popular, label: "顯示「最受歡迎」Banner", widget: boolean, default: false}
-              - {name: dark, label: "深色卡片樣式（Premium 用）", widget: boolean, default: false}
-              - {name: cta, label: "按鈕文字", widget: string}
-              - name: features
-                label: "功能列表（方案卡片顯示）"
-                widget: list
-                field: {name: item, label: "功能說明", widget: string}
+            fields: *pricing_plan_fields
           - name: notes
             label: "說明區塊（訂閱/退款/服務說明/聯絡）"
             widget: list
-            fields:
-              - {name: title, label: "區塊標題（含 Emoji）", widget: string}
-              - name: items
-                label: "說明項目"
-                widget: list
-                field: {name: item, label: "說明文字", widget: text}
+            fields: *pricing_notes_fields
           - {name: ctaTitle, label: "底部 CTA 標題", widget: string}
           - {name: ctaSubtitle, label: "底部 CTA 副標題", widget: string}
           - {name: ctaButton, label: "底部 CTA 按鈕文字", widget: string}
-          - {name: ctaLink, label: "底部 CTA 按鈕連結", widget: string}
 
       - name: pricing-en
         label: "Plans & Pricing (English)"
@@ -71,39 +117,17 @@ collections:
           - {name: periodMonthly, label: "Monthly Label", widget: string}
           - {name: periodAnnual, label: "Annual Label", widget: string}
           - {name: periodAnnualSave, label: "Annual Save Note", widget: string}
-          - {name: threadsHandle, label: "Threads Handle", widget: string}
-          - {name: threadsHref, label: "Threads URL", widget: string}
           - name: plans
             label: "Plans"
             widget: list
-            fields:
-              - {name: id, label: "ID (free/pro/premium)", widget: string}
-              - {name: label, label: "Plan Label (FREE/PRO/PREMIUM)", widget: string}
-              - {name: tag, label: "Tagline", widget: string}
-              - {name: monthlyPrice, label: "Monthly Price", widget: string}
-              - {name: annualPrice, label: "Annual Equivalent Monthly Price", widget: string}
-              - {name: annualTotal, label: "Annual Total (e.g. NT$708/year)", widget: string, required: false}
-              - {name: annualSaveNote, label: "Annual Save Note", widget: string, required: false}
-              - {name: popular, label: "Show Popular Banner", widget: boolean, default: false}
-              - {name: dark, label: "Dark Card Style (for Premium)", widget: boolean, default: false}
-              - {name: cta, label: "CTA Button Text", widget: string}
-              - name: features
-                label: "Feature List (shown on plan card)"
-                widget: list
-                field: {name: item, label: "Feature", widget: string}
+            fields: *pricing_plan_fields
           - name: notes
             label: "Note Blocks (subscription/refund/service/contact)"
             widget: list
-            fields:
-              - {name: title, label: "Block Title (with Emoji)", widget: string}
-              - name: items
-                label: "Note Items"
-                widget: list
-                field: {name: item, label: "Note Text", widget: text}
+            fields: *pricing_notes_fields
           - {name: ctaTitle, label: "CTA Title", widget: string}
           - {name: ctaSubtitle, label: "CTA Subtitle", widget: string}
           - {name: ctaButton, label: "CTA Button Text", widget: string}
-          - {name: ctaLink, label: "CTA Button Link", widget: string}
 
       - name: pricing-ja
         label: "料金プラン（日本語）"
@@ -117,39 +141,17 @@ collections:
           - {name: periodMonthly, label: "月払いラベル", widget: string}
           - {name: periodAnnual, label: "年払いラベル", widget: string}
           - {name: periodAnnualSave, label: "年払い割引説明", widget: string}
-          - {name: threadsHandle, label: "Threadsアカウント", widget: string}
-          - {name: threadsHref, label: "ThreadsのURL", widget: string}
           - name: plans
             label: "プランリスト"
             widget: list
-            fields:
-              - {name: id, label: "ID (free/pro/premium)", widget: string}
-              - {name: label, label: "プランラベル (FREE/PRO/PREMIUM)", widget: string}
-              - {name: tag, label: "タグライン", widget: string}
-              - {name: monthlyPrice, label: "月払い価格", widget: string}
-              - {name: annualPrice, label: "年払い換算月額", widget: string}
-              - {name: annualTotal, label: "年払い合計", widget: string, required: false}
-              - {name: annualSaveNote, label: "節約額説明", widget: string, required: false}
-              - {name: popular, label: "人気バナーを表示", widget: boolean, default: false}
-              - {name: dark, label: "ダークカードスタイル（Premium用）", widget: boolean, default: false}
-              - {name: cta, label: "ボタンテキスト", widget: string}
-              - name: features
-                label: "機能リスト（プランカードに表示）"
-                widget: list
-                field: {name: item, label: "機能説明", widget: string}
+            fields: *pricing_plan_fields
           - name: notes
             label: "説明ブロック（サブスク/返金/サービス/連絡先）"
             widget: list
-            fields:
-              - {name: title, label: "ブロックタイトル（絵文字含む）", widget: string}
-              - name: items
-                label: "説明項目"
-                widget: list
-                field: {name: item, label: "説明テキスト", widget: text}
+            fields: *pricing_notes_fields
           - {name: ctaTitle, label: "CTA タイトル", widget: string}
           - {name: ctaSubtitle, label: "CTA サブタイトル", widget: string}
           - {name: ctaButton, label: "CTA ボタンテキスト", widget: string}
-          - {name: ctaLink, label: "CTA ボタンリンク", widget: string}
 
   # ── 繁體中文文章 ──────────────────────────
   - name: articles-zh-tw
@@ -263,9 +265,7 @@ collections:
           - name: faqs
             label: "問答列表"
             widget: list
-            fields:
-              - {name: question, label: "問題", widget: string}
-              - {name: answer, label: "答案", widget: text}
+            fields: *faq_fields
       - name: faq-en
         label: "FAQ (English)"
         file: src/content/faq/en/page.yaml
@@ -273,9 +273,7 @@ collections:
           - name: faqs
             label: "Q&A List"
             widget: list
-            fields:
-              - {name: question, label: "Question", widget: string}
-              - {name: answer, label: "Answer", widget: text}
+            fields: *faq_fields
       - name: faq-ja
         label: "FAQ（日本語）"
         file: src/content/faq/ja/page.yaml
@@ -283,9 +281,7 @@ collections:
           - name: faqs
             label: "Q&Aリスト"
             widget: list
-            fields:
-              - {name: question, label: "質問", widget: string}
-              - {name: answer, label: "回答", widget: text}
+            fields: *faq_fields
 
   # ── 頁面內容（三語）────────────────────────
   - name: pages
@@ -298,11 +294,9 @@ collections:
           - {name: seoTitle, label: "SEO 標題", widget: string}
           - {name: seoDescription, label: "SEO 描述", widget: text}
           - {name: navCtaText, label: "導覽列按鈕文字", widget: string}
-          - {name: navCtaLink, label: "導覽列按鈕連結", widget: string}
           - {name: heroTitle, label: "Hero 大標題", widget: string}
           - {name: heroSubtitle, label: "Hero 副標題", widget: text}
           - {name: ctaPrimary, label: "主要按鈕文字", widget: string}
-          - {name: ctaPrimaryLink, label: "主要按鈕連結", widget: string}
           - {name: ctaSecondary, label: "次要按鈕文字", widget: string}
           - {name: ctaSecondaryLink, label: "次要按鈕連結", widget: string}
           - {name: featuresTitle, label: "功能區標題", widget: string}
@@ -317,7 +311,6 @@ collections:
           - {name: storyContent, label: "品牌故事內容", widget: text}
           - {name: ctaTitle, label: "CTA 標題", widget: string}
           - {name: ctaButton, label: "CTA 按鈕文字", widget: string}
-          - {name: ctaButtonLink, label: "CTA 按鈕連結", widget: string}
       - name: home-en
         label: "Home Page (English)"
         file: src/content/pages/en/home.yaml
@@ -325,11 +318,9 @@ collections:
           - {name: seoTitle, label: "SEO Title", widget: string}
           - {name: seoDescription, label: "SEO Description", widget: text}
           - {name: navCtaText, label: "Nav CTA Text", widget: string}
-          - {name: navCtaLink, label: "Nav CTA Link", widget: string}
           - {name: heroTitle, label: "Hero Title", widget: string}
           - {name: heroSubtitle, label: "Hero Subtitle", widget: text}
           - {name: ctaPrimary, label: "Primary Button Text", widget: string}
-          - {name: ctaPrimaryLink, label: "Primary Button Link", widget: string}
           - {name: ctaSecondary, label: "Secondary Button Text", widget: string}
           - {name: ctaSecondaryLink, label: "Secondary Button Link", widget: string}
           - {name: featuresTitle, label: "Features Title", widget: string}
@@ -344,7 +335,6 @@ collections:
           - {name: storyContent, label: "Story Content", widget: text}
           - {name: ctaTitle, label: "CTA Title", widget: string}
           - {name: ctaButton, label: "CTA Button Text", widget: string}
-          - {name: ctaButtonLink, label: "CTA Button Link", widget: string}
       - name: home-ja
         label: "ホームページ（日本語）"
         file: src/content/pages/ja/home.yaml
@@ -352,11 +342,9 @@ collections:
           - {name: seoTitle, label: "SEOタイトル", widget: string}
           - {name: seoDescription, label: "SEO説明文", widget: text}
           - {name: navCtaText, label: "ナビCTAテキスト", widget: string}
-          - {name: navCtaLink, label: "ナビCTAリンク", widget: string}
           - {name: heroTitle, label: "ヒーロータイトル", widget: string}
           - {name: heroSubtitle, label: "ヒーローサブタイトル", widget: text}
           - {name: ctaPrimary, label: "メインボタンテキスト", widget: string}
-          - {name: ctaPrimaryLink, label: "メインボタンリンク", widget: string}
           - {name: ctaSecondary, label: "サブボタンテキスト", widget: string}
           - {name: ctaSecondaryLink, label: "サブボタンリンク", widget: string}
           - {name: featuresTitle, label: "機能タイトル", widget: string}
@@ -371,4 +359,53 @@ collections:
           - {name: storyContent, label: "ストーリー内容", widget: text}
           - {name: ctaTitle, label: "CTAタイトル", widget: string}
           - {name: ctaButton, label: "CTAボタン", widget: string}
-          - {name: ctaButtonLink, label: "CTAリンク", widget: string}
+
+  # ── チュートリアル（三語）──────────────────────
+  - name: tutorial
+    label: "チュートリアル / Tutorial / 使用教學"
+    files:
+      - name: tutorial-zh-tw
+        label: "使用教學（繁中）"
+        file: src/content/tutorial/zh-tw/page.yaml
+        fields:
+          - {name: seoTitle, label: "SEO 標題", widget: string, required: false}
+          - {name: seoDescription, label: "SEO 描述", widget: text, required: false}
+          - {name: pageTitle, label: "頁面標題", widget: string}
+          - {name: pageSubtitle, label: "頁面副標題", widget: string}
+          - name: sections
+            label: "教學章節"
+            widget: list
+            fields: *tutorial_section_fields
+          - {name: ctaTitle, label: "CTA 標題", widget: string}
+          - {name: ctaSubtitle, label: "CTA 副標題", widget: string}
+          - {name: ctaButton, label: "CTA 按鈕文字", widget: string}
+      - name: tutorial-en
+        label: "Tutorial (English)"
+        file: src/content/tutorial/en/page.yaml
+        fields:
+          - {name: seoTitle, label: "SEO Title", widget: string, required: false}
+          - {name: seoDescription, label: "SEO Description", widget: text, required: false}
+          - {name: pageTitle, label: "Page Title", widget: string}
+          - {name: pageSubtitle, label: "Page Subtitle", widget: string}
+          - name: sections
+            label: "Tutorial Sections"
+            widget: list
+            fields: *tutorial_section_fields
+          - {name: ctaTitle, label: "CTA Title", widget: string}
+          - {name: ctaSubtitle, label: "CTA Subtitle", widget: string}
+          - {name: ctaButton, label: "CTA Button Text", widget: string}
+      - name: tutorial-ja
+        label: "チュートリアル（日本語）"
+        file: src/content/tutorial/ja/page.yaml
+        fields:
+          - {name: seoTitle, label: "SEOタイトル", widget: string, required: false}
+          - {name: seoDescription, label: "SEO説明文", widget: text, required: false}
+          - {name: pageTitle, label: "ページタイトル", widget: string}
+          - {name: pageSubtitle, label: "サブタイトル", widget: string}
+          - name: sections
+            label: "チュートリアルセクション"
+            widget: list
+            fields: *tutorial_section_fields
+          - {name: ctaTitle, label: "CTA タイトル", widget: string}
+          - {name: ctaSubtitle, label: "CTA サブタイトル", widget: string}
+          - {name: ctaButton, label: "CTA ボタンテキスト", widget: string}

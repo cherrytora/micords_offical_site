@@ -6,8 +6,6 @@ trialBadge: "🎉 新規ユーザーは30日間Proプランを無料体験"
 periodMonthly: "月払い"
 periodAnnual: "年払い"
 periodAnnualSave: "約20%お得"
-threadsHandle: "@rela2cats"
-threadsHref: "https://www.threads.com/@rela2cats"
 
 plans:
   - id: free
@@ -67,8 +65,8 @@ plans:
       - "猫の数無制限"
       - "完全なグラフ履歴（無制限）"
       - "血液検査スキャン（無制限）"
-      - "AI日常サマリー（5回/月）"
-      - "AI医療サマリー（5回/月）"
+      - "AI日常サマリー（10回/月）"
+      - "AI医療サマリー（10回/月）"
 
 notes:
   - title: "📅 サブスクリプション"
@@ -99,4 +97,3 @@ notes:
 ctaTitle: "猫の健康を守り始めよう"
 ctaSubtitle: "無料から始められます。いつでもアップグレード可能。新規ユーザーは30日間Proトライアル付き。"
 ctaButton: "無料で試す"
-ctaLink: "https://micords.web.app/"

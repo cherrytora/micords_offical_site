@@ -1,11 +1,9 @@
 seoTitle: Micords — 猫の健康・医療記録、インストール不要
 seoDescription: MicordsはPWA技術を使用した猫専用の健康記録アプリです。食事・体重・血液検査・投薬を記録し、自動でトレンドグラフを生成。診察時にワンタップで完全な記録を表示。コア機能は無料。
 navCtaText: 今すぐ試す
-navCtaLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM
 heroTitle: Micords — 猫の健康・医療記録、インストール不要
 heroSubtitle: 食事・体重・血液検査・投薬、すべて1つのアプリで管理。診察時に日常記録をすぐに確認でき、獣医との会話もスムーズ。自宅で血液検査のトレンドを把握。すべての記録が残ることで、飼い主も安心。
 ctaPrimary: 今すぐ試す
-ctaPrimaryLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM
 ctaSecondary: チュートリアルを見る
 ctaSecondaryLink: /tutorial
 featuresTitle: 1つのアプリで、毎日のケアを
@@ -48,4 +46,3 @@ storyContent: >-
   猫の記録は、Micordsで。
 ctaTitle: 記録することが、最高のケア。
 ctaButton: Micordsを今すぐ試す
-ctaButtonLink: https://docs.google.com/forms/d/1Dwvz4CT7o7Q-r22aBFy48sk1dp8c4r2HpTSSbY0GjcM

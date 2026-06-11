@@ -1,16 +1,21 @@
 import { defineCollection, z } from 'astro:content';
 
+const global = defineCollection({
+  type: 'data',
+  schema: z.object({
+    ctaUrl: z.string().url(),
+  }),
+});
+
 const pages = defineCollection({
   type: 'data',
   schema: z.object({
     seoTitle: z.string(),
     seoDescription: z.string(),
     navCtaText: z.string(),
-    navCtaLink: z.string(),
     heroTitle: z.string(),
     heroSubtitle: z.string(),
     ctaPrimary: z.string(),
-    ctaPrimaryLink: z.string(),
     ctaSecondary: z.string(),
     ctaSecondaryLink: z.string(),
     featuresTitle: z.string(),
@@ -19,7 +24,6 @@ const pages = defineCollection({
     storyContent: z.string(),
     ctaTitle: z.string(),
     ctaButton: z.string(),
-    ctaButtonLink: z.string(),
   }),
 });
 
@@ -48,6 +52,8 @@ const roadmap = defineCollection({
 const tutorial = defineCollection({
   type: 'data',
   schema: z.object({
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
     pageTitle: z.string(),
     pageSubtitle: z.string(),
     sections: z.array(z.object({
@@ -61,7 +67,6 @@ const tutorial = defineCollection({
     ctaTitle: z.string(),
     ctaSubtitle: z.string(),
     ctaButton: z.string(),
-    ctaButtonLink: z.string(),
   }),
 });
 
@@ -97,8 +102,6 @@ const pricing = defineCollection({
     periodMonthly: z.string(),
     periodAnnual: z.string(),
     periodAnnualSave: z.string(),
-    threadsHandle: z.string(),
-    threadsHref: z.string().url(),
     plans: z.array(z.object({
       id: z.string(),
       label: z.string(),
@@ -119,11 +122,11 @@ const pricing = defineCollection({
     ctaTitle: z.string(),
     ctaSubtitle: z.string(),
     ctaButton: z.string(),
-    ctaLink: z.string(),
   }),
 });
 
 export const collections = {
+  'global': global,
   'release-notes': releaseNotes,
   'roadmap': roadmap,
   'pages': pages,

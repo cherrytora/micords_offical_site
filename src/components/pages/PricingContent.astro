@@ -1,0 +1,185 @@
+---
+interface Plan {
+  id: string;
+  label: string;
+  tag: string;
+  monthlyPrice: string;
+  annualPrice: string;
+  annualTotal?: string;
+  annualSaveNote?: string;
+  popular: boolean;
+  dark: boolean;
+  cta: string;
+  features: string[];
+}
+
+interface Note {
+  title: string;
+  items: string[];
+}
+
+interface Props {
+  pageTitle: string;
+  pageSubtitle: string;
+  trialBadge?: string;
+  periodMonthly: string;
+  periodAnnual: string;
+  periodAnnualSave: string;
+  plans: Plan[];
+  notes: Note[];
+  ctaTitle: string;
+  ctaSubtitle: string;
+  ctaButton: string;
+  ctaUrl: string;
+  perMonthLabel?: string;
+}
+
+const {
+  pageTitle, pageSubtitle, trialBadge,
+  periodMonthly, periodAnnual, periodAnnualSave,
+  plans, notes,
+  ctaTitle, ctaSubtitle, ctaButton, ctaUrl,
+  perMonthLabel = '/mo',
+} = Astro.props;
+---
+
+<!-- Header -->
+<div class="text-center mb-14">
+  <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Pricing</p>
+  <h1 class="text-4xl font-bold text-slate-900 mb-4">{pageTitle}</h1>
+  <p class="text-slate-500 text-lg mb-2">{pageSubtitle}</p>
+  {trialBadge && (
+    <p class="inline-block bg-orange-50 text-brand-orange text-sm font-semibold px-4 py-1.5 rounded-full">
+      {trialBadge}
+    </p>
+  )}
+</div>
+
+<!-- Period toggle -->
+<div class="flex justify-center mb-10">
+  <div class="bg-slate-100 rounded-2xl p-1 flex gap-1" id="period-toggle">
+    <button
+      id="btn-monthly"
+      class="px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm"
+      onclick="setPeriod('monthly')"
+    >{periodMonthly}</button>
+    <button
+      id="btn-annual"
+      class="px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500"
+      onclick="setPeriod('annual')"
+    >{periodAnnual} <span class="text-brand-orange ml-1">{periodAnnualSave}</span></button>
+  </div>
+</div>
+
+<!-- Plan cards -->
+<div class="grid md:grid-cols-3 gap-6 mb-16">
+  {plans.map((plan) => (
+    <div class={`rounded-3xl p-8 flex flex-col relative ${
+      plan.dark
+        ? 'bg-slate-900'
+        : plan.popular
+          ? 'bg-white border-2 border-brand-orange shadow-lg shadow-orange-100'
+          : 'bg-white border border-slate-100 shadow-sm'
+    }`}>
+      {plan.popular && (
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <span class="bg-brand-orange text-white text-xs font-bold px-4 py-1.5 rounded-full shadow">{plan.tag}</span>
+        </div>
+      )}
+      <div class="mb-6">
+        <span class={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 ${
+          plan.dark
+            ? 'bg-amber-100 text-amber-700'
+            : plan.popular
+              ? 'bg-blue-100 text-blue-600'
+              : 'bg-slate-100 text-slate-600'
+        }`}>{plan.label}</span>
+        {!plan.popular && !plan.dark && (
+          <p class="text-slate-500 text-xs font-semibold mb-2">{plan.tag}</p>
+        )}
+        <div class="flex items-end gap-1 mb-1">
+          <span
+            class={`text-4xl font-bold ${plan.dark ? 'text-white' : 'text-slate-900'}`}
+            data-plan-id={plan.id}
+            data-monthly-price={plan.monthlyPrice}
+            data-annual-price={plan.annualPrice}
+          >{plan.monthlyPrice}</span>
+          <span class="text-slate-400 text-sm mb-1">{perMonthLabel}</span>
+          <span class="text-slate-400 text-xs mb-1.5 ml-1" data-plan-annual-note={plan.id}></span>
+        </div>
+        <p class="text-slate-400 text-sm" data-plan-subtitle={plan.id} data-monthly-subtitle={periodMonthly} data-annual-subtitle={`${periodAnnual}${plan.annualTotal ? ` ${plan.annualTotal}` : ''}`}>{periodMonthly}</p>
+      </div>
+      <ul class={`space-y-3 text-sm flex-1 mb-8 ${plan.dark ? 'text-slate-300' : 'text-slate-600'}`}>
+        {plan.features.map((feature) => (
+          <li class="flex items-start gap-2">
+            <span class={`mt-0.5 ${plan.dark ? 'text-amber-400' : 'text-brand-orange'}`}>✓</span>
+            {feature}
+          </li>
+        ))}
+      </ul>
+      {plan.id === 'free' ? (
+        <a
+          href={ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center py-3 rounded-2xl font-semibold hover:scale-105 transition border-2 border-slate-200 text-slate-600 hover:border-brand-orange hover:text-brand-orange"
+        >{plan.cta}</a>
+      ) : (
+        <div class={`block text-center py-3 rounded-2xl font-semibold ${
+          plan.dark
+            ? 'bg-amber-400 text-slate-900'
+            : 'bg-brand-orange text-white shadow-lg shadow-orange-200'
+        }`}>{plan.cta}</div>
+      )}
+    </div>
+  ))}
+</div>
+
+<!-- Optional slot for extra content (e.g. comparison table) -->
+<slot />
+
+<!-- Notes -->
+<div class="space-y-6 mb-16">
+  <div class="bg-brand-cream rounded-3xl p-8 grid md:grid-cols-2 gap-8">
+    {[notes[0], notes[1]].map((note) => (
+      <div>
+        <h3 class="text-lg font-bold text-slate-900 mb-4">{note.title}</h3>
+        <ul class="space-y-3 text-sm text-slate-600">
+          {note.items.map((item) => (
+            <li class="flex items-start gap-2">
+              <span class="text-brand-orange font-bold mt-0.5">•</span>
+              <span set:html={item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+  {notes.slice(2).map((note) => (
+    <div class="bg-brand-cream rounded-3xl p-8">
+      <h3 class="text-lg font-bold text-slate-900 mb-4">{note.title}</h3>
+      <ul class="space-y-3 text-sm text-slate-600">
+        {note.items.map((item) => (
+          <li class="flex items-start gap-2">
+            <span class="text-brand-orange font-bold mt-0.5">•</span>
+            <span set:html={item} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+
+<!-- CTA -->
+<div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-12 text-center">
+  <h2 class="text-2xl font-bold text-slate-900 mb-2">{ctaTitle}</h2>
+  <p class="text-slate-500 mb-8">{ctaSubtitle}</p>
+  <a
+    href={ctaUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-200 hover:scale-105 transition"
+  >
+    {ctaButton}
+  </a>
+</div>

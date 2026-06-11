@@ -1,0 +1,88 @@
+---
+import SectionHeader from '../SectionHeader.astro';
+import type { Locale } from '../../i18n/index';
+import { formatDate } from '../../lib/utils';
+
+interface Article {
+  slug: string;
+  data: {
+    title: string;
+    publishDate: string;
+    excerpt: string;
+    tags?: string[];
+    coverImage?: string;
+  };
+}
+
+interface Props {
+  locale: Locale;
+  articles: Article[];
+  badge: string;
+  title: string;
+  subtitle: string;
+  emptyMsg: string;
+  readMore: string;
+  base: string;
+}
+
+const { locale, articles, badge, title, subtitle, emptyMsg, base } = Astro.props;
+
+function articleHref(article: Article): string {
+  const pureSlug = article.slug.replace(`${locale}/`, '');
+  return locale === 'zh-tw'
+    ? `${base}/blog/${pureSlug}`
+    : `${base}/${locale}/blog/${pureSlug}`;
+}
+---
+
+<div class="pt-28 pb-20 px-6">
+  <div class="max-w-4xl mx-auto">
+
+    <SectionHeader badge={badge} title={title} subtitle={subtitle} />
+
+    {articles.length === 0 ? (
+      <div class="text-center py-20 text-slate-400">
+        <p class="text-lg">{emptyMsg}</p>
+      </div>
+    ) : (
+      <div class="grid gap-8 md:grid-cols-2">
+        {articles.map((article) => (
+          <a
+            href={articleHref(article)}
+            class="group bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden hover:-translate-y-1 transition-transform duration-300 flex flex-col"
+          >
+            {article.data.coverImage && (
+              <img
+                src={article.data.coverImage}
+                alt={article.data.title}
+                class="w-full h-48 object-cover"
+                loading="lazy"
+              />
+            )}
+            <div class="p-8 flex flex-col flex-1">
+              {article.data.tags && article.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {article.data.tags.map((tag) => (
+                    <span class="px-3 py-1 bg-orange-50 text-brand-orange text-xs font-medium rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <h2 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-orange transition-colors leading-snug">
+                {article.data.title}
+              </h2>
+              <p class="text-slate-500 text-sm leading-relaxed flex-1">
+                {article.data.excerpt}
+              </p>
+              <time class="block mt-6 text-xs text-slate-400 font-medium" datetime={article.data.publishDate}>
+                {formatDate(article.data.publishDate, locale)}
+              </time>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+
+  </div>
+</div>

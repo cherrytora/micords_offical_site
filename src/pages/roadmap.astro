@@ -3,91 +3,30 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import RoadmapContent from '../components/pages/RoadmapContent.astro';
+import { useTranslations } from '../i18n/index';
 
-type Status = 'done' | 'building' | 'planned';
+const t = useTranslations('zh-tw');
+const r = t.roadmap;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const roadmap = (await getCollection('roadmap')).filter(r => r.id.startsWith('zh-tw/')).sort(
   (a, b) => a.data.order - b.data.order
 );
-
-const statusConfig: Record<Status, { label: string; bg: string; text: string; dot: string }> = {
-  done:     { label: '已上線',  bg: 'bg-green-50',  text: 'text-green-700',     dot: 'bg-green-400' },
-  building: { label: '開發中',  bg: 'bg-orange-50', text: 'text-brand-orange',  dot: 'bg-brand-orange' },
-  planned:  { label: '規劃中',  bg: 'bg-slate-100', text: 'text-slate-500',     dot: 'bg-slate-300' },
-};
 ---
 
-<BaseLayout title="Micords 貓咪健康紀錄 APP｜即將上線功能" description="Micords 產品路線圖，了解我們正在開發的新功能。多貓管理、記帳簿、物品倉庫、健康報告⋯⋯每一步都是為了讓毛孩健康管理更完善。">
+<BaseLayout title={r.seoTitle} description={r.seoDescription}>
   <Nav />
-
-  <div class="pt-28 pb-20 px-6">
-    <div class="max-w-4xl mx-auto">
-
-      <!-- 頁面標題 -->
-      <div class="text-center mb-16">
-        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Roadmap</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">即將上線功能</h1>
-        <p class="text-slate-500 text-lg">我們持續為每一位貓奴打造更好的工具。</p>
-      </div>
-
-      <!-- 時程卡片 -->
-      <div class="relative">
-        <!-- 時間軸線 -->
-        <div class="absolute left-[2.25rem] top-0 bottom-0 w-0.5 bg-orange-100 hidden md:block"></div>
-
-        <div class="space-y-10">
-          {roadmap.map((item) => {
-            const { quarter, title, desc, status, features } = item.data;
-            const cfg = statusConfig[status];
-            return (
-              <div class="md:flex gap-8 items-start">
-                <!-- 時間點 -->
-                <div class="hidden md:flex flex-col items-center flex-shrink-0 w-[4.5rem]">
-                  <div class={`w-4 h-4 rounded-full mt-5 ${cfg.dot} ring-4 ring-white z-10`}></div>
-                </div>
-
-                <!-- 卡片 -->
-                <div class="flex-1 bg-white rounded-3xl border border-slate-100 shadow-sm p-8 hover:-translate-y-1 transition-transform duration-300">
-                  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-                    <div>
-                      <p class="text-sm font-bold text-slate-400 tracking-wide">{quarter}</p>
-                      <h2 class="text-xl font-bold text-slate-900 mt-0.5">{title}</h2>
-                    </div>
-                    <span class={`px-3 py-1 rounded-full text-xs font-bold ${cfg.bg} ${cfg.text} flex items-center gap-1.5`}>
-                      <span class={`w-1.5 h-1.5 rounded-full ${cfg.dot}`}></span>
-                      {cfg.label}
-                    </span>
-                  </div>
-                  <p class="text-slate-500 mb-5 leading-relaxed">{desc}</p>
-                  <ul class="space-y-2">
-                    {features.map((f) => (
-                      <li class="flex items-center gap-2 text-sm text-slate-600">
-                        <span class="text-brand-orange">✦</span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <!-- 功能需求回饋 -->
-      <div class="mt-16 bg-brand-cream rounded-3xl p-10 text-center">
-        <h3 class="text-xl font-bold text-slate-900 mb-2">有想要的功能？</h3>
-        <p class="text-slate-500 mb-6">告訴我們，你的聲音會影響下一版的開發方向。</p>
-        <a
-          href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/contact`}
-          class="inline-block border-2 border-brand-orange text-brand-orange px-8 py-3 rounded-2xl font-bold hover:bg-orange-50 transition"
-        >
-          提交功能建議
-        </a>
-      </div>
-
-    </div>
-  </div>
-
+  <RoadmapContent
+    badge={r.badge}
+    title={r.title}
+    subtitle={r.subtitle}
+    roadmap={roadmap}
+    statusLabels={{ done: r.done, building: r.building, planned: r.planned }}
+    feedbackTitle={r.feedbackTitle}
+    feedbackDesc={r.feedbackDesc}
+    feedbackCta={r.feedbackCta}
+    contactHref={`${base}/contact`}
+  />
   <Footer />
 </BaseLayout>

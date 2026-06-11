@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import BlogContent from '../../components/pages/BlogContent.astro';
 import type { Locale } from '../../i18n/index';
 import { useTranslations } from '../../i18n/index';
 
@@ -17,82 +18,23 @@ const { locale } = Astro.params as { locale: Locale };
 const t = useTranslations(locale);
 const b = t.blog;
 
-// Articles are currently only in Traditional Chinese
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const articles = (await getCollection('articles'))
   .filter((a) => a.id.startsWith(`${locale}/`))
-  .sort(
-  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
-);
-
-function formatDate(dateStr: string) {
-  const localeMap: Record<Locale, string> = { 'zh-tw': 'zh-TW', 'en': 'en-US', 'ja': 'ja-JP' };
-  return new Date(dateStr).toLocaleDateString(localeMap[locale] ?? 'en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
+  .sort((a, bb) => new Date(bb.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 ---
 
 <BaseLayout title={b.seoTitle} description={b.seoDescription} keywords={b.seoKeywords}>
   <Nav />
-
-  <div class="pt-28 pb-20 px-6">
-    <div class="max-w-4xl mx-auto">
-
-      <div class="text-center mb-16">
-        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">{b.badge}</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">{b.title}</h1>
-        <p class="text-slate-500 text-lg">{b.subtitle}</p>
-      </div>
-
-      {articles.length === 0 ? (
-        <div class="text-center py-20 text-slate-400">
-          <p class="text-lg">{b.empty}</p>
-        </div>
-      ) : (
-        <div class="grid gap-8 md:grid-cols-2">
-          {articles.map((article) => (
-            <a
-              href={`${base}/${locale}/blog/${article.slug.replace(`${locale}/`, '')}`}
-              class="group bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden hover:-translate-y-1 transition-transform duration-300 flex flex-col"
-            >
-              {article.data.coverImage && (
-                <img
-                  src={article.data.coverImage}
-                  alt={article.data.title}
-                  class="w-full h-48 object-cover"
-                  loading="lazy"
-                />
-              )}
-              <div class="p-8 flex flex-col flex-1">
-                {article.data.tags && article.data.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-2 mb-4">
-                    {article.data.tags.map((tag) => (
-                      <span class="px-3 py-1 bg-orange-50 text-brand-orange text-xs font-medium rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                <h2 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-orange transition-colors leading-snug">
-                  {article.data.title}
-                </h2>
-                <p class="text-slate-500 text-sm leading-relaxed flex-1">
-                  {article.data.excerpt}
-                </p>
-                <time class="block mt-6 text-xs text-slate-400 font-medium" datetime={article.data.publishDate}>
-                  {formatDate(article.data.publishDate)}
-                </time>
-              </div>
-            </a>
-          ))}
-        </div>
-      )}
-
-    </div>
-  </div>
-
+  <BlogContent
+    locale={locale}
+    articles={articles}
+    badge={b.badge}
+    title={b.title}
+    subtitle={b.subtitle}
+    emptyMsg={b.empty}
+    readMore={b.readMore}
+    base={base}
+  />
   <Footer />
 </BaseLayout>

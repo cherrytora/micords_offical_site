@@ -1,0 +1,113 @@
+---
+import FeatureCard from '../FeatureCard.astro';
+import type { Locale } from '../../i18n/index';
+
+interface Props {
+  locale: Locale;
+  data: {
+    heroTitle: string;
+    heroSubtitle: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    ctaSecondaryHref: string;
+    featuresTitle: string;
+    features: { icon: string; title: string; desc: string }[];
+    storyTitle: string;
+    storyContent: string;
+    ctaTitle: string;
+    ctaButton: string;
+  };
+  ctaUrl: string;
+}
+
+const { data, ctaUrl } = Astro.props;
+const {
+  heroTitle, heroSubtitle,
+  ctaPrimary,
+  ctaSecondary, ctaSecondaryHref,
+  featuresTitle, features,
+  storyTitle, storyContent,
+  ctaTitle, ctaButton,
+} = data;
+---
+
+<!-- Hero -->
+<section class="hero-gradient pt-32 pb-20 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h1 class="text-4xl md:text-[42px] font-bold leading-tight mb-2 text-slate-900">
+        {heroTitle}
+      </h1>
+      <p class="text-sm text-slate-400 mb-6 tracking-wide">Micords = 貓咪 + Records</p>
+      <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+        {heroSubtitle}
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href={ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-brand-orange text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-200 hover:scale-105 transition"
+        >
+          {ctaPrimary}
+        </a>
+        <a
+          href={ctaSecondaryHref}
+          class="border-2 border-brand-orange text-brand-orange px-8 py-4 rounded-2xl font-bold text-lg hover:bg-orange-50 transition"
+          {...(ctaSecondaryHref.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+          {ctaSecondary}
+        </a>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div class="bg-orange-200 w-full aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+        <img
+          src="/micords_offical_site/mylovelycats.jpg"
+          alt="Micords Cat Health Records"
+          class="w-full h-full object-cover"
+          width="754"
+          height="762"
+          decoding="async"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold mb-12 text-center text-slate-900">{featuresTitle}</h2>
+    <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+      {features.map(({ icon, title, desc }) => (
+        <FeatureCard icon={icon} title={title} desc={desc} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="py-24 px-6 bg-brand-cream" id="story">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-8 text-slate-900">{storyTitle}</h2>
+    <p class="text-slate-600 leading-relaxed text-lg">{storyContent}</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6 bg-white text-center">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-slate-900">{ctaTitle}</h2>
+    <a
+      href={ctaUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block bg-brand-orange text-white px-12 py-5 rounded-2xl font-bold text-xl shadow-lg shadow-orange-200 hover:scale-105 transition"
+    >
+      {ctaButton}
+    </a>
+  </div>
+</section>

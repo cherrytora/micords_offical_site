@@ -2,51 +2,24 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { useTranslations } from '../i18n/index';
 
-const contacts = [
-  {
-    icon: '🧵',
-    title: '官方 Threads',
-    handle: '@rela2cats',
-    href: 'https://www.threads.com/@rela2cats',
-    desc: '最新消息、使用心得、貓咪日常，歡迎來找我們聊天。',
-    cta: '前往 Threads',
-  },
-  {
-    icon: '📝',
-    title: '意見回饋表單',
-    handle: 'Google 表單',
-    href: 'https://docs.google.com/forms/d/e/1FAIpQLSfGHGgkdV2jAep1zVODgT8oM0Ahzc_ORTHFPtApmLd3s-bXHQ/viewform?usp=header',
-    desc: '功能建議、Bug 回報、或任何想對我們說的話。',
-    cta: '填寫表單',
-  },
-  {
-    icon: '💳',
-    title: '退款申請表單',
-    handle: 'Google 表單',
-    href: 'https://docs.google.com/forms/d/e/1FAIpQLSct6PAw6GrwWH1swOEKO6GtUQQYo6Zqme5l8JHT9LgQTU9QmQ/viewform',
-    desc: '付款後 7 日內可申請全額退款。請一並提供註冊 Email、付款日期與退款原因，填寫後 3 個工作日內以 Email 回覆。',
-    cta: '填寫退款表單',
-  },
-];
+const t = useTranslations('zh-tw');
+const c = t.contact;
 ---
 
-<BaseLayout title="Micords 貓咪健康紀錄 APP｜聯絡我們" description="有問題或建議？歡迎透過官方 Threads @rela2cats 或意見回饋表單聯絡 Micords 團隊，你的聲音會影響下一版的開發方向。">
+<BaseLayout title={c.seoTitle} description={c.seoDescription}>
   <Nav />
 
   <div class="pt-28 pb-20 px-6">
     <div class="max-w-4xl mx-auto">
 
-      <!-- 頁面標題 -->
-      <div class="text-center mb-16">
-        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Contact</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">聯絡我們</h1>
-        <p class="text-slate-500 text-lg">有任何問題或想法，都歡迎找我們。</p>
-      </div>
+      <SectionHeader badge={c.badge} title={c.title} subtitle={c.subtitle} />
 
       <!-- 聯絡卡片 -->
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {contacts.map(({ icon, title, handle, href, desc, cta }) => (
+        {c.channels.map(({ icon, title, handle, href, desc, cta }) => (
           <div class="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col gap-4">
             <div class="text-3xl">{icon}</div>
             <div>

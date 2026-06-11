@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
 import type { Locale } from '../../i18n/index';
 import { useTranslations } from '../../i18n/index';
 
@@ -23,11 +24,7 @@ const { contact: c } = t;
   <div class="pt-28 pb-20 px-6">
     <div class="max-w-2xl mx-auto">
 
-      <div class="text-center mb-16">
-        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">{c.badge}</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">{c.title}</h1>
-        <p class="text-slate-500 text-lg">{c.subtitle}</p>
-      </div>
+      <SectionHeader badge={c.badge} title={c.title} subtitle={c.subtitle} />
 
       <div class="grid sm:grid-cols-2 gap-6">
         {c.channels.map(({ icon, title, handle, href, desc, cta }) => (

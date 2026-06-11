@@ -1,30 +1,30 @@
 ---
 import type { Locale } from '../i18n/index';
 import { useTranslations, localeNames, localeShort, localePath, getPagePath, locales } from '../i18n/index';
+import { getEntry } from 'astro:content';
 
 interface Props {
   navCtaText?: string;
-  navCtaLink?: string;
 }
 
-const { navCtaText, navCtaLink } = Astro.props;
+const { navCtaText } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const locale = (Astro.currentLocale ?? 'zh-tw') as Locale;
 const t = useTranslations(locale);
 
-// Use prop overrides if provided, else use translations
 const ctaText = navCtaText ?? t.nav.cta;
-const ctaHref = navCtaLink ?? 'https://micords.web.app/';
+const { data: globalSettings } = await getEntry('global', 'settings');
+const ctaHref = globalSettings.ctaUrl;
 
 const navLinks = [
-  { href: localePath(locale, '/',              base), label: t.nav.home },
   { href: localePath(locale, '/blog',          base), label: t.nav.blog },
   { href: localePath(locale, '/tutorial',      base), label: t.nav.tutorial },
-  { href: localePath(locale, '/faq',           base), label: t.nav.faq },
   { href: localePath(locale, '/pricing',       base), label: t.nav.pricing },
+  { href: localePath(locale, '/privacy',       base), label: t.nav.privacy },
   { href: localePath(locale, '/roadmap',       base), label: t.nav.roadmap },
   { href: localePath(locale, '/release-notes', base), label: t.nav.releaseNotes },
+  { href: localePath(locale, '/faq',           base), label: t.nav.faq },
   { href: localePath(locale, '/contact',       base), label: t.nav.contact },
 ];
 
@@ -48,11 +48,11 @@ const pagePath = getPagePath(currentPath, base);
     </a>
 
     <!-- Desktop nav links -->
-    <div class="hidden md:flex items-center gap-1">
+    <div class="hidden xl:flex items-center gap-0.5">
       {navLinks.map(({ href, label }) => (
         <a
           href={href}
-          class={`px-4 py-2 rounded-full text-sm font-medium transition ${
+          class={`px-3 py-2 rounded-full text-sm font-medium transition whitespace-nowrap ${
             currentPath === href
               ? 'bg-orange-100 text-brand-orange'
               : 'text-slate-600 hover:text-brand-orange hover:bg-orange-50'
@@ -64,7 +64,7 @@ const pagePath = getPagePath(currentPath, base);
     </div>
 
     <!-- CTA -->
-    <div class="hidden md:flex items-center gap-3">
+    <div class="hidden xl:flex items-center gap-3">
       <!-- Language switcher -->
       <div class="relative group">
         <button
@@ -105,7 +105,7 @@ const pagePath = getPagePath(currentPath, base);
     </div>
 
     <!-- Mobile hamburger (pure CSS toggle) -->
-    <label class="md:hidden cursor-pointer ml-4 text-slate-600" for="mobile-menu-toggle" aria-label="Open menu">
+    <label class="xl:hidden cursor-pointer ml-4 text-slate-600" for="mobile-menu-toggle" aria-label="Open menu">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
@@ -114,7 +114,7 @@ const pagePath = getPagePath(currentPath, base);
 
   <!-- Mobile menu -->
   <input type="checkbox" id="mobile-menu-toggle" class="hidden peer" />
-  <div class="hidden peer-checked:block md:hidden bg-white border-t border-orange-100 px-6 py-4 space-y-1">
+  <div class="hidden peer-checked:block xl:hidden bg-white border-t border-orange-100 px-6 py-4 space-y-1">
     {navLinks.map(({ href, label }) => (
       <a
         href={href}

@@ -6,8 +6,6 @@ trialBadge: "🎉 New users get a 30-day free Pro trial"
 periodMonthly: "Monthly"
 periodAnnual: "Annual"
 periodAnnualSave: "Save ~20%"
-threadsHandle: "@rela2cats"
-threadsHref: "https://www.threads.com/@rela2cats"
 
 plans:
   - id: free
@@ -67,8 +65,8 @@ plans:
       - "Unlimited cats"
       - "Complete chart history (unlimited)"
       - "Blood test scan (unlimited)"
-      - "AI daily summary (5/month)"
-      - "AI medical summary (5/month)"
+      - "AI daily summary (10/month)"
+      - "AI medical summary (10/month)"
 
 notes:
   - title: "📅 Subscription & Billing"
@@ -99,4 +97,3 @@ notes:
 ctaTitle: "Start protecting your cat's health"
 ctaSubtitle: "Free to start. Upgrade anytime. 30-day Pro trial for new users."
 ctaButton: "Try for Free"
-ctaLink: "https://micords.web.app/"

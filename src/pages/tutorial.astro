@@ -2,110 +2,25 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import TutorialContent from '../components/pages/TutorialContent.astro';
 import { getEntry } from 'astro:content';
 
 const tutorial = await getEntry('tutorial', 'zh-tw/page');
-const { pageTitle, pageSubtitle, sections, ctaTitle, ctaSubtitle, ctaButton, ctaButtonLink } = tutorial.data;
+const { pageTitle, pageSubtitle, sections, ctaTitle, ctaSubtitle, ctaButton, seoTitle, seoDescription } = tutorial.data;
+const { data: { ctaUrl } } = await getEntry('global', 'settings');
 ---
 
-<BaseLayout title="Micords 貓咪健康紀錄 APP｜使用教學" description="Micords 完整使用教學，包含日常紀錄、體重追蹤、血檢管理、用藥提醒、記帳簿與物品倉庫功能。一步一步學會用 Micords 守護你的毛孩健康。">
+<BaseLayout title={seoTitle ?? pageTitle} description={seoDescription}>
   <Nav />
-
-  <div class="pt-28 pb-20 px-6">
-    <div class="max-w-4xl mx-auto">
-
-      <!-- 頁面標題 -->
-      <div class="text-center mb-16">
-        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Tutorial</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">{pageTitle}</h1>
-        <p class="text-slate-500 text-lg">{pageSubtitle}</p>
-      </div>
-
-      <!-- 快速跳轉 -->
-      <nav class="flex flex-wrap justify-center gap-2 mb-16" aria-label="教學章節">
-        {sections.map(({ id, title }) => (
-          <a
-            href={`#${id}`}
-            class="px-4 py-2 bg-orange-50 text-brand-orange rounded-full text-sm font-medium hover:bg-orange-100 transition"
-          >
-            {title}
-          </a>
-        ))}
-      </nav>
-
-      <!-- 教學章節 -->
-      <div class="space-y-20">
-        {sections.map(({ id, title, desc, steps, mediaLabel, youtubeId }, index) => (
-          <section id={id} class="scroll-mt-24">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
-                {index + 1}
-              </div>
-              <div>
-                <h2 class="text-2xl font-bold text-slate-900">{title}</h2>
-                <p class="text-slate-500 mt-1">{desc}</p>
-              </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 items-start">
-              <!-- 步驟列表 -->
-              <ol class="space-y-4">
-                {steps.map((step, i) => (
-                  <li class="flex gap-4">
-                    <span class="w-7 h-7 rounded-full bg-orange-100 text-brand-orange text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                      {i + 1}
-                    </span>
-                    <p class="text-slate-700 leading-relaxed pt-0.5">{step}</p>
-                  </li>
-                ))}
-              </ol>
-
-              <!-- 媒體區 -->
-              {youtubeId ? (
-                <div class="rounded-3xl overflow-hidden aspect-video">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${youtubeId}`}
-                    title={mediaLabel}
-                    class="w-full h-full"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
-                </div>
-              ) : (
-                <div class="bg-slate-100 rounded-3xl aspect-video flex flex-col items-center justify-center text-slate-400 border-2 border-dashed border-slate-200">
-                  <svg class="w-10 h-10 mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.069A1 1 0 0121 8.882v6.236a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
-                  </svg>
-                  <p class="text-sm font-medium">{mediaLabel}</p>
-                  <p class="text-xs mt-1 opacity-60">即將加入</p>
-                </div>
-              )}
-            </div>
-
-            {index < sections.length - 1 && (
-              <div class="mt-16 border-b border-slate-100"></div>
-            )}
-          </section>
-        ))}
-      </div>
-
-      <!-- 底部 CTA -->
-      <div class="mt-20 text-center bg-brand-cream rounded-3xl p-10">
-        <h3 class="text-2xl font-bold text-slate-900 mb-3">{ctaTitle}</h3>
-        <p class="text-slate-500 mb-6">{ctaSubtitle}</p>
-        <a
-          href={ctaButtonLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition shadow-lg shadow-orange-200"
-        >
-          {ctaButton}
-        </a>
-      </div>
-
-    </div>
-  </div>
-
+  <TutorialContent
+    pageTitle={pageTitle}
+    pageSubtitle={pageSubtitle}
+    sections={sections}
+    ctaTitle={ctaTitle}
+    ctaSubtitle={ctaSubtitle}
+    ctaButton={ctaButton}
+    ctaUrl={ctaUrl}
+    navLabel="教學章節"
+  />
   <Footer />
 </BaseLayout>

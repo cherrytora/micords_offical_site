@@ -1,0 +1,23 @@
+---
+interface Props {
+  pre?: string;
+  title: string;
+  subtitle?: string;
+  btnText: string;
+  btnHref: string;
+}
+const { pre, title, subtitle, btnText, btnHref } = Astro.props;
+---
+<div class="mt-16 bg-brand-cream rounded-3xl p-10 text-center">
+  {pre && <p class="text-brand-orange font-bold text-sm tracking-widest mb-3">{pre}</p>}
+  <h2 class="text-2xl font-bold text-slate-900 mb-3">{title}</h2>
+  {subtitle && <p class="text-slate-500 mb-6">{subtitle}</p>}
+  <a
+    href={btnHref}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition shadow-lg shadow-orange-200"
+  >
+    {btnText}
+  </a>
+</div>

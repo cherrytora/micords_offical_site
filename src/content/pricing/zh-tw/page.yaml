@@ -6,8 +6,6 @@ trialBadge: ""
 periodMonthly: "月繳"
 periodAnnual: "年繳"
 periodAnnualSave: "省約 20%"
-threadsHandle: "@rela2cats"
-threadsHref: "https://www.threads.com/@rela2cats"
 
 plans:
   - id: free
@@ -67,8 +65,8 @@ plans:
       - "貓咪數量無限"
       - "完整歷史圖表（無限）"
       - "掃描血檢報告（不限次數）"
-      - "AI 日常摘要（5 次/月）"
-      - "AI 醫療摘要（5 次/月）"
+      - "AI 日常摘要（10 次/月）"
+      - "AI 醫療摘要（10 次/月）"
 
 notes:
   - title: "📅 訂閱與計費"
@@ -77,7 +75,7 @@ notes:
       - "免費試用期間未取消，系統將於期滿後自動以月繳費用扣款。"
       - "月繳方案每月自動扣款；年繳方案一次支付 12 個月費用，自動續訂。"
       - "取消後仍可使用至本期訂閱結束，不會立即失效。"
-      - "年繳比月繳省約 24%，適合長期使用的貓奴。"
+      - "年繳比月繳省約 20%，適合長期使用的貓奴。"
       - "Micords 保有修改方案內容的權利。"
 
   - title: "💳 退款政策"
@@ -99,4 +97,3 @@ notes:
 ctaTitle: "開始守護你的毛孩健康"
 ctaSubtitle: "免費開始，隨時可升級。"
 ctaButton: "立即免費體驗"
-ctaLink: "https://micords.web.app/"

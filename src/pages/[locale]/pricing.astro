@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import PricingContent from '../../components/pages/PricingContent.astro';
 import type { Locale } from '../../i18n/index';
 import { getEntry } from 'astro:content';
 
@@ -19,10 +20,10 @@ const {
   seoTitle, seoDescription,
   pageTitle, pageSubtitle, trialBadge,
   periodMonthly, periodAnnual, periodAnnualSave,
-  threadsHandle, threadsHref,
   plans, notes,
-  ctaTitle, ctaSubtitle, ctaButton, ctaLink,
+  ctaTitle, ctaSubtitle, ctaButton,
 } = p.data;
+const { data: { ctaUrl } } = await getEntry('global', 'settings');
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription}>
@@ -31,130 +32,21 @@ const {
   <div class="pt-28 pb-20 px-6">
     <div class="max-w-5xl mx-auto">
 
-      <!-- Header -->
-      <div class="text-center mb-14">
-        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Pricing</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">{pageTitle}</h1>
-        <p class="text-slate-500 text-lg mb-2">{pageSubtitle}</p>
-        {trialBadge && (
-          <p class="inline-block bg-orange-50 text-brand-orange text-sm font-semibold px-4 py-1.5 rounded-full">
-            {trialBadge}
-          </p>
-        )}
-      </div>
-
-      <!-- Period toggle -->
-      <div class="flex justify-center mb-10">
-        <div class="bg-slate-100 rounded-2xl p-1 flex gap-1">
-          <button
-            id="btn-monthly"
-            class="px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm"
-            onclick="setPeriod('monthly')"
-          >{periodMonthly}</button>
-          <button
-            id="btn-annual"
-            class="px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500"
-            onclick="setPeriod('annual')"
-          >{periodAnnual} <span class="text-brand-orange ml-1">{periodAnnualSave}</span></button>
-        </div>
-      </div>
-
-      <!-- Plan cards -->
-      <div class="grid md:grid-cols-3 gap-6 mb-16">
-        {plans.map((plan) => (
-          <div class={`rounded-3xl p-8 flex flex-col relative ${
-            plan.dark
-              ? 'bg-slate-900'
-              : plan.popular
-                ? 'bg-white border-2 border-brand-orange shadow-lg shadow-orange-100'
-                : 'bg-white border border-slate-100 shadow-sm'
-          }`}>
-            {plan.popular && (
-              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                <span class="bg-brand-orange text-white text-xs font-bold px-4 py-1.5 rounded-full shadow">{plan.tag}</span>
-              </div>
-            )}
-            <div class="mb-6">
-              <span class={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 ${
-                plan.dark
-                  ? 'bg-amber-100 text-amber-700'
-                  : plan.popular
-                    ? 'bg-blue-100 text-blue-600'
-                    : 'bg-slate-100 text-slate-600'
-              }`}>{plan.label}</span>
-              {!plan.popular && !plan.dark && (
-                <p class="text-slate-500 text-xs font-semibold mb-2">{plan.tag}</p>
-              )}
-              <div class="flex items-end gap-1 mb-1">
-                <span
-                  class={`text-4xl font-bold ${plan.dark ? 'text-white' : 'text-slate-900'}`}
-                  data-plan-id={plan.id}
-                  data-monthly-price={plan.monthlyPrice}
-                  data-annual-price={plan.annualPrice}
-                >{plan.monthlyPrice}</span>
-                <span class="text-slate-400 text-sm mb-1">/月</span>
-                <span class="text-slate-400 text-xs mb-1.5 ml-1" data-plan-annual-note={plan.id}></span>
-              </div>
-              <p class="text-slate-400 text-sm" data-plan-subtitle={plan.id} data-monthly-subtitle={periodMonthly} data-annual-subtitle={`${periodAnnual}${plan.annualTotal ? ` ${plan.annualTotal}` : ''}`}>{periodMonthly}</p>
-            </div>
-            <ul class={`space-y-3 text-sm flex-1 mb-8 ${plan.dark ? 'text-slate-300' : 'text-slate-600'}`}>
-              {plan.features.map((feature) => (
-                <li class="flex items-start gap-2">
-                  <span class={`mt-0.5 ${plan.dark ? 'text-amber-400' : 'text-brand-orange'}`}>✓</span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <a
-              href={ctaLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={`block text-center py-3 rounded-2xl font-semibold hover:scale-105 transition ${
-                plan.dark
-                  ? 'bg-amber-400 text-slate-900'
-                  : plan.popular
-                    ? 'bg-brand-orange text-white shadow-lg shadow-orange-200'
-                    : 'border-2 border-slate-200 text-slate-600 hover:border-brand-orange hover:text-brand-orange'
-              }`}
-            >{plan.cta}</a>
-          </div>
-        ))}
-      </div>
-
-      <!-- Notes -->
-      <div class="grid md:grid-cols-2 gap-6 mb-16">
-        {notes.map((note, i) => (
-          <div class="bg-brand-cream rounded-3xl p-8">
-            <h3 class="text-lg font-bold text-slate-900 mb-4">{note.title}</h3>
-            <ul class="space-y-3 text-sm text-slate-600">
-              {note.items.map((item) => (
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-orange font-bold mt-0.5">•</span>
-                  {item}
-                </li>
-              ))}
-              {i === notes.length - 1 && (
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-orange font-bold mt-0.5">•</span>
-                  Threads：<a href={threadsHref} target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">{threadsHandle}</a>
-                </li>
-              )}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <!-- CTA -->
-      <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-12 text-center">
-        <h2 class="text-2xl font-bold text-slate-900 mb-2">{ctaTitle}</h2>
-        <p class="text-slate-500 mb-8">{ctaSubtitle}</p>
-        <a
-          href={ctaLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-200 hover:scale-105 transition"
-        >{ctaButton}</a>
-      </div>
+      <PricingContent
+        pageTitle={pageTitle}
+        pageSubtitle={pageSubtitle}
+        trialBadge={trialBadge}
+        periodMonthly={periodMonthly}
+        periodAnnual={periodAnnual}
+        periodAnnualSave={periodAnnualSave}
+        plans={plans}
+        notes={notes}
+        ctaTitle={ctaTitle}
+        ctaSubtitle={ctaSubtitle}
+        ctaButton={ctaButton}
+        ctaUrl={ctaUrl}
+        perMonthLabel={locale === 'ja' ? '/月' : '/mo'}
+      />
 
     </div>
   </div>
@@ -179,258 +71,6 @@ const {
     document.querySelectorAll<HTMLElement>('[data-plan-annual-note]').forEach((el) => {
       el.textContent = '';
     });
-
-    const btnMonthly = document.getElementById('btn-monthly')!;
-    const btnAnnual  = document.getElementById('btn-annual')!;
-    if (period === 'monthly') {
-      btnMonthly.className = 'px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm';
-      btnAnnual.className  = 'px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500';
-    } else {
-      btnAnnual.className  = 'px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm';
-      btnMonthly.className = 'px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500';
-    }
-  }
-
-  (window as any).setPeriod = setPeriod;
-</script>
-
-const { locale } = Astro.params as { locale: Locale };
-
-const isJa = locale === 'ja';
-
-const content = {
-  en: {
-    seoTitle: 'Micords Cat Health App | Plans & Pricing',
-    seoDesc: 'Micords offers Free, Pro, and Premium plans starting from NT$79/month. New users enjoy a 30-day free Pro trial.',
-    badge: 'Pricing',
-    title: 'Plans & Pricing',
-    subtitle: 'Simple, honest pricing for every cat parent.',
-    trial: '🎉 New users get a 30-day free Pro trial',
-    monthly: 'Monthly',
-    annual: 'Annual',
-    annualSave: 'Save ~20%',
-    plans: {
-      free:    { label: 'FREE',    tag: 'Free forever',         price: 'NT$0',   sub: '/month',  cta: 'Get Started' },
-      pro:     { label: 'PRO',     tag: 'Most popular',         price: 'NT$79',  sub: '/month',  cta: 'Upgrade to Pro' },
-      premium: { label: 'PREMIUM', tag: 'Full power',           price: 'NT$99',  sub: '/month',  cta: 'Upgrade to Premium' },
-    },
-    features: {
-      cats:       ['Cats', '2 cats', 'Up to 5', 'Unlimited'],
-      chartRange: ['Chart range', '6 months', '1 year', 'Unlimited'],
-      ocr:        ['Blood test scans', '2/month', '10/month', 'Unlimited'],
-      photos:     ['Photos per record', '1', '5', '5'],
-      chartExport:['Chart export', '—', '✓', '✓'],
-      aiDaily:    ['AI daily summary', '—', '5/month', '5/month'],
-      aiMedical:  ['AI medical summary', '—', '—', '5/month'],
-      dataExport: ['Full data export', '—', '—', '✓'],
-    },
-    notes: {
-      sub:     { title: '📅 Subscription', items: ['New users get a 30-day free Pro trial (one per account).', 'Monthly plans auto-renew each month. Annual plans are billed yearly.', 'After cancellation, access continues until the end of the current billing period.'] },
-      refund:  { title: '💳 Refund Policy', items: ['Full refund available within 14 days of purchase.', 'After 14 days, you may cancel future renewals only — no refund for the current period.', 'To request a refund, contact us on Threads @rela2cats or via our feedback form.'] },
-      saas:    { title: '☁️ Service Notice', items: ['Micords is a SaaS cloud subscription. No physical goods are shipped.', 'Service activates immediately upon subscription via the internet.', 'All data is stored in the cloud and accessible across devices.'] },
-      contact: { title: '🧵 Contact', items: ['Threads: @rela2cats', 'For billing questions, refund requests, or feature suggestions, feel free to reach out.'] },
-    },
-    ctaTitle: 'Start protecting your cat\'s health',
-    ctaSubtitle: 'Free to start. Upgrade anytime. 30-day Pro trial for new users.',
-    ctaBtn: 'Try for Free',
-  },
-  ja: {
-    seoTitle: 'Micords 猫の健康記録アプリ | 料金プラン',
-    seoDesc: 'MicordsはFree・Pro・Premiumの3プランをご用意。月額NT$79から。新規ユーザーは30日間Proプランを無料でお試しいただけます。',
-    badge: 'Pricing',
-    title: '料金プラン',
-    subtitle: 'すべての猫好きのためのシンプルな料金体系',
-    trial: '🎉 新規ユーザーは30日間Proプランを無料体験',
-    monthly: '月払い',
-    annual: '年払い',
-    annualSave: '約20%お得',
-    plans: {
-      free:    { label: 'FREE',    tag: '永続無料',     price: 'NT$0',   sub: '/月', cta: '無料で始める' },
-      pro:     { label: 'PRO',     tag: '最も人気',     price: 'NT$79',  sub: '/月', cta: 'Proにアップグレード' },
-      premium: { label: 'PREMIUM', tag: '完全な機能',   price: 'NT$99',  sub: '/月', cta: 'Premiumにアップグレード' },
-    },
-    features: {
-      cats:       ['猫の数', '2匹', '5匹まで', '無制限'],
-      chartRange: ['グラフ表示期間', '6ヶ月', '1年', '無制限'],
-      ocr:        ['血液検査スキャン', '2回/月', '10回/月', '無制限'],
-      photos:     ['記録ごとの写真数', '1枚', '5枚', '5枚'],
-      chartExport:['グラフ書き出し', '—', '✓', '✓'],
-      aiDaily:    ['AI日常サマリー', '—', '5回/月', '5回/月'],
-      aiMedical:  ['AI医療サマリー', '—', '—', '5回/月'],
-      dataExport: ['データ完全書き出し', '—', '—', '✓'],
-    },
-    notes: {
-      sub:     { title: '📅 サブスクリプション', items: ['新規ユーザーは30日間のProトライアルが利用可能（1アカウントにつき1回）。', '月払いは毎月自動更新。年払いは12ヶ月分を一括払い。', 'キャンセル後も現在の期間終了まで利用可能。'] },
-      refund:  { title: '💳 返金ポリシー', items: ['購入後14日以内は全額返金対応。', '14日以降は次回自動更新のキャンセルのみ可能。現在の期間の返金は不可。', '返金希望の場合はThreads @rela2cats またはフィードバックフォームでお問い合わせください。'] },
-      saas:    { title: '☁️ サービスについて', items: ['MicordsはSaaSクラウドサービスです。物理的な商品の発送はありません。', 'サブスクリプション後、インターネット経由ですぐにご利用いただけます。', 'すべてのデータはクラウドに保存され、複数のデバイスからアクセス可能です。'] },
-      contact: { title: '🧵 お問い合わせ', items: ['Threads: @rela2cats', '料金のご質問、返金申請、機能のご提案は上記よりご連絡ください。'] },
-    },
-    ctaTitle: '猫の健康を守り始めよう',
-    ctaSubtitle: '無料から始められます。いつでもアップグレード可能。新規ユーザーは30日間Proトライアル付き。',
-    ctaBtn: '無料で試す',
-  },
-};
-
-const t = content[locale];
----
-
-<BaseLayout title={t.seoTitle} description={t.seoDesc}>
-  <Nav />
-
-  <div class="pt-28 pb-20 px-6">
-    <div class="max-w-5xl mx-auto">
-
-      <!-- Header -->
-      <div class="text-center mb-14">
-        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">{t.badge}</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">{t.title}</h1>
-        <p class="text-slate-500 text-lg mb-2">{t.subtitle}</p>
-        <p class="inline-block bg-orange-50 text-brand-orange text-sm font-semibold px-4 py-1.5 rounded-full">
-          {t.trial}
-        </p>
-      </div>
-
-      <!-- Period toggle -->
-      <div class="flex justify-center mb-10">
-        <div class="bg-slate-100 rounded-2xl p-1 flex gap-1">
-          <button
-            id="btn-monthly"
-            class="px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm"
-            onclick="setPeriod('monthly')"
-          >{t.monthly}</button>
-          <button
-            id="btn-annual"
-            class="px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500"
-            onclick="setPeriod('annual')"
-          >{t.annual} <span class="text-brand-orange ml-1">{t.annualSave}</span></button>
-        </div>
-      </div>
-
-      <!-- Plan cards -->
-      <div class="grid md:grid-cols-3 gap-6 mb-16">
-
-        <!-- Free -->
-        <div class="bg-white rounded-3xl border border-slate-100 shadow-sm p-8 flex flex-col">
-          <div class="mb-6">
-            <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full mb-4">{t.plans.free.label}</span>
-            <div class="flex items-end gap-1 mb-1">
-              <span class="text-4xl font-bold text-slate-900">{t.plans.free.price}</span>
-              <span class="text-slate-400 text-sm mb-1">{t.plans.free.sub}</span>
-            </div>
-            <p class="text-slate-400 text-sm">{t.plans.free.tag}</p>
-          </div>
-          <div class="flex-1 mb-8 space-y-3 text-sm text-slate-600">
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> {t.features.cats[1]}</p>
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> {t.features.chartRange[1]}</p>
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> {t.features.ocr[0]} {t.features.ocr[1]}</p>
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> {t.features.photos[0]}: {t.features.photos[1]}</p>
-          </div>
-          <a href="https://micords.web.app/" target="_blank" rel="noopener noreferrer"
-            class="block text-center border-2 border-slate-200 text-slate-600 py-3 rounded-2xl font-semibold hover:border-brand-orange hover:text-brand-orange transition"
-          >{t.plans.free.cta}</a>
-        </div>
-
-        <!-- Pro -->
-        <div class="bg-white rounded-3xl border-2 border-brand-orange shadow-lg shadow-orange-100 p-8 flex flex-col relative">
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-            <span class="bg-brand-orange text-white text-xs font-bold px-4 py-1.5 rounded-full shadow">{t.plans.pro.tag}</span>
-          </div>
-          <div class="mb-6">
-            <span class="inline-block bg-blue-100 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-4">{t.plans.pro.label}</span>
-            <div class="flex items-end gap-1 mb-1">
-              <span class="text-4xl font-bold text-slate-900" id="pro-price">{t.plans.pro.price}</span>
-              <span class="text-slate-400 text-sm mb-1">{t.plans.pro.sub}</span>
-              <span class="text-slate-400 text-xs mb-1.5 ml-1" id="pro-annual-note"></span>
-            </div>
-            <p class="text-slate-400 text-sm" id="pro-subtitle">{t.plans.pro.tag}</p>
-          </div>
-          <div class="flex-1 mb-8 space-y-3 text-sm text-slate-600">
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> <strong>{t.features.cats[2]}</strong></p>
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> {t.features.chartRange[2]}</p>
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> <strong>{t.features.chartExport[0]}</strong></p>
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> {t.features.ocr[0]} {t.features.ocr[2]}</p>
-            <p class="flex items-start gap-2"><span class="text-brand-orange mt-0.5">✓</span> {t.features.aiDaily[0]}: {t.features.aiDaily[2]}</p>
-          </div>
-          <a href="https://micords.web.app/" target="_blank" rel="noopener noreferrer"
-            class="block text-center bg-brand-orange text-white py-3 rounded-2xl font-semibold shadow-lg shadow-orange-200 hover:scale-105 transition"
-          >{t.plans.pro.cta}</a>
-        </div>
-
-        <!-- Premium -->
-        <div class="bg-slate-900 rounded-3xl p-8 flex flex-col">
-          <div class="mb-6">
-            <span class="inline-block bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full mb-4">{t.plans.premium.label}</span>
-            <div class="flex items-end gap-1 mb-1">
-              <span class="text-4xl font-bold text-white" id="premium-price">{t.plans.premium.price}</span>
-              <span class="text-slate-400 text-sm mb-1">{t.plans.premium.sub}</span>
-              <span class="text-slate-400 text-xs mb-1.5 ml-1" id="premium-annual-note"></span>
-            </div>
-            <p class="text-slate-400 text-sm" id="premium-subtitle">{t.plans.premium.tag}</p>
-          </div>
-          <div class="flex-1 mb-8 space-y-3 text-sm text-slate-300">
-            <p class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> {t.features.chartRange[3]}</p>
-            <p class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> {t.features.ocr[0]} <strong class="text-white">{t.features.ocr[3]}</strong></p>
-            <p class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> {t.features.aiDaily[0]}: {t.features.aiDaily[3]}</p>
-            <p class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> <strong class="text-white">{t.features.aiMedical[0]}</strong>: {t.features.aiMedical[3]}</p>
-            <p class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> {t.features.dataExport[0]}</p>
-          </div>
-          <a href="https://micords.web.app/" target="_blank" rel="noopener noreferrer"
-            class="block text-center bg-amber-400 text-slate-900 py-3 rounded-2xl font-semibold hover:scale-105 transition"
-          >{t.plans.premium.cta}</a>
-        </div>
-
-      </div>
-
-      <!-- Notes -->
-      <div class="grid md:grid-cols-2 gap-6 mb-16">
-        {[t.notes.sub, t.notes.refund, t.notes.saas, t.notes.contact].map((note) => (
-          <div class="bg-brand-cream rounded-3xl p-8">
-            <h3 class="text-lg font-bold text-slate-900 mb-4">{note.title}</h3>
-            <ul class="space-y-3 text-sm text-slate-600">
-              {note.items.map((item) => (
-                <li class="flex items-start gap-2">
-                  <span class="text-brand-orange font-bold mt-0.5">•</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <!-- CTA -->
-      <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-12 text-center">
-        <h2 class="text-2xl font-bold text-slate-900 mb-2">{t.ctaTitle}</h2>
-        <p class="text-slate-500 mb-8">{t.ctaSubtitle}</p>
-        <a href="https://micords.web.app/" target="_blank" rel="noopener noreferrer"
-          class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-200 hover:scale-105 transition"
-        >{t.ctaBtn}</a>
-      </div>
-
-    </div>
-  </div>
-
-  <Footer />
-</BaseLayout>
-
-<script>
-  const isJa = document.documentElement.lang === 'ja';
-
-  const PRICES = {
-    monthly: { pro: 'NT$79', premium: 'NT$99', proNote: '', premiumNote: '' },
-    annual:  {
-      pro: 'NT$65', premium: 'NT$79',
-      proNote: isJa ? '(月払い比20%お得)' : '(save 20% vs monthly)',
-      premiumNote: isJa ? '(月払い比20%お得)' : '(save 20% vs monthly)',
-    },
-  };
-
-  function setPeriod(period: 'monthly' | 'annual') {
-    const p = PRICES[period];
-    (document.getElementById('pro-price') as HTMLElement).textContent = p.pro;
-    (document.getElementById('premium-price') as HTMLElement).textContent = p.premium;
-    (document.getElementById('pro-annual-note') as HTMLElement).textContent = p.proNote;
-    (document.getElementById('premium-annual-note') as HTMLElement).textContent = p.premiumNote;
 
     const btnMonthly = document.getElementById('btn-monthly')!;
     const btnAnnual  = document.getElementById('btn-annual')!;

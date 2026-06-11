@@ -5,10 +5,14 @@ faqs:
     answer: Micords is currently in beta testing, and participants will enjoy completely free access forever. You can open it directly in your mobile browser, or install it as a PWA (Progressive Web App) for a native app-like experience.
   - question: What is a PWA? Do I need to download it from the App Store?
     answer: No! Micords is a PWA (Progressive Web App). Just open the URL in your mobile browser and tap "Add to Home Screen" to install it on your phone. Both iOS (Safari) and Android (Chrome) are supported — no App Store or Google Play download needed.
+  - question: How do I create an account? What login methods are supported?
+    answer: Micords supports Google login only. Just tap "Sign in with Google" and select your account — no password setup required, and no worries about forgetting one.
+  - question: Can I use Micords on multiple devices? Will my data sync?
+    answer: Absolutely! All your data is stored in the cloud, so as long as you're signed in with the same Google account, your records sync in real time across your phone, tablet, and computer.
   - question: Can I use it for dogs too?
-    answer: Yes! Micords supports daily records for both cats and dogs, including diet, weight, medications, and vet visits. Note that blood test reference ranges are currently provided for cats only. Dog owners can still enter values and track trends, but will need to compare against reference ranges provided by their vet.
+    answer: Dogs are welcome too! However, Micords is designed with cats as the primary focus — blood test reference ranges and health alerts are all based on feline standards. For general daily logging (diet, weight, medications, vet visits), it works perfectly for dogs. But for blood test interpretation and related alerts, the built-in values don't apply directly and you'll need to cross-reference with ranges provided by your vet.
   - question: Can I record multiple cats?
-    answer: Multiple cats are fully supported! Beta users have no limit on the number of cats.
+    answer: "Multi-cat households are fully supported! The number of cats depends on your plan: Free supports 2 cats, PRO supports up to 5, and PREMIUM has no limit."
   - question: How do I use the blood test record feature?
     answer: After each vet visit, enter the test values (such as BUN, Creatinine, ALT, etc.) in Micords' "Blood Test Records" section. AI-assisted input is also supported — just upload a photo of the blood test report and the values will be filled in automatically! Micords will generate trend charts so you can see changes at a glance, and share them directly with your vet at the next visit.
   - question: Does Micords have an expense tracking feature?
@@ -17,7 +21,11 @@ faqs:
     answer: The Supplies Inventory lets you manage your cat supply stock — cat food, litter, medications, supplements, and more. You can record items, quantities, and expiration dates. Get alerts before things run out so you never have to scramble for supplies or forget when something expires.
   - question: How does Micords help with vet communication?
     answer: Before a vet visit, review recent diet, weight, blood test, and medication records in Micords. During the visit, hand your phone to the vet or describe recent trends. Instead of saying "I think she lost a bit of weight," show a three-month weight trend chart — making communication more precise and efficient.
+  - question: Can I export or back up my data?
+    answer: Yes! Micords supports exporting daily records and medical records as separate PDF files — great for keeping a backup or bringing to a vet visit.
   - question: Is my data safe?
-    answer: Micords takes user privacy and data security seriously. Your pet health data is for your personal use only and will never be shared with third parties. Micords developers will not access any data you enter. If you have any concerns, please contact us via official Threads @rela2cats or the feedback form.
+    answer: "Micords takes user privacy and data security seriously. Your pet health data is for your personal use only and will never be shared with third parties. Micords developers will not access any data you enter. If you have any concerns, please contact us via official <a href='https://www.threads.com/@rela2cats' target='_blank' rel='noopener noreferrer' class='text-brand-orange hover:underline'>Threads @rela2cats</a> or the feedback form."
+  - question: How do I delete my account or clear all my data?
+    answer: "You can request account deletion from within the app settings. Once submitted, your account and all associated data will be automatically deleted within seven days. For assistance, feel free to contact us via <a href='https://www.threads.com/@rela2cats' target='_blank' rel='noopener noreferrer' class='text-brand-orange hover:underline'>Threads @rela2cats</a> or the feedback form."
   - question: How do I submit feature requests or report issues?
-    answer: Contact us via official Threads (@rela2cats) or the feedback form. Every suggestion is carefully considered and may become a new feature in the next version!
+    answer: "Contact us via official <a href='https://www.threads.com/@rela2cats' target='_blank' rel='noopener noreferrer' class='text-brand-orange hover:underline'>Threads @rela2cats</a> or the feedback form. Every suggestion is carefully considered and may become a new feature in the next version!"

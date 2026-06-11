@@ -3,71 +3,28 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import ReleaseNotesContent from '../components/pages/ReleaseNotesContent.astro';
+import { useTranslations } from '../i18n/index';
+
+const t = useTranslations('zh-tw');
+const r = t.releaseNotes;
 
 // 依日期降序（最新在前），只取 zh-tw 版本
 const notes = (await getCollection('release-notes')).filter(n => n.id.startsWith('zh-tw/')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
-
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('zh-TW', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
 ---
 
-<BaseLayout title="Micords 貓咪健康紀錄 APP｜更新日誌" description="Micords 各版本更新紀錄，包含新功能上線、介面改善與錯誤修正。持續進化，讓每一位貓奴都能更輕鬆守護毛孩健康。">
+<BaseLayout title={r.seoTitle} description={r.seoDescription}>
   <Nav />
-
-  <div class="pt-28 pb-20 px-6">
-    <div class="max-w-3xl mx-auto">
-
-      <!-- 頁面標題 -->
-      <div class="text-center mb-16">
-        <p class="text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">Changelog</p>
-        <h1 class="text-4xl font-bold text-slate-900 mb-4">更新日誌</h1>
-        <p class="text-slate-500 text-lg">每一次更新，都是為了讓守護更完善。</p>
-      </div>
-
-      <!-- Release notes 列表 -->
-      <div class="space-y-10">
-        {await Promise.all(notes.map(async (note, index) => {
-          const { Content } = await note.render();
-          return (
-            <article class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
-              <div class="px-8 py-6 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-2 ${
-                    index === 0 ? 'bg-orange-100 text-brand-orange' : 'bg-slate-100 text-slate-500'
-                  }`}>
-                    {index === 0 ? '最新版本' : '舊版本'}
-                  </span>
-                  <h2 class="text-xl font-bold text-slate-900">
-                    v{note.data.version} — {note.data.title}
-                  </h2>
-                </div>
-                <time datetime={note.data.date} class="text-sm text-slate-400 font-medium">
-                  {formatDate(note.data.date)}
-                </time>
-              </div>
-              <div class="px-8 py-6 text-sm text-slate-600 leading-relaxed
-                [&_h2]:text-base [&_h2]:font-bold [&_h2]:text-slate-800 [&_h2]:mt-4 [&_h2]:mb-2
-                [&_h3]:text-sm [&_h3]:font-bold [&_h3]:text-slate-700 [&_h3]:mt-3 [&_h3]:mb-1.5
-                [&_ul]:space-y-1 [&_ul]:my-2
-                [&_li]:flex [&_li]:gap-2 [&_li]:before:content-['–'] [&_li]:before:text-brand-orange [&_li]:before:flex-shrink-0
-                [&_strong]:font-semibold [&_strong]:text-slate-700
-                [&_p]:mb-2">
-                <Content />
-              </div>
-            </article>
-          );
-        }))}
-      </div>
-
-    </div>
-  </div>
-
+  <ReleaseNotesContent
+    locale="zh-tw"
+    notes={notes}
+    badge={r.badge}
+    title={r.title}
+    subtitle={r.subtitle}
+    latestLabel={r.latest}
+    oldLabel={r.old}
+  />
   <Footer />
 </BaseLayout>

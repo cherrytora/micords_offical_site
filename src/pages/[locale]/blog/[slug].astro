@@ -1,10 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Nav from '../../../components/Nav.astro';
 import Footer from '../../../components/Footer.astro';
+import BlogPostContent from '../../../components/pages/BlogPostContent.astro';
 import type { Locale } from '../../../i18n/index';
-import { localePath } from '../../../i18n/index';
+import { localePath, useTranslations } from '../../../i18n/index';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -26,14 +27,11 @@ const { title, publishDate, excerpt, tags, coverImage } = article.data;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteUrl = 'https://cherrytora.github.io/micords_offical_site';
+const { data: { ctaUrl } } = await getEntry('global', 'settings');
+const t = useTranslations(locale);
+const labels = t.blogPost;
 const pureSlug = article.slug.replace(`${locale}/`, '');
 const articleUrl = `${siteUrl}/${locale}/blog/${pureSlug}`;
-
-const blogLabels = {
-  en: { back: 'Back to Cat Diary', cta_pre: 'Want to try it?', cta_title: 'Start tracking your cat with Micords', cta_desc: 'Diet, weight, blood tests, medications — all in one app.', cta_btn: 'Try Micords Free' },
-  ja: { back: '猫日記に戻る', cta_pre: '試してみませんか？', cta_title: 'Micordsで猫の健康記録を始めよう', cta_desc: '食事・体重・血液検査・投薬、すべて1つのアプリで管理。', cta_btn: 'Micordsを無料で試す' },
-};
-const labels = blogLabels[locale];
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -50,84 +48,27 @@ const articleSchema = {
     logo: { '@type': 'ImageObject', url: `${siteUrl}/Micords-icon.png` },
   },
 };
-
-function formatDate(dateStr: string) {
-  const localeMap: Record<Locale, string> = { 'zh-tw': 'zh-TW', 'en': 'en-US', 'ja': 'ja-JP' };
-  return new Date(dateStr).toLocaleDateString(localeMap[locale] ?? 'en-US', {
-    year: 'numeric', month: 'long', day: 'numeric',
-  });
-}
 ---
 
 <BaseLayout title={`${title} | Micords`} description={excerpt}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <Nav />
-
-  <div class="pt-28 pb-20 px-6">
-    <div class="max-w-2xl mx-auto">
-
-      <a
-        href={localePath(locale, '/blog', base)}
-        class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-brand-orange transition mb-10"
-      >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-        {labels.back}
-      </a>
-
-      <header class="mb-10">
-        {tags && tags.length > 0 && (
-          <div class="flex flex-wrap gap-2 mb-5">
-            {tags.map((tag) => (
-              <span class="px-3 py-1 bg-orange-50 text-brand-orange text-xs font-medium rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-        <h1 class="text-3xl font-bold text-slate-900 leading-snug mb-4">{title}</h1>
-        {coverImage && (
-          <img src={coverImage} alt={title} class="w-full rounded-3xl shadow-lg mb-6 object-cover max-h-80" loading="eager" />
-        )}
-        <time class="text-sm text-slate-400 font-medium" datetime={publishDate}>
-          {formatDate(publishDate)}
-        </time>
-      </header>
-
-      <article class="prose prose-slate max-w-none
-        prose-headings:font-bold prose-headings:text-slate-900
-        prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4
-        prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
-        prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-4
-        prose-li:text-slate-600 prose-li:leading-relaxed prose-li:my-3
-        prose-strong:text-slate-800
-        prose-a:text-brand-orange prose-a:no-underline hover:prose-a:underline
-        prose-hr:border-slate-100 prose-hr:my-10
-        prose-blockquote:border-l-4 prose-blockquote:border-slate-200 prose-blockquote:bg-slate-50 prose-blockquote:text-slate-600 prose-blockquote:px-6 prose-blockquote:py-4
-        prose-img:rounded-3xl prose-img:shadow-lg prose-img:mt-6 prose-img:mb-6
-        prose-ul:list-disc prose-ol:list-decimal prose-ul:pl-6 prose-ol:pl-6
-        prose-code:bg-slate-100 prose-code:px-2 prose-code:py-1 prose-code:rounded-md
-      ">
-        <Content />
-      </article>
-
-      <div class="mt-16 bg-brand-cream rounded-3xl p-10 text-center">
-        <p class="text-brand-orange font-bold text-sm tracking-widest mb-3">{labels.cta_pre}</p>
-        <h2 class="text-2xl font-bold text-slate-900 mb-3">{labels.cta_title}</h2>
-        <p class="text-slate-500 mb-6">{labels.cta_desc}</p>
-        <a
-          href="https://micords.web.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition shadow-lg shadow-orange-200"
-        >
-          {labels.cta_btn}
-        </a>
-      </div>
-
-    </div>
-  </div>
-
+  <BlogPostContent
+    locale={locale}
+    title={title}
+    publishDate={publishDate}
+    excerpt={excerpt}
+    tags={tags}
+    coverImage={coverImage}
+    backHref={localePath(locale, '/blog', base)}
+    backLabel={labels.back}
+    ctaPre={labels.cta_pre}
+    ctaTitle={labels.cta_title}
+    ctaDesc={labels.cta_desc}
+    ctaBtn={labels.cta_btn}
+    ctaUrl={ctaUrl}
+    showCoverInHeader={true}
+    Content={Content}
+  />
   <Footer />
 </BaseLayout>

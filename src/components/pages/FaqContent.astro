@@ -1,0 +1,58 @@
+---
+import SectionHeader from '../SectionHeader.astro';
+
+interface Faq {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  badge: string;
+  title: string;
+  subtitle: string;
+  faqs: Faq[];
+  contactHref: string;
+  contactTitle: string;
+  contactDesc: string;
+  contactCta: string;
+}
+
+const { badge, title, subtitle, faqs, contactHref, contactTitle, contactDesc, contactCta } = Astro.props;
+---
+
+<div class="pt-28 pb-20 px-6">
+  <div class="max-w-3xl mx-auto">
+
+    <SectionHeader badge={badge} title={title} subtitle={subtitle} />
+
+    <div class="space-y-4">
+      {faqs.map(({ question, answer }) => (
+        <details class="group bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-8 py-6 cursor-pointer list-none">
+            <h2 class="font-bold text-slate-900 text-base leading-snug">{question}</h2>
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-50 flex items-center justify-center text-brand-orange transition-transform group-open:rotate-45">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-8 pb-6 text-slate-500 text-sm leading-relaxed border-t border-slate-50 pt-4">
+            <Fragment set:html={answer} />
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="mt-16 bg-brand-cream rounded-3xl p-10 text-center">
+      <h2 class="text-xl font-bold text-slate-900 mb-2">{contactTitle}</h2>
+      <p class="text-slate-500 mb-6">{contactDesc}</p>
+      <a
+        href={contactHref}
+        class="inline-block border-2 border-brand-orange text-brand-orange px-8 py-3 rounded-2xl font-bold hover:bg-orange-50 transition"
+      >
+        {contactCta}
+      </a>
+    </div>
+
+  </div>
+</div>
