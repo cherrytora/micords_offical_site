@@ -67,7 +67,7 @@ plans:
       - "Complete chart history (unlimited)"
       - "Blood test scan (unlimited)"
       - "AI daily summary (10/month)"
-      - "AI medical summary (10/month)"
+      - "AI visit report summary (10/month)"
 
 notes:
   - title: "📅 Subscription & Billing"
@@ -91,6 +91,7 @@ notes:
 
   - title: "☁️ Service Notice"
     items:
+      - '<span class="text-red-600 font-bold">⚠️ Micords is not a medical device and does not provide veterinary diagnostic services.</span>'
       - "Micords is a SaaS cloud subscription. No physical goods are shipped."
       - "Service activates immediately upon subscription via the internet."
       - "All data is stored in the cloud and accessible across devices."
