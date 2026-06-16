@@ -166,7 +166,7 @@ collections:
     summary: "{{title}} ({{publishDate}})"
     meta:
       path:
-        widget: parent
+        widget: string
         label: "語言資料夾"
         index_file: "_index"
     fields:
@@ -195,7 +195,7 @@ collections:
     summary: "v{{version}} - {{title}}"
     meta:
       path:
-        widget: parent
+        widget: string
         label: "語言資料夾"
         index_file: "_index"
     fields:
@@ -216,7 +216,7 @@ collections:
     slug: "{{order}}-{{slug}}"
     meta:
       path:
-        widget: parent
+        widget: string
         label: "語言資料夾"
         index_file: "_index"
     fields:
