@@ -92,6 +92,7 @@ notes:
   - title: "☁️ Service Notice"
     items:
       - '<span class="text-red-600 font-bold">⚠️ Micords is not a medical device and does not provide veterinary diagnostic services.</span>'
+      - '<span class="text-red-600 font-bold">The health reminders and information provided by this service are for reference only and do not constitute professional veterinary advice. If your pet has any health concerns, please consult a qualified veterinarian. Micords is not liable for any direct or indirect damages arising from the use of this service.</span>'
       - "Micords is a SaaS cloud subscription. No physical goods are shipped."
       - "Service activates immediately upon subscription via the internet."
       - "All data is stored in the cloud and accessible across devices."
