@@ -153,75 +153,39 @@ collections:
           - {name: ctaSubtitle, label: "CTA サブタイトル", widget: string}
           - {name: ctaButton, label: "CTA ボタンテキスト", widget: string}
 
-  # ── 繁體中文文章 ──────────────────────────
-  - name: articles-zh-tw
-    label: "毛孩日記 [繁中]"
-    label_singular: "文章（繁中）"
-    folder: src/content/articles/zh-tw
+  # ── 毛孩日記（三語）─────────────────────────
+  - name: articles
+    label: "毛孩日記"
+    label_singular: "文章"
+    folder: src/content/articles
     create: true
+    nested:
+      depth: 2
+      summary: '{{title}} ({{publishDate}})'
     slug: "{{slug}}"
     summary: "{{title}} ({{publishDate}})"
     fields:
-      - {name: title, label: "文章標題", widget: string}
-      - {name: slug, label: "網址 Slug（英文）", widget: string, hint: "例如：cat-hyperthyroidism-part-1，用小寫英文與連字號"}
+      - {name: title, label: "標題 / Title / タイトル", widget: string}
+      - {name: slug, label: "URL Slug（英文）", widget: string, hint: "小寫英文與連字號，例如：cat-hyperthyroidism-part-1"}
       - {name: publishDate, label: "發佈日期", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
-      - {name: excerpt, label: "文章摘要", widget: text, hint: "顯示在列表頁與 Google 搜尋結果，建議 50–120 字"}
+      - {name: excerpt, label: "摘要 / Excerpt / 概要", widget: text}
       - name: tags
-        label: "標籤"
-        widget: list
-        required: false
-        field: {name: tag, label: "標籤", widget: string}
-      - {name: coverImage, label: "封面圖片（選填）", widget: image, required: false}
-      - {name: body, label: "文章內容", widget: markdown}
-
-  # ── 英文文章 ──────────────────────────────
-  - name: articles-en
-    label: "Cat Diary [English]"
-    label_singular: "Article (EN)"
-    folder: src/content/articles/en
-    create: true
-    slug: "{{slug}}"
-    summary: "{{title}} ({{publishDate}})"
-    fields:
-      - {name: title, label: "Article Title", widget: string}
-      - {name: slug, label: "URL Slug", widget: string, hint: "Use the SAME slug as the zh-tw version, e.g. cat-hyperthyroidism-part-1"}
-      - {name: publishDate, label: "Publish Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
-      - {name: excerpt, label: "Excerpt", widget: text}
-      - name: tags
-        label: "Tags"
+        label: "標籤 / Tags / タグ"
         widget: list
         required: false
         field: {name: tag, label: "Tag", widget: string}
-      - {name: coverImage, label: "Cover Image (optional)", widget: image, required: false}
-      - {name: body, label: "Article Content", widget: markdown}
+      - {name: coverImage, label: "封面圖片 / Cover Image（選填）", widget: image, required: false}
+      - {name: body, label: "內容 / Content / 記事内容", widget: markdown}
 
-  # ── 日文文章 ──────────────────────────────
-  - name: articles-ja
-    label: "猫日記 [日本語]"
-    label_singular: "記事（日本語）"
-    folder: src/content/articles/ja
-    create: true
-    slug: "{{slug}}"
-    summary: "{{title}} ({{publishDate}})"
-    fields:
-      - {name: title, label: "記事タイトル", widget: string}
-      - {name: slug, label: "URLスラッグ", widget: string, hint: "繁中版と同じスラッグを使用 例：cat-hyperthyroidism-part-1"}
-      - {name: publishDate, label: "公開日", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
-      - {name: excerpt, label: "記事概要", widget: text}
-      - name: tags
-        label: "タグ"
-        widget: list
-        required: false
-        field: {name: tag, label: "タグ", widget: string}
-      - {name: coverImage, label: "カバー画像（任意）", widget: image, required: false}
-      - {name: body, label: "記事内容", widget: markdown}
-
-  # ── 更新日誌（繁中即可）─────────────────────
+  # ── 更新日誌（三語）─────────────────────────
   - name: release-notes
     label: "更新日誌"
     label_singular: "版本"
     folder: src/content/release-notes
     create: true
+    nested:
+      depth: 2
+      summary: 'v{{version}} - {{title}}'
     slug: "{{version}}"
     summary: "v{{version}} - {{title}}"
     fields:
@@ -230,12 +194,15 @@ collections:
       - {name: title, label: "標題", widget: string}
       - {name: body, label: "內容", widget: markdown}
 
-  # ── Roadmap（繁中即可）──────────────────────
+  # ── Roadmap（三語）──────────────────────────
   - name: roadmap
     label: "即將上線功能"
     label_singular: "功能項目"
     folder: src/content/roadmap
     create: true
+    nested:
+      depth: 2
+      summary: '{{title}}'
     slug: "{{order}}-{{slug}}"
     fields:
       - {name: order, label: "排序", widget: number, value_type: int}
