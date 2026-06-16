@@ -160,10 +160,14 @@ collections:
     folder: src/content/articles
     create: true
     nested:
-      depth: 2
+      depth: 100
       summary: '{{title}} ({{publishDate}})'
     slug: "{{slug}}"
     summary: "{{title}} ({{publishDate}})"
+    meta:
+      path:
+        widget: parent
+        label: "語言資料夾"
     fields:
       - {name: title, label: "標題 / Title / タイトル", widget: string}
       - {name: slug, label: "URL Slug（英文）", widget: string, hint: "小寫英文與連字號，例如：cat-hyperthyroidism-part-1"}
@@ -184,10 +188,14 @@ collections:
     folder: src/content/release-notes
     create: true
     nested:
-      depth: 2
+      depth: 100
       summary: 'v{{version}} - {{title}}'
     slug: "{{version}}"
     summary: "v{{version}} - {{title}}"
+    meta:
+      path:
+        widget: parent
+        label: "語言資料夾"
     fields:
       - {name: version, label: "版本號", widget: string}
       - {name: date, label: "發佈日期", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
@@ -201,9 +209,13 @@ collections:
     folder: src/content/roadmap
     create: true
     nested:
-      depth: 2
+      depth: 100
       summary: '{{title}}'
     slug: "{{order}}-{{slug}}"
+    meta:
+      path:
+        widget: parent
+        label: "語言資料夾"
     fields:
       - {name: order, label: "排序", widget: number, value_type: int}
       - {name: quarter, label: "季度", widget: string}
