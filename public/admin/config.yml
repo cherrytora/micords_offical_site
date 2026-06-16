@@ -154,71 +154,113 @@ collections:
           - {name: ctaButton, label: "CTA ボタンテキスト", widget: string}
 
   # ── 毛孩日記（三語）─────────────────────────
-  - name: articles
-    label: "毛孩日記"
-    label_singular: "文章"
-    folder: src/content/articles
+  - name: articles-zh-tw
+    label: "毛孩日記｜中文"
+    label_singular: "文章（中文）"
+    folder: src/content/articles/zh-tw
     create: true
-    nested:
-      depth: 100
-      summary: '{{title}} ({{publishDate}})'
     slug: "{{slug}}"
     summary: "{{title}} ({{publishDate}})"
-    meta:
-      path:
-        widget: string
-        label: "語言資料夾"
-        index_file: "_index"
     fields:
-      - {name: title, label: "標題 / Title / タイトル", widget: string}
+      - {name: title, label: "文章標題", widget: string}
       - {name: slug, label: "URL Slug（英文）", widget: string, hint: "小寫英文與連字號，例如：cat-hyperthyroidism-part-1"}
       - {name: publishDate, label: "發佈日期", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
-      - {name: excerpt, label: "摘要 / Excerpt / 概要", widget: text}
+      - {name: excerpt, label: "文章摘要", widget: text}
       - name: tags
-        label: "標籤 / Tags / タグ"
+        label: "標籤"
+        widget: list
+        required: false
+        field: {name: tag, label: "標籤", widget: string}
+      - {name: coverImage, label: "封面圖片（選填）", widget: image, required: false}
+      - {name: body, label: "文章內容", widget: markdown}
+
+  - name: articles-en
+    label: "毛孩日記｜English"
+    label_singular: "Article (EN)"
+    folder: src/content/articles/en
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{publishDate}})"
+    fields:
+      - {name: title, label: "Article Title", widget: string}
+      - {name: slug, label: "URL Slug", widget: string, hint: "Use the same slug as the zh-tw version"}
+      - {name: publishDate, label: "Publish Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+      - {name: excerpt, label: "Excerpt", widget: text}
+      - name: tags
+        label: "Tags"
         widget: list
         required: false
         field: {name: tag, label: "Tag", widget: string}
-      - {name: coverImage, label: "封面圖片 / Cover Image（選填）", widget: image, required: false}
-      - {name: body, label: "內容 / Content / 記事内容", widget: markdown}
+      - {name: coverImage, label: "Cover Image (optional)", widget: image, required: false}
+      - {name: body, label: "Article Content", widget: markdown}
+
+  - name: articles-ja
+    label: "毛孩日記｜日本語"
+    label_singular: "記事（日本語）"
+    folder: src/content/articles/ja
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{publishDate}})"
+    fields:
+      - {name: title, label: "記事タイトル", widget: string}
+      - {name: slug, label: "URLスラッグ", widget: string, hint: "繁中版と同じスラッグを使用"}
+      - {name: publishDate, label: "公開日", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+      - {name: excerpt, label: "記事概要", widget: text}
+      - name: tags
+        label: "タグ"
+        widget: list
+        required: false
+        field: {name: tag, label: "タグ", widget: string}
+      - {name: coverImage, label: "カバー画像（任意）", widget: image, required: false}
+      - {name: body, label: "記事内容", widget: markdown}
 
   # ── 更新日誌（三語）─────────────────────────
-  - name: release-notes
-    label: "更新日誌"
-    label_singular: "版本"
-    folder: src/content/release-notes
+  - name: release-notes-zh-tw
+    label: "更新日誌｜中文"
+    label_singular: "版本（中文）"
+    folder: src/content/release-notes/zh-tw
     create: true
-    nested:
-      depth: 100
-      summary: 'v{{version}} - {{title}}'
     slug: "{{version}}"
     summary: "v{{version}} - {{title}}"
-    meta:
-      path:
-        widget: string
-        label: "語言資料夾"
-        index_file: "_index"
     fields:
       - {name: version, label: "版本號", widget: string}
       - {name: date, label: "發佈日期", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
       - {name: title, label: "標題", widget: string}
       - {name: body, label: "內容", widget: markdown}
 
-  # ── Roadmap（三語）──────────────────────────
-  - name: roadmap
-    label: "即將上線功能"
-    label_singular: "功能項目"
-    folder: src/content/roadmap
+  - name: release-notes-en
+    label: "更新日誌｜English"
+    label_singular: "Release Note (EN)"
+    folder: src/content/release-notes/en
     create: true
-    nested:
-      depth: 100
-      summary: '{{title}}'
+    slug: "{{version}}"
+    summary: "v{{version}} - {{title}}"
+    fields:
+      - {name: version, label: "Version", widget: string}
+      - {name: date, label: "Release Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+      - {name: title, label: "Title", widget: string}
+      - {name: body, label: "Content", widget: markdown}
+
+  - name: release-notes-ja
+    label: "更新日誌｜日本語"
+    label_singular: "リリースノート（日本語）"
+    folder: src/content/release-notes/ja
+    create: true
+    slug: "{{version}}"
+    summary: "v{{version}} - {{title}}"
+    fields:
+      - {name: version, label: "バージョン", widget: string}
+      - {name: date, label: "リリース日", widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD"}
+      - {name: title, label: "タイトル", widget: string}
+      - {name: body, label: "内容", widget: markdown}
+
+  # ── 即將上線功能（三語）──────────────────────
+  - name: roadmap-zh-tw
+    label: "即將上線功能｜中文"
+    label_singular: "功能項目（中文）"
+    folder: src/content/roadmap/zh-tw
+    create: true
     slug: "{{order}}-{{slug}}"
-    meta:
-      path:
-        widget: string
-        label: "語言資料夾"
-        index_file: "_index"
     fields:
       - {name: order, label: "排序", widget: number, value_type: int}
       - {name: quarter, label: "季度", widget: string}
@@ -235,6 +277,52 @@ collections:
         label: "功能列表"
         widget: list
         field: {name: item, label: "功能", widget: string}
+
+  - name: roadmap-en
+    label: "即將上線功能｜English"
+    label_singular: "Roadmap Item (EN)"
+    folder: src/content/roadmap/en
+    create: true
+    slug: "{{order}}-{{slug}}"
+    fields:
+      - {name: order, label: "Order", widget: number, value_type: int}
+      - {name: quarter, label: "Quarter", widget: string}
+      - {name: title, label: "Title", widget: string}
+      - {name: desc, label: "Description", widget: text}
+      - name: status
+        label: "Status"
+        widget: select
+        options:
+          - {label: "Launched", value: done}
+          - {label: "Building", value: building}
+          - {label: "Planned", value: planned}
+      - name: features
+        label: "Feature List"
+        widget: list
+        field: {name: item, label: "Feature", widget: string}
+
+  - name: roadmap-ja
+    label: "即將上線功能｜日本語"
+    label_singular: "ロードマップ項目（日本語）"
+    folder: src/content/roadmap/ja
+    create: true
+    slug: "{{order}}-{{slug}}"
+    fields:
+      - {name: order, label: "順序", widget: number, value_type: int}
+      - {name: quarter, label: "四半期", widget: string}
+      - {name: title, label: "タイトル", widget: string}
+      - {name: desc, label: "説明", widget: text}
+      - name: status
+        label: "ステータス"
+        widget: select
+        options:
+          - {label: "リリース済み", value: done}
+          - {label: "開発中", value: building}
+          - {label: "計画中", value: planned}
+      - name: features
+        label: "機能リスト"
+        widget: list
+        field: {name: item, label: "機能", widget: string}
 
   # ── FAQ（三語）──────────────────────────────
   - name: faq
