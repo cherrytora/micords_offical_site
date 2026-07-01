@@ -22,11 +22,11 @@ const { contact: c } = t;
   <Nav />
 
   <div class="pt-28 pb-20 px-6">
-    <div class="max-w-2xl mx-auto">
+    <div class="max-w-4xl mx-auto">
 
       <SectionHeader badge={c.badge} title={c.title} subtitle={c.subtitle} />
 
-      <div class="grid sm:grid-cols-2 gap-6">
+      <div class="grid sm:grid-cols-3 gap-6">
         {c.channels.map(({ icon, title, handle, href, desc, cta }) => (
           <a
             href={href}
