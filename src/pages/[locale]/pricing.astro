@@ -53,13 +53,14 @@ const copy = en ? {
   <Footer />
 </BaseLayout>
 
-<script lang="ts">
-  function setPeriod(period: 'monthly' | 'annual') {
-    document.querySelectorAll<HTMLElement>('[data-monthly-price]').forEach((el) => { el.textContent = period === 'monthly' ? el.dataset.monthlyPrice! : el.dataset.annualPrice!; });
-    document.querySelectorAll<HTMLElement>('[data-plan-subtitle]').forEach((el) => { el.textContent = period === 'monthly' ? el.dataset.monthlySubtitle! : el.dataset.annualSubtitle!; });
-    const btnMonthly = document.getElementById('btn-monthly')!; const btnAnnual = document.getElementById('btn-annual')!;
+<script>
+  function setPeriod(period) {
+    document.querySelectorAll('[data-monthly-price]').forEach((el) => { el.textContent = period === 'monthly' ? el.dataset.monthlyPrice : el.dataset.annualPrice; });
+    document.querySelectorAll('[data-plan-subtitle]').forEach((el) => { el.textContent = period === 'monthly' ? el.dataset.monthlySubtitle : el.dataset.annualSubtitle; });
+    const btnMonthly = document.getElementById('btn-monthly'); const btnAnnual = document.getElementById('btn-annual');
+    if (!btnMonthly || !btnAnnual) return;
     btnMonthly.className = `px-5 py-2 rounded-xl text-sm font-semibold transition ${period === 'monthly' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`;
     btnAnnual.className = `px-5 py-2 rounded-xl text-sm font-semibold transition ${period === 'annual' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`;
   }
-  (window as any).setPeriod = setPeriod;
+  window.setPeriod = setPeriod;
 </script>
