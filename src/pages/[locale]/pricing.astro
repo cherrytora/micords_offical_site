@@ -53,7 +53,7 @@ const copy = en ? {
   <Footer />
 </BaseLayout>
 
-<script>
+<script lang="ts">
   function setPeriod(period: 'monthly' | 'annual') {
     document.querySelectorAll<HTMLElement>('[data-monthly-price]').forEach((el) => { el.textContent = period === 'monthly' ? el.dataset.monthlyPrice! : el.dataset.annualPrice!; });
     document.querySelectorAll<HTMLElement>('[data-plan-subtitle]').forEach((el) => { el.textContent = period === 'monthly' ? el.dataset.monthlySubtitle! : el.dataset.annualSubtitle!; });
