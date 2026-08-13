@@ -1,11 +1,11 @@
 seoTitle: "Micords Cat Health App | Plans & Pricing"
-seoDescription: "Micords offers Free, Pro, and Premium plans starting from NT$79/month. New users enjoy a 30-day free Pro trial."
+seoDescription: "Micords offers Free and Premium plans. Premium is NT$79/month, with savings on annual billing."
 pageTitle: "Plans & Pricing"
 pageSubtitle: "Simple, honest pricing for every cat parent."
 trialBadge: ""
 periodMonthly: "Monthly"
 periodAnnual: "Annual"
-periodAnnualSave: "Save ~20%"
+periodAnnualSave: "Save ~18%"
 
 plans:
   - id: free
@@ -28,55 +28,38 @@ plans:
       - "Single reminders (vaccine / follow-up)"
       - "Expense tracking & medical fund"
 
-  - id: pro
-    label: "PRO"
-    tag: "Most Popular"
+  - id: premium
+    label: "PREMIUM"
+    tag: "Complete Care"
     monthlyPrice: "NT$79"
     annualPrice: "NT$65"
     annualTotal: "NT$780/year"
-    annualSaveNote: "(save 20% vs monthly)"
+    annualSaveNote: "(save ~18% vs monthly)"
     popular: true
     dark: false
-    cta: "Upgrade to Pro"
+    cta: "Upgrade to Premium"
     features:
       - "Up to 5 cats"
-      - "Full chart history (1 year)"
-      - "Elimination / blood test trend charts"
-      - "Record export (PDF)"
-      - "Blood test scan (10/month)"
+      - "From the 6th cat: +NT$10/month or +NT$100/year per cat"
+      - "Each added cat includes +2/month for each AI summary type"
+      - "Complete chart history (unlimited)"
+      - "Full PDF and health chart export"
+      - "Unlimited blood test scans"
       - "Photo upload (5 per record)"
       - "Repeat reminders + medication management"
       - "Full expense categories & analysis"
-      - "Health Index"
-      - "Risk Alerts"
-      - "AI daily health summary (5/month)"
-
-  - id: premium
-    label: "PREMIUM"
-    tag: "Full Power"
-    monthlyPrice: "NT$99"
-    annualPrice: "NT$79"
-    annualTotal: "NT$948/year"
-    annualSaveNote: "(save 20% vs monthly)"
-    popular: false
-    dark: true
-    cta: "Upgrade to Premium"
-    features:
-      - "Everything in Pro"
-      - "Unlimited cats"
-      - "Complete chart history (unlimited)"
-      - "Blood test scan (unlimited)"
-      - "AI daily summary (10/month)"
+      - "Health Score + Risk Alerts"
+      - "AI daily health summary (10/month)"
       - "AI visit report summary (10/month)"
 
 notes:
   - title: "📅 Subscription & Billing"
     items:
-      - "New users get a 30-day free Pro trial — one per account."
+      - "New users get a 30-day free Premium trial — one per account."
       - "If you don't cancel before the trial ends, you will be automatically charged the monthly rate."
       - "Monthly plans auto-renew each month. Annual plans are billed once for 12 months and auto-renew annually."
       - "After cancellation, access continues until the end of the current billing period."
-      - "Annual saves ~20% compared to monthly billing."
+      - "Annual saves ~18% compared to monthly billing."
       - "Micords reserves the right to modify plan content."
 
   - title: "💳 Refund Policy"

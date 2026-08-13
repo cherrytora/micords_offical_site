@@ -1,11 +1,11 @@
 seoTitle: "Micords 猫の健康記録アプリ | 料金プラン"
-seoDescription: "MicordsはFree・Pro・Premiumの3プランをご用意。月額NT$79から。新規ユーザーは30日間Proプランを無料でお試しいただけます。"
+seoDescription: "MicordsはFreeとPremiumの2プランをご用意。Premiumは月額NT$79、年払いならさらにお得です。"
 pageTitle: "料金プラン"
 pageSubtitle: "すべての猫好きのためのシンプルな料金体系"
 trialBadge: ""
 periodMonthly: "月払い"
 periodAnnual: "年払い"
-periodAnnualSave: "約20%お得"
+periodAnnualSave: "約18%お得"
 
 plans:
   - id: free
@@ -28,55 +28,38 @@ plans:
       - "シングルリマインダー（ワクチン / 再診）"
       - "支出記録・医療基金管理"
 
-  - id: pro
-    label: "PRO"
-    tag: "最も人気"
+  - id: premium
+    label: "PREMIUM"
+    tag: "完全ケア"
     monthlyPrice: "NT$79"
     annualPrice: "NT$65"
     annualTotal: "NT$780/年"
-    annualSaveNote: "(月払い比20%お得)"
+    annualSaveNote: "(月払い比約18%お得)"
     popular: true
     dark: false
-    cta: "Proにアップグレード"
+    cta: "Premiumにアップグレード"
     features:
       - "猫5匹まで"
-      - "グラフ履歴（1年間）"
-      - "排泄 / 血液検査トレンドグラフ"
-      - "記録の書き出し（PDF）"
-      - "血液検査スキャン（10回/月）"
+      - "6匹目から、1匹につき月額NT$10／年額NT$100追加"
+      - "猫を1匹追加するごとに、2種類のAIサマリーが各月2回追加"
+      - "グラフ履歴（無制限）"
+      - "完全なPDF・健康グラフのエクスポート"
+      - "血液検査スキャン（無制限）"
       - "写真アップロード（1記録につき5枚）"
       - "繰り返しリマインダー + 薬管理"
       - "完全な支出分類と分析"
-      - "健康指数"
-      - "リスク予警"
-      - "AI日常健康サマリー（5回/月）"
-
-  - id: premium
-    label: "PREMIUM"
-    tag: "フル機能"
-    monthlyPrice: "NT$99"
-    annualPrice: "NT$79"
-    annualTotal: "NT$948/年"
-    annualSaveNote: "(月払い比20%お得)"
-    popular: false
-    dark: true
-    cta: "Premiumにアップグレード"
-    features:
-      - "Proのすべての機能"
-      - "猫の数無制限"
-      - "完全なグラフ履歴（無制限）"
-      - "血液検査スキャン（無制限）"
-      - "AI日常サマリー（10回/月）"
+      - "健康スコア + リスク通知"
+      - "AI日常健康サマリー（10回/月）"
       - "AI診察レポートサマリー（10回/月）"
 
 notes:
   - title: "📅 サブスクリプション"
     items:
-      - "新規ユーザーは30日間のProトライアルが利用可能（1アカウントにつき1回）。"
+      - "新規ユーザーは30日間のPremiumトライアルが利用可能（1アカウントにつき1回）。"
       - "無料トライアル期間中にキャンセルしない場合、期間終了後に月払い料金が自動請求されます。"
       - "月払いは毎月自動更新。年払いは12ヶ月分を一括払いで自動更新（年払い）。"
       - "キャンセル後も現在の期間終了まで利用可能。"
-      - "年払いは月払いより約20%お得です。"
+      - "年払いは月払いより約18%お得です。"
       - "Micords はプラン内容を変更する権利を留保します。"
 
   - title: "💳 返金ポリシー"

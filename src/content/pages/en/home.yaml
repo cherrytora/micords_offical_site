@@ -2,30 +2,30 @@ seoTitle: Micords — Cat Health & Medical Records, No Install Needed
 seoDescription: Micords is a PWA app designed for cats. Track diet, weight, blood tests, and medications. Auto-generate trend charts. Show complete records at the vet with one tap. Core features free.
 navCtaText: Try Now
 heroTitle: Micords — Cat Health & Medical Records, No Install Needed
-heroSubtitle: Diet, weight, blood tests, medications — all in one app. Quickly review daily records at the vet, communicate with confidence. Track blood test trends at home. Every step documented, every cat owner at ease.
+heroSubtitle: From daily meals and water intake to vet visits, blood tests, and medication, Micords keeps every part of your cat's care together. Quick Records plus daily feeding and medication check-ins help you stay on top of the little things, even on busy days.
 ctaPrimary: Try Now
 ctaSecondary: View Tutorial
 ctaSecondaryLink: /tutorial
 featuresTitle: One App, Care for Every Day
 features:
   - icon: 📝
-    title: Daily Logs
-    desc: Food, water, and litter — log instantly, organized automatically.
+    title: Quick Records
+    desc: Keep frequently used entries on the home screen and log food, water, weight, and daily changes in one tap.
+  - icon: ✅
+    title: Today’s Care Check-ins
+    desc: Set regular meals and medication, then check off daily feeding and doses from the home screen.
   - icon: 📈
     title: Health Trend Charts
-    desc: Weight and blood test data visualized. Spot changes at a glance.
+    desc: See weight, food, water, bathroom habits, and blood test data clearly over time.
   - icon: 🏥
     title: Complete Medical Records
-    desc: Medications, diagnoses, blood tests — all in one place. No more searching.
-  - icon: 🔔
-    title: Smart Reminders
-    desc: Vaccines, deworming, check-ups, medications — automatic notifications when it's time.
-  - icon: 💯
-    title: Health Score
-    desc: Auto-calculated from daily records. One score to understand your cat's overall condition.
+    desc: Bring vet visits, diagnoses, hospitalizations, surgery, blood tests, and medications together.
   - icon: ⚠️
-    title: Health Risk Alerts
-    desc: Cats can't say when something's wrong. Get proactive alerts when data trends raise a flag.
+    title: Health Score & Risk Alerts
+    desc: Understand recent health data and notice changes that may deserve closer attention.
+  - icon: 💰
+    title: Care Expenses & Supplies
+    desc: Keep expenses, medical funds, supplies, and PDF exports from being scattered across places.
 storyTitle: Our Story
 storyContent: >-
   It started when we discovered our orange cat Lara had hyperthyroidism. A few days later, our white cat Lily stopped eating and drinking — a trip to the vet revealed pancreatitis and Stage 2 chronic kidney disease. Both cats fell ill almost simultaneously and needed long-term monitoring.

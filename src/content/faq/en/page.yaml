@@ -1,6 +1,6 @@
 faqs:
   - question: What is Micords?
-    answer: Micords is a health record tool designed specifically for cats. The name comes from "Mi (cat) + Records." It supports food logging, weight tracking, blood test management, medication reminders, expense tracking, supplies inventory, and more — helping every cat owner fully manage their pet's health. Built with PWA technology, it works on both iPhone and Android — just add it to your home screen and use it like a native app, or open it in any browser.
+    answer: Micords is a health record tool designed specifically for cats. The name comes from "Mi (cat) + Records." It supports Quick Records, Today’s Care check-ins, food and weight tracking, blood test management, medication reminders, expense tracking, and supplies inventory — helping cat owners manage everyday care in one place. Built with PWA technology, it works on iPhone, Android, and any desktop browser.
   - question: Is Micords free?
     answer: Micords is currently in beta testing, and participants will enjoy completely free access forever. You can open it directly in your mobile browser, or install it as a PWA (Progressive Web App) for a native app-like experience.
   - question: What is a PWA? Do I need to download it from the App Store?
@@ -23,6 +23,14 @@ faqs:
     answer: Before a vet visit, review recent diet, weight, blood test, and medication records in Micords. During the visit, hand your phone to the vet or describe recent trends. Instead of saying "I think she lost a bit of weight," show a three-month weight trend chart — making communication more precise and efficient.
   - question: Can I export or back up my data?
     answer: Yes! Micords supports exporting daily records and medical records as separate PDF files — great for keeping a backup or bringing to a vet visit.
+  - question: What features were added recently?
+    answer: Micords now includes Quick Records and Today’s Care check-ins. Set regular meals and ongoing medications, then complete records directly from the home screen. Common entries such as food, water, and weight can also be opened quickly.
+  - question: What is Today’s Care?
+    answer: Today’s Care turns your regular meal and medication settings into a daily feeding and medication checklist. Checking an item off also creates its corresponding record, making it easy to look back on completed care.
+  - question: What can I add to Quick Records?
+    answer: You can add frequently used entries such as dry or wet food, water, hydration packs, weight, urination, bowel movements, vomiting, medication, subcutaneous fluids, and blood pressure. Choose up to four items and add custom entries too.
+  - question: Are Health Score and Risk Alerts a diagnosis?
+    answer: No. They are supporting information based on record and data changes, designed to help you notice situations worth watching sooner. They do not replace veterinary advice. Please consult a qualified veterinarian if your cat shows abnormal behavior, energy, or appetite.
   - question: Is my data safe?
     answer: "Micords takes user privacy and data security seriously. Your pet health data is for your personal use only and will never be shared with third parties. Micords developers will not access any data you enter. If you have any concerns, please contact us via official <a href='https://www.threads.com/@rela2cats' target='_blank' rel='noopener noreferrer' class='text-brand-orange hover:underline'>Threads @rela2cats</a> or the feedback form."
   - question: How do I delete my account or clear all my data?

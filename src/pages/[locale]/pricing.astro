@@ -6,440 +6,52 @@ import PricingContent from '../../components/pages/PricingContent.astro';
 import type { Locale } from '../../i18n/index';
 import { getEntry } from 'astro:content';
 
-export function getStaticPaths() {
-  return [
-    { params: { locale: 'en' } },
-    { params: { locale: 'ja' } },
-  ];
-}
-
+export function getStaticPaths() { return [{ params: { locale: 'en' } }, { params: { locale: 'ja' } }]; }
 const { locale } = Astro.params as { locale: Locale };
-
 const p = await getEntry('pricing', `${locale}/page`);
-const {
-  seoTitle, seoDescription,
-  pageTitle, pageSubtitle, trialBadge,
-  periodMonthly, periodAnnual, periodAnnualSave,
-  plans, notes,
-  ctaTitle, ctaSubtitle, ctaButton,
-} = p.data;
+const { seoTitle, seoDescription, pageTitle, pageSubtitle, trialBadge, periodMonthly, periodAnnual, periodAnnualSave, plans, notes, ctaTitle, ctaSubtitle, ctaButton } = p.data;
 const { data: { ctaUrl } } = await getEntry('global', 'settings');
+const en = locale === 'en';
+const copy = en ? {
+  comparison: 'Full Feature Comparison', feature: 'Feature', limits: 'Basic Limits', cats: 'Number of cats', addCat: 'Additional cats from the 6th', addCatValue: '+NT$10/month or +NT$100/year per cat', addCatNote: '+2/month for each AI summary type', chart: 'Charts & Export', history: 'Chart history', export: 'Full trend charts & PDF export', care: 'Medical & Care', scan: 'Blood test scan', tools: 'Repeat reminders, medication management, Health Score & Risk Alerts', ai: 'AI Features', daily: 'AI daily health summary', visit: 'AI visit report summary', months: '6 months', unlimited: 'Unlimited', times: 'times/month', catsFree: '2 cats', catsPremium: '5 cats', perMonth: '/mo',
+} : {
+  comparison: '機能比較', feature: '機能', limits: '基本制限', cats: '猫の数', addCat: '6匹目からの追加', addCatValue: '1匹につき月額NT$10／年額NT$100追加', addCatNote: '2種類のAIサマリーが各月2回追加', chart: 'グラフとエクスポート', history: 'グラフ履歴', export: '完全なトレンドグラフとPDFエクスポート', care: '医療とケア', scan: '血液検査スキャン', tools: '繰り返しリマインダー・薬管理・健康スコア・リスク通知', ai: 'AI機能', daily: 'AI日常健康サマリー', visit: 'AI診察レポートサマリー', months: '6か月', unlimited: '無制限', times: '回/月', catsFree: '2匹', catsPremium: '5匹', perMonth: '/月',
+};
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription}>
   <Nav />
-
-  <div class="pt-28 pb-20 px-6">
-    <div class="max-w-5xl mx-auto">
-
-      <PricingContent
-        pageTitle={pageTitle}
-        pageSubtitle={pageSubtitle}
-        trialBadge={trialBadge}
-        periodMonthly={periodMonthly}
-        periodAnnual={periodAnnual}
-        periodAnnualSave={periodAnnualSave}
-        plans={plans}
-        notes={notes}
-        ctaTitle={ctaTitle}
-        ctaSubtitle={ctaSubtitle}
-        ctaButton={ctaButton}
-        ctaUrl={ctaUrl}
-        perMonthLabel={locale === 'ja' ? '/月' : '/mo'}
-      >
-        {locale === 'en' ? (
-          <!-- Feature comparison table (EN) -->
-          <div class="mb-16">
-            <h2 class="text-2xl font-bold text-slate-900 text-center mb-8">Full Feature Comparison</h2>
-            <div class="overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
-              <table class="w-full text-sm">
-                <thead>
-                  <tr class="bg-slate-50 border-b border-slate-100">
-                    <th class="text-left px-6 py-4 font-semibold text-slate-500 w-1/2">Feature</th>
-                    <th class="text-center px-4 py-4 font-semibold text-slate-600">Free</th>
-                    <th class="text-center px-4 py-4 font-semibold text-blue-600">Pro</th>
-                    <th class="text-center px-4 py-4 font-semibold text-amber-600">Premium</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-50">
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">Basic Limits</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Number of cats</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">2 cats</td>
-                    <td class="text-center px-4 py-3.5 text-blue-600 font-semibold">5 cats</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">Unlimited</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">Daily Records</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Food / Water / Elimination / Weight</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">Health Charts</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Weight trend chart</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Food / water chart</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Chart history</td>
-                    <td class="text-center px-4 py-3.5 text-slate-500">6 months</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">1 year</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">Unlimited</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Elimination trend chart</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Blood test trend chart</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Record export (PDF)</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">Vet Records</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Vet visit records (text)</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Blood test values</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Blood test scan</td>
-                    <td class="text-center px-4 py-3.5 text-slate-500">2/month</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">10/month</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">Unlimited</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Photo upload per record</td>
-                    <td class="text-center px-4 py-3.5 text-slate-500">1 photo</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">5 photos</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">5 photos</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Total photo limit</td>
-                    <td class="text-center px-4 py-3.5 text-slate-500">50 photos</td>
-                    <td class="text-center px-4 py-3.5 text-blue-600 font-semibold">Unlimited</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">Unlimited</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">Reminders</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Single reminders (vaccine / follow-up)</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Repeat reminders</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Medication management</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">Expense Tracking</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Expense log + monthly summary</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Medical fund tracking</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Full expense categories + pie chart</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">AI Features</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">AI daily health summary</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">5/month</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">10/month</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">AI medical summary (vet report)</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">10/month</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Health Index</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">Risk Alerts</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ) : (
-          <!-- Feature comparison table (JA) -->
-          <div class="mb-16">
-            <h2 class="text-2xl font-bold text-slate-900 text-center mb-8">機能比較一覧</h2>
-            <div class="overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
-              <table class="w-full text-sm">
-                <thead>
-                  <tr class="bg-slate-50 border-b border-slate-100">
-                    <th class="text-left px-6 py-4 font-semibold text-slate-500 w-1/2">機能</th>
-                    <th class="text-center px-4 py-4 font-semibold text-slate-600">Free</th>
-                    <th class="text-center px-4 py-4 font-semibold text-blue-600">Pro</th>
-                    <th class="text-center px-4 py-4 font-semibold text-amber-600">Premium</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-50">
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">基本制限</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">猫の数</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">2匹</td>
-                    <td class="text-center px-4 py-3.5 text-blue-600 font-semibold">5匹</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">無制限</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">毎日の記録</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">食事 / 飲水 / 排泄 / 体重</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">健康グラフ</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">体重トレンドグラフ</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">食事 / 飲水グラフ</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">グラフ表示期間</td>
-                    <td class="text-center px-4 py-3.5 text-slate-500">6ヶ月</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">1年</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">無制限</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">排泄トレンドグラフ</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">血液検査トレンドグラフ</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">記録の書き出し（PDF）</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">診察記録</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">診察記録（テキスト）</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">血液検査値の記録</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">血液検査スキャン</td>
-                    <td class="text-center px-4 py-3.5 text-slate-500">2回/月</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">10回/月</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">無制限</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">写真アップロード（1記録につき）</td>
-                    <td class="text-center px-4 py-3.5 text-slate-500">1枚</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">5枚</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">5枚</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">写真の総上限</td>
-                    <td class="text-center px-4 py-3.5 text-slate-500">50枚</td>
-                    <td class="text-center px-4 py-3.5 text-blue-600 font-semibold">無制限</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">無制限</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">リマインダー</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">シングルリマインダー（ワクチン / 再診）</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">繰り返しリマインダー</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">薬管理</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">支出管理</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">記帳 + 月次サマリー</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">医療基金残高追跡</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">完全な支出分類 + 円グラフ</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="bg-orange-50/40">
-                    <td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="4">AI 機能</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">AI 日常健康サマリー</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5 text-slate-600">5回/月</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">10回/月</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">AI 医療サマリー（診察レポート）</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5 text-amber-600 font-semibold">10回/月</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">健康指数評価</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition">
-                    <td class="px-6 py-3.5 text-slate-700">健康リスク予警</td>
-                    <td class="text-center px-4 py-3.5 text-slate-300">—</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                    <td class="text-center px-4 py-3.5">✓</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-      </PricingContent>
-
-    </div>
-  </div>
-
+  <div class="pt-28 pb-20 px-6"><div class="max-w-5xl mx-auto">
+    <PricingContent {...{ pageTitle, pageSubtitle, trialBadge, periodMonthly, periodAnnual, periodAnnualSave, plans, notes, ctaTitle, ctaSubtitle, ctaButton, ctaUrl }} perMonthLabel={copy.perMonth}>
+      <div class="mb-16"><h2 class="text-2xl font-bold text-slate-900 text-center mb-8">{copy.comparison}</h2>
+        <div class="overflow-x-auto rounded-3xl border border-slate-100 shadow-sm"><table class="w-full text-sm"><thead><tr class="bg-slate-50 border-b border-slate-100"><th class="text-left px-6 py-4 font-semibold text-slate-500 w-1/2">{copy.feature}</th><th class="text-center px-4 py-4 font-semibold text-slate-600">Free</th><th class="text-center px-4 py-4 font-semibold text-brand-orange">Premium</th></tr></thead>
+        <tbody class="divide-y divide-slate-50">
+          <tr class="bg-orange-50/40"><td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="3">{copy.limits}</td></tr>
+          <tr><td class="px-6 py-3.5 text-slate-700">{copy.cats}</td><td class="text-center px-4 py-3.5">{copy.catsFree}</td><td class="text-center px-4 py-3.5 text-brand-orange font-semibold">{copy.catsPremium}</td></tr>
+          <tr><td class="px-6 py-3.5 text-slate-700">{copy.addCat}</td><td class="text-center px-4 py-3.5 text-slate-300">—</td><td class="text-center px-4 py-3.5 text-brand-orange font-semibold">{copy.addCatValue}<br /><span class="text-xs font-normal text-slate-500">{copy.addCatNote}</span></td></tr>
+          <tr class="bg-orange-50/40"><td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="3">{copy.chart}</td></tr>
+          <tr><td class="px-6 py-3.5 text-slate-700">{copy.history}</td><td class="text-center px-4 py-3.5 text-slate-500">{copy.months}</td><td class="text-center px-4 py-3.5 text-brand-orange font-semibold">{copy.unlimited}</td></tr>
+          <tr><td class="px-6 py-3.5 text-slate-700">{copy.export}</td><td class="text-center px-4 py-3.5 text-slate-300">—</td><td class="text-center px-4 py-3.5">✓</td></tr>
+          <tr class="bg-orange-50/40"><td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="3">{copy.care}</td></tr>
+          <tr><td class="px-6 py-3.5 text-slate-700">{copy.scan}</td><td class="text-center px-4 py-3.5 text-slate-500">2 {copy.times}</td><td class="text-center px-4 py-3.5 text-brand-orange font-semibold">{copy.unlimited}</td></tr>
+          <tr><td class="px-6 py-3.5 text-slate-700">{copy.tools}</td><td class="text-center px-4 py-3.5 text-slate-300">—</td><td class="text-center px-4 py-3.5">✓</td></tr>
+          <tr class="bg-orange-50/40"><td class="px-6 py-3 font-bold text-slate-700 text-xs uppercase tracking-wide" colspan="3">{copy.ai}</td></tr>
+          <tr><td class="px-6 py-3.5 text-slate-700">{copy.daily}</td><td class="text-center px-4 py-3.5 text-slate-300">—</td><td class="text-center px-4 py-3.5 text-brand-orange font-semibold">10 {copy.times}</td></tr>
+          <tr><td class="px-6 py-3.5 text-slate-700">{copy.visit}</td><td class="text-center px-4 py-3.5 text-slate-300">—</td><td class="text-center px-4 py-3.5 text-brand-orange font-semibold">10 {copy.times}</td></tr>
+        </tbody></table></div>
+      </div>
+    </PricingContent>
+  </div></div>
   <Footer />
 </BaseLayout>
 
 <script>
   function setPeriod(period: 'monthly' | 'annual') {
-    document.querySelectorAll<HTMLElement>('[data-monthly-price]').forEach((el) => {
-      el.textContent = period === 'monthly'
-        ? el.dataset.monthlyPrice!
-        : el.dataset.annualPrice!;
-    });
-
-    document.querySelectorAll<HTMLElement>('[data-plan-subtitle]').forEach((el) => {
-      el.textContent = period === 'monthly'
-        ? el.dataset.monthlySubtitle!
-        : el.dataset.annualSubtitle!;
-    });
-
-    document.querySelectorAll<HTMLElement>('[data-plan-annual-note]').forEach((el) => {
-      el.textContent = '';
-    });
-
-    const btnMonthly = document.getElementById('btn-monthly')!;
-    const btnAnnual  = document.getElementById('btn-annual')!;
-    if (period === 'monthly') {
-      btnMonthly.className = 'px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm';
-      btnAnnual.className  = 'px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500';
-    } else {
-      btnAnnual.className  = 'px-5 py-2 rounded-xl text-sm font-semibold transition bg-white text-slate-900 shadow-sm';
-      btnMonthly.className = 'px-5 py-2 rounded-xl text-sm font-semibold transition text-slate-500';
-    }
+    document.querySelectorAll<HTMLElement>('[data-monthly-price]').forEach((el) => { el.textContent = period === 'monthly' ? el.dataset.monthlyPrice! : el.dataset.annualPrice!; });
+    document.querySelectorAll<HTMLElement>('[data-plan-subtitle]').forEach((el) => { el.textContent = period === 'monthly' ? el.dataset.monthlySubtitle! : el.dataset.annualSubtitle!; });
+    const btnMonthly = document.getElementById('btn-monthly')!; const btnAnnual = document.getElementById('btn-annual')!;
+    btnMonthly.className = `px-5 py-2 rounded-xl text-sm font-semibold transition ${period === 'monthly' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`;
+    btnAnnual.className = `px-5 py-2 rounded-xl text-sm font-semibold transition ${period === 'annual' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`;
   }
-
   (window as any).setPeriod = setPeriod;
 </script>

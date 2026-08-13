@@ -1,11 +1,11 @@
 seoTitle: "Micords 貓咪健康紀錄 APP｜方案與定價"
-seoDescription: "Micords 提供 Free、Pro、Premium 三種方案，月繳最低 NT$79 起，年繳享更多折扣。"
+seoDescription: "Micords 提供 Free 與 Premium 兩種方案；Premium 月繳 NT$79，年繳更優惠。"
 pageTitle: "方案與定價"
 pageSubtitle: "為每一位愛貓人設計的合理方案"
 trialBadge: ""
 periodMonthly: "月繳"
 periodAnnual: "年繳"
-periodAnnualSave: "省約 20%"
+periodAnnualSave: "省約 18%"
 
 plans:
   - id: free
@@ -28,55 +28,38 @@ plans:
       - "單次提醒（疫苗/回診）"
       - "記帳與醫療基金追蹤"
 
-  - id: pro
-    label: "PRO"
-    tag: "最受歡迎"
+  - id: premium
+    label: "PREMIUM"
+    tag: "完整照護"
     monthlyPrice: "NT$79"
     annualPrice: "NT$65"
     annualTotal: "NT$780/年"
-    annualSaveNote: "(比月繳省 20%)"
+    annualSaveNote: "(比月繳省約 18%)"
     popular: true
     dark: false
-    cta: "升級 Pro"
+    cta: "升級 Premium"
     features:
       - "最多 5 隻貓咪"
-      - "完整圖表（1 年歷史）"
-      - "排泄 / 血檢趨勢圖"
-      - "匯出紀錄（PDF）"
-      - "掃描血檢報告（10 次/月）"
+      - "第 6 隻起，每隻 +NT$10/月；年繳 +NT$100/年"
+      - "每加 1 隻，兩種 AI 摘要各 +2 次/月"
+      - "完整圖表（不限時間）"
+      - "完整 PDF 與健康圖表匯出"
+      - "掃描血檢報告（不限次數）"
       - "照片上傳（每筆 5 張）"
       - "重複提醒 + 藥品管理"
       - "完整花費分類與分析"
-      - "健康指數"
-      - "風險預警"
-      - "AI 日常健康摘要（5 次/月）"
-
-  - id: premium
-    label: "PREMIUM"
-    tag: "頂級功能"
-    monthlyPrice: "NT$99"
-    annualPrice: "NT$79"
-    annualTotal: "NT$948/年"
-    annualSaveNote: "(比月繳省 20%)"
-    popular: false
-    dark: true
-    cta: "升級 Premium"
-    features:
-      - "Pro 所有功能"
-      - "貓咪數量無限"
-      - "完整歷史圖表（無限）"
-      - "掃描血檢報告（不限次數）"
-      - "AI 日常摘要（10 次/月）"
-      - "AI看診報告摘要（10 次/月）"
+      - "健康指數 + 風險提醒"
+      - "AI 日常健康摘要（10 次/月）"
+      - "AI 看診報告摘要（10 次/月）"
 
 notes:
   - title: "📅 訂閱與計費"
     items:
-      - "每個帳號可申請一次 30 天 Pro 方案免費試用"
+      - "每個帳號可申請一次 30 天 Premium 方案免費試用"
       - "免費試用期間未取消，系統將於期滿後自動以月繳費用扣款。"
       - "月繳方案每月自動扣款；年繳方案一次支付 12 個月費用，自動續訂。"
       - "取消後仍可使用至本期訂閱結束，不會立即失效。"
-      - "年繳比月繳省約 20%，適合長期使用的貓奴。"
+      - "年繳比月繳省約 18%，適合長期使用的貓奴。"
       - "Micords 保有修改方案內容的權利。"
 
   - title: "💳 退款政策"

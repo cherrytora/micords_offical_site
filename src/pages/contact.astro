@@ -18,7 +18,7 @@ const c = t.contact;
       <SectionHeader badge={c.badge} title={c.title} subtitle={c.subtitle} />
 
       <!-- 聯絡卡片 -->
-      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {c.channels.map(({ icon, title, handle, href, desc, cta }) => (
           <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col gap-4">
             <div class="text-3xl">{icon}</div>

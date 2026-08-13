@@ -24,13 +24,13 @@ sections:
     mediaLabel: Micords 貓咪健康紀錄簿｜開始使用
     youtubeId: MPBkb3XG68o
   - id: daily-log
-    title: 每日日誌：飲食、飲水與排泄
-    desc: 掌握每日狀況，讓細微的變化無所遁形。
+    title: 每日日誌與快速紀錄
+    desc: 首頁的快速紀錄可先幫你打開最常填寫的項目；需要補充份量、時間、照片或備註時，再完整填寫紀錄。
     steps:
-      - 進入日常紀錄頁面，點「+」
-      - 選擇類型：飲食 / 飲水 / 大便 / 尿尿 /  體重
+      - 在首頁的「快速紀錄」點選常用項目，或進入日常紀錄頁面點「+」
+      - 選擇類型：飲食 / 飲水 / 大便 / 尿尿 / 體重 / 其他日常項目
       - 填入數量與備註（例如：食慾不佳、顏色異常）
-      - 儲存後可以在首頁的健康指標趨勢看數值與變化
+      - 儲存後可在首頁健康指標與趨勢頁查看變化
     mediaLabel: Micords 貓咪健康紀錄簿｜日常紀錄
     youtubeId: r_bwPmumRzs
   - id: medical-records
@@ -52,13 +52,13 @@ sections:
     mediaLabel: 健康趨勢這樣看
     youtubeId: MqXxGNL_-Ds
   - id: reminders
-    title: 智慧提醒：疫苗、驅蟲、回診
-    desc: 從此不漏接任何重要事件。
+    title: 智慧提醒與今日照護
+    desc: 從此不漏接任何重要事件，也能在首頁完成每天的餵食與給藥打卡。
     steps:
       - 進入「提醒」點「＋」
       - 選擇類型：吃藥 / 看診 / 打疫苗 / 驅蟲  / 打皮下  / 自訂
       - 設定日期與時間
-      - 加入提醒
+      - 加入提醒；固定餐次與持續用藥則可在首頁「今日照護」直接完成打卡
     mediaLabel: 提醒設定教學
     youtubeId: CpWpw-cQhLo
 ctaTitle: 看完教學，準備好了嗎？

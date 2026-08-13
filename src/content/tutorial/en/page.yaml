@@ -24,13 +24,13 @@ sections:
     mediaLabel: Micords — Getting Started
     youtubeId: MPBkb3XG68o
   - id: daily-log
-    title: Daily Journal — Food, Water & Litter
-    desc: Track daily status so no subtle change goes unnoticed.
+    title: Daily Logs & Quick Records
+    desc: Use Quick Records on the home screen for common entries, then add amounts, times, photos, or notes when you need more detail.
     steps:
-      - Go to the Daily Log page and tap "+"
-      - Choose type — Food / Water / Poop / Pee / Weight
+      - Tap a Quick Record on the home screen, or go to Daily Logs and tap "+"
+      - Choose Food / Water / Poop / Pee / Weight / another daily item
       - Enter amount and notes (e.g., poor appetite, abnormal color)
-      - After saving, check the Health Trend on the home screen for values and changes
+      - After saving, review changes in Health Trends
     mediaLabel: Micords — Daily Log
     youtubeId: r_bwPmumRzs
   - id: medical-records
@@ -52,13 +52,13 @@ sections:
     mediaLabel: How to Read Health Trends
     youtubeId: MqXxGNL_-Ds
   - id: reminders
-    title: Smart Reminders — Vaccines, Deworming, Check-ups
-    desc: Never miss an important event again.
+    title: Smart Reminders & Today’s Care
+    desc: Never miss an important event, and check off daily feeding and medication from the home screen.
     steps:
       - Go to "Reminders" and tap "+"
       - Choose type — Medication / Vet Visit / Vaccine / Deworming / Subcutaneous Fluids / Custom
       - Set the date and time
-      - Add reminder
+      - Add the reminder; regular meals and ongoing medications can be checked off in Today’s Care
     mediaLabel: Reminder Setup Tutorial
     youtubeId: CpWpw-cQhLo
 ctaTitle: Ready after watching the tutorial?
