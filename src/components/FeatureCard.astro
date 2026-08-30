@@ -6,10 +6,10 @@ interface Props {
 }
 const { icon, title, desc } = Astro.props;
 ---
-<div class="bg-brand-cream p-8 rounded-3xl border border-orange-50">
-  <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-2xl mb-6">
+<div class="h-full bg-brand-cream p-6 sm:p-7 rounded-3xl border border-orange-50 shadow-sm transition-transform duration-200 hover:-translate-y-1">
+  <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-2xl mb-5">
     {icon}
   </div>
-  <h3 class="font-bold text-lg mb-3">{title}</h3>
+  <h3 class="font-bold text-xl text-slate-900 mb-3">{title}</h3>
   <p class="text-slate-500 text-sm leading-relaxed">{desc}</p>
 </div>

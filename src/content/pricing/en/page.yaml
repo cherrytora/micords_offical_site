@@ -37,7 +37,7 @@ plans:
     annualSaveNote: "(save ~18% vs monthly)"
     popular: true
     dark: false
-    cta: "Upgrade to Premium"
+    cta: "Upgrade in the Micords service"
     features:
       - "Up to 5 cats"
       - "From the 6th cat: +NT$10/month or +NT$100/year per cat"
@@ -55,12 +55,12 @@ plans:
 notes:
   - title: "📅 Subscription & Billing"
     items:
-      - "New users get a 30-day free Premium trial — one per account."
-      - "If you don't cancel before the trial ends, you will be automatically charged the monthly rate."
+      - "Each account can use one 30-day Premium free trial, with no payment information required."
+      - "At the end of the free trial, your account returns to the Free plan. You will not be charged unless you actively subscribe to Premium."
       - "Monthly plans auto-renew each month. Annual plans are billed once for 12 months and auto-renew annually."
       - "After cancellation, access continues until the end of the current billing period."
       - "Annual saves ~18% compared to monthly billing."
-      - "Micords reserves the right to modify plan content."
+      - "Micords may modify plan content. We will provide reasonable prior notice of material changes affecting existing subscription benefits."
 
   - title: "💳 Refund Policy"
     items:
@@ -70,12 +70,12 @@ notes:
       - "Access continues until the end of the current billing period after cancellation."
       - "Special exceptions: duplicate charges from system errors / service outage exceeding 72 hours / billing errors confirmed by support."
       - 'To request a refund, fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSct6PAw6GrwWH1swOEKO6GtUQQYo6Zqme5l8JHT9LgQTU9QmQ/viewform" target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">refund form</a> (include registered email, payment date, and reason) → email reply within 3 business days → refund to card within 14 business days.'
-      - 'For subscription or refund inquiries, visit our <a href="/contact" class="text-brand-orange hover:underline font-semibold">Contact Us</a> page for more options.'
+      - 'For subscription or refund inquiries, visit our <a href="https://cherrytora.github.io/micords_offical_site/contact/" class="text-brand-orange hover:underline font-semibold">Contact Us</a> page for more options.'
 
   - title: "☁️ Service Notice"
     items:
       - '<span style="color:#dc2626;font-weight:700">⚠️ Micords is not a medical device and does not provide veterinary diagnostic services.</span>'
-      - '<span style="color:#dc2626;font-weight:700">The health reminders and information provided by this service are for reference only and do not constitute professional veterinary advice. If your pet has any health concerns, please consult a qualified veterinarian. Micords is not liable for any direct or indirect damages arising from the use of this service.</span>'
+      - '<span style="color:#dc2626;font-weight:700">The health reminders and information provided by this service are for reference only and do not constitute professional veterinary advice. If your pet has any health concerns, please consult a qualified veterinarian. To the maximum extent permitted by law, Micords is not liable for indirect, incidental, special, or consequential damages arising from use of the service.</span>'
       - "Micords is a SaaS cloud subscription. No physical goods are shipped."
       - "Service activates immediately upon subscription via the internet."
       - "All data is stored in the cloud and accessible across devices."

@@ -378,6 +378,7 @@ collections:
               - {name: title, label: "功能名稱", widget: string}
               - {name: desc, label: "功能說明", widget: text}
           - {name: storyTitle, label: "品牌故事標題", widget: string}
+          - {name: storyEyebrow, label: "品牌故事前言", widget: string}
           - {name: storyContent, label: "品牌故事內容", widget: text}
           - {name: ctaTitle, label: "CTA 標題", widget: string}
           - {name: ctaButton, label: "CTA 按鈕文字", widget: string}
@@ -402,6 +403,7 @@ collections:
               - {name: title, label: "Feature Name", widget: string}
               - {name: desc, label: "Description", widget: text}
           - {name: storyTitle, label: "Story Title", widget: string}
+          - {name: storyEyebrow, label: "Story Eyebrow", widget: string}
           - {name: storyContent, label: "Story Content", widget: text}
           - {name: ctaTitle, label: "CTA Title", widget: string}
           - {name: ctaButton, label: "CTA Button Text", widget: string}
@@ -426,6 +428,7 @@ collections:
               - {name: title, label: "機能名", widget: string}
               - {name: desc, label: "説明", widget: text}
           - {name: storyTitle, label: "ストーリータイトル", widget: string}
+          - {name: storyEyebrow, label: "ストーリー前文", widget: string}
           - {name: storyContent, label: "ストーリー内容", widget: text}
           - {name: ctaTitle, label: "CTAタイトル", widget: string}
           - {name: ctaButton, label: "CTAボタン", widget: string}

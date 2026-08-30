@@ -6,7 +6,7 @@ heroSubtitle: From daily meals and water intake to vet visits, blood tests, and 
 ctaPrimary: Try Now
 ctaSecondary: View Tutorial
 ctaSecondaryLink: /tutorial
-featuresTitle: One App, Care for Every Day
+featuresTitle: From daily care to medical visits, keep track of every day with your cat
 features:
   - icon: 📝
     title: Quick Records
@@ -26,23 +26,29 @@ features:
   - icon: 💰
     title: Care Expenses & Supplies
     desc: Keep expenses, medical funds, supplies, and PDF exports from being scattered across places.
+storyEyebrow: It started with Lily and Lara
 storyTitle: Our Story
-storyContent: >-
-  It started when we discovered our orange cat Lara had hyperthyroidism. A few days later, our white cat Lily stopped eating and drinking — a trip to the vet revealed pancreatitis and Stage 2 chronic kidney disease. Both cats fell ill almost simultaneously and needed long-term monitoring.
+storyContent: |-
+  It began when our orange cat, Lara, was diagnosed with hyperthyroidism.
 
+  Just two days later, our white cat, Lily, suddenly stopped eating and drinking. Tests revealed pancreatitis and Stage 2 chronic kidney disease. Both cats became ill at nearly the same time, and from then on needed ongoing follow-up care.
 
-  During months of hospital visits, we kept flipping through notes trying to recall previous values and what the vets had said — because every clinic had different reference ranges.
+  During that time, we travelled back and forth between different hospitals and clinics. Each visit came with different tests, reference ranges, and past values to compare. Before every appointment, we searched through notes and reports, trying to remember the last numbers and what the vet had said.
 
+  When a new report arrived, it was hard to tell at a glance: over the past few weeks, were things improving, staying stable, or was a value slowly starting to change?
 
-  After getting test results, we couldn't immediately tell whether things had improved over the past few weeks. With both cats' appointments just two days apart on weekdays, we'd sometimes mix them up and give the vet a confused answer.
+  Their follow-up appointments were often only a day or two apart. When the vet asked about recent changes, we would occasionally mix up the two cats' values and give an answer that even the vet had to double-check.
 
+  Those hectic days led us to build a tool made for tracking cats' health.
 
-  That feeling of chaos led us to build a tool: "Turn your love for your cat into traceable health records." Whether you want to log daily routines or need medical data for vet visits, Micords makes it easy.
+  “Turn your love for your cat into health records you can follow.”
 
+  From daily meals, water intake, weight, and everyday wellbeing to vet visits, blood test results, and long-term changes, Micords helps keep it all in one place. At the next appointment, there is no need to piece everything together from memory — you can clearly see your cat's health journey.
 
-  Micords was built by two cats' devoted owners and a brother who got roped in. We're sharing it with every pet parent out there.
+  That is how Micords began: with Lara and Lily's health records.
 
+  It was built by two cats' human and her younger brother, who joined the project through a little sibling pressure, and is shared with every pet parent who cares deeply for their companion.
 
-  Cat records — that's what Micords is for.
-ctaTitle: Recording is the best care.
+  For your cat's records, choose Micords.
+ctaTitle: Because you care, remember every detail more clearly.
 ctaButton: Try Micords Now

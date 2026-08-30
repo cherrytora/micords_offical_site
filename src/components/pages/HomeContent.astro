@@ -12,6 +12,7 @@ interface Props {
     ctaSecondaryHref: string;
     featuresTitle: string;
     features: { icon: string; title: string; desc: string }[];
+    storyEyebrow: string;
     storyTitle: string;
     storyContent: string;
     ctaTitle: string;
@@ -26,7 +27,7 @@ const {
   ctaPrimary,
   ctaSecondary, ctaSecondaryHref,
   featuresTitle, features,
-  storyTitle, storyContent,
+  storyEyebrow, storyTitle, storyContent,
   ctaTitle, ctaButton,
 } = data;
 ---
@@ -81,7 +82,7 @@ const {
 <section class="py-24 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
     <h2 class="text-3xl font-bold mb-12 text-center text-slate-900">{featuresTitle}</h2>
-    <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
       {features.map(({ icon, title, desc }) => (
         <FeatureCard icon={icon} title={title} desc={desc} />
       ))}
@@ -90,10 +91,23 @@ const {
 </section>
 
 <!-- Story -->
-<section class="py-24 px-6 bg-brand-cream" id="story">
-  <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-3xl font-bold mb-8 text-slate-900">{storyTitle}</h2>
-    <p class="text-slate-600 leading-relaxed text-lg">{storyContent}</p>
+<section class="py-20 sm:py-24 px-6 bg-brand-cream" id="story">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-10 sm:mb-12">
+      <p class="text-brand-orange font-bold tracking-widest text-sm mb-3">{storyEyebrow}</p>
+      <h2 class="text-3xl font-bold text-slate-900">{storyTitle}</h2>
+    </div>
+    <div class="space-y-6 text-left text-slate-600 leading-8 text-base sm:text-lg">
+      {storyContent.split(/\n\s*\n/).map((paragraph, index) => (
+        index === 6 ? (
+          <blockquote class="border-l-4 border-brand-orange bg-white/70 rounded-r-2xl px-6 py-5 text-xl font-bold leading-relaxed text-slate-800 shadow-sm">
+            {paragraph}
+          </blockquote>
+        ) : (
+          <p class={index === 0 ? 'text-xl font-medium leading-relaxed text-slate-800' : index === 10 ? 'font-semibold text-slate-800' : ''}>{paragraph}</p>
+        )
+      ))}
+    </div>
   </div>
 </section>
 

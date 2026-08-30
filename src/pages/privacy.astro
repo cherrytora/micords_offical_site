@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout
-  title="隱私權政策｜Micords 貓咪健康記錄簿"
-  description="Micords 貓咪健康記錄簿隱私權政策，說明我們如何蒐集、使用與保護您的個人資料。"
+  title="隱私權與服務｜Micords 貓咪健康記錄簿"
+  description="Micords 貓咪健康記錄簿的隱私權政策與服務條款。"
 >
   <Nav />
 
@@ -14,10 +14,15 @@ import Footer from '../components/Footer.astro';
     <div class="max-w-2xl mx-auto">
 
       <header class="mb-12">
-        <h1 class="text-3xl font-bold text-slate-900 mb-2">隱私權政策</h1>
-        <p class="text-sm text-slate-400">最後更新日期：2026 年 3 月 18 日</p>
+        <h1 class="text-3xl font-bold text-slate-900 mb-6">隱私權與服務</h1>
+        <div class="flex gap-2 border-b border-slate-100" role="tablist" aria-label="隱私權與服務">
+          <button type="button" role="tab" aria-selected="true" data-legal-tab="privacy" class="px-4 py-2 text-sm font-semibold text-brand-orange border-b-2 border-brand-orange">隱私權政策</button>
+          <button type="button" role="tab" aria-selected="false" data-legal-tab="terms" class="px-4 py-2 text-sm font-semibold text-slate-500 border-b-2 border-transparent">服務條款</button>
+        </div>
       </header>
 
+      <section data-legal-panel="privacy">
+        <p class="text-sm text-slate-400 mb-8">最後更新日期：2026 年 8 月 30 日</p>
       <div class="prose prose-slate max-w-none
         prose-headings:font-bold prose-headings:text-slate-900
         prose-h2:text-lg prose-h2:mt-10 prose-h2:mb-3
@@ -41,6 +46,7 @@ import Footer from '../components/Footer.astro';
           <li>Email（註冊與登入用）</li>
           <li>貓咪相關資料（名稱、健康紀錄、血檢數值等）</li>
           <li>你填寫的日常紀錄（飲食、排泄、用藥等）</li>
+          <li>訂閱與交易資訊（方案、交易狀態、付款時間及退款所需資訊）</li>
         </ul>
 
         <p><strong>2. 系統自動產生的資料</strong></p>
@@ -54,13 +60,14 @@ import Footer from '../components/Footer.astro';
           <li>提供服務功能（例如：紀錄、圖表、提醒通知）</li>
           <li>改善產品體驗與功能設計</li>
           <li>分析使用狀況以優化服務</li>
-          <li>在必要時與你聯繫（例如：重要通知、封測回饋）</li>
+          <li>在必要時與你聯繫（例如：重要通知、意見回饋）</li>
         </ul>
         <p>我們不會將你的資料出售或提供給第三方做廣告用途。</p>
 
         <h2>三、資料保存與安全</h2>
         <ul>
-          <li>你的資料會儲存在安全的系統環境中</li>
+          <li>主要使用者資料儲存於 Firebase 與 Google Cloud 提供的雲端服務環境，其中 Cloud Firestore 設於 Google Cloud 台灣區域（asia-east1）</li>
+          <li>雲端儲存空間及其他雲端資源會依實際服務設定處理或儲存資料；部分服務可能由其他地區的雲端資源處理</li>
           <li>我們會採取合理措施防止未經授權的存取、洩漏或竄改</li>
           <li>但網路傳輸無法保證 100% 安全，請理解並自行評估風險</li>
         </ul>
@@ -69,7 +76,8 @@ import Footer from '../components/Footer.astro';
         <p>本服務原則上不會與第三方分享你的個人資料，除非：</p>
         <ul>
           <li>經你同意</li>
-          <li>為提供服務所必要（例如：雲端基礎設施）</li>
+          <li>為提供、維護及改善服務所必要（例如 Firebase、Google Cloud 等雲端基礎設施供應商）</li>
+          <li>為處理付款、定期扣款、退款及交易風險管理所必要（例如第三方金流服務商 PAYUNi）；Micords 不儲存完整信用卡卡號或安全碼</li>
           <li>法律要求或政府機關依法要求</li>
         </ul>
 
@@ -90,27 +98,19 @@ import Footer from '../components/Footer.astro';
         </ul>
         <p>你可以透過瀏覽器設定停用 Cookies，但可能影響部分功能使用。</p>
 
-        <h2>七、封測期間說明</h2>
-        <p>目前本服務為封測階段：</p>
-        <ul>
-          <li>功能可能隨時調整或變更</li>
-          <li>資料可能因系統測試而調整或刪除</li>
-          <li>我們建議不要將唯一的重要資料僅儲存在本服務中</li>
-        </ul>
+        <h2>七、政策修改</h2>
+        <p>Micords 得因服務、法令或營運需求修改本隱私權政策。修改後的政策將公布於本頁並載明更新日期；如屬重大且可能影響你的個人資料權益的變更，將以合理方式事前通知。你於生效日後繼續使用本服務，即視為同意修改後的隱私權政策；依法得行使的權利不受影響。</p>
 
-        <h2>八、政策修改</h2>
-        <p>我們可能會不定期更新本隱私權政策，更新後將公布於本服務中。</p>
-
-        <h2>九、未成年人的保護</h2>
+        <h2>八、未成年人的保護</h2>
         <p>本服務主要供成年飼主使用，若您未滿十八歲，請在父母或監護人同意下使用。若您發現我們無意中收集了未成年人的資料，請聯絡我們，我們將儘速刪除。</p>
 
-        <h2>十、聯絡方式</h2>
+        <h2>九、聯絡方式</h2>
         <p>如有任何問題或資料相關需求，請聯絡：</p>
         <ul>
           <li>Email：<a href="mailto:m85592527@gmail.com">m85592527@gmail.com</a></li>
         </ul>
 
-        <h2>十一、適用法律</h2>
+        <h2>十、適用法律</h2>
         <p>本隱私權政策受中華民國法律管轄。任何因本政策引起的爭議，雙方同意以台灣台北地方法院為第一審管轄法院。</p>
 
         <hr />
@@ -118,8 +118,90 @@ import Footer from '../components/Footer.astro';
         <p class="text-sm font-bold !text-brand-orange">使用本服務即代表您同意我們的隱私權政策。</p>
 
       </div>
+      </section>
+
+      <section data-legal-panel="terms" hidden aria-label="服務條款">
+        <p class="text-sm text-slate-400 mb-8">最後更新日期：2026 年 8 月 30 日</p>
+        <div class="prose prose-slate max-w-none
+          prose-headings:font-bold prose-headings:text-slate-900
+          prose-h2:text-lg prose-h2:mt-10 prose-h2:mb-3
+          prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-4
+          prose-li:text-slate-600 prose-li:leading-relaxed prose-li:my-1
+          prose-strong:text-slate-800 prose-a:text-brand-orange prose-a:no-underline hover:prose-a:underline
+          prose-hr:border-slate-100 prose-hr:my-8 prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6
+        ">
+          <h2>一、服務說明與條款適用</h2>
+          <p>歡迎使用 Micords 貓咪健康記錄簿（以下稱「Micords」或「本服務」）。本服務提供貓咪照護、健康與日常紀錄等功能。本服務條款（以下稱「本條款」）規範你使用本服務時的權利與義務。</p>
+          <p>使用本服務前，請先完整閱讀本條款及本頁的隱私權政策。當你註冊、開始免費試用、訂閱或繼續使用本服務時，即表示你同意受本條款約束。未滿十八歲者，應在法定代理人同意及協助下使用本服務。</p>
+
+          <h2>二、帳號與使用責任</h2>
+          <p>Micords 透過 Google 帳號授權登入。你應自行妥善保管 Google 帳號與登入裝置，並對以你的帳號進行的活動負責。若發現未經授權使用，請立即透過本服務的聯絡管道通知我們。</p>
+          <p>你可依本服務提供的流程申請刪除帳號。帳號刪除後，相關資料將依隱私權政策及適用法令處理；已刪除的資料可能無法復原。</p>
+
+          <h2>三、免費試用、訂閱與計費</h2>
+          <ul>
+            <li>每個帳號得使用一次 30 天 Premium 免費試用。免費試用期間無須提供付款資訊，且不會產生任何費用。</li>
+            <li>試用期屆滿後，帳號將自動轉為 Free 方案；除非你主動訂閱 Premium，否則不會自動扣款。</li>
+            <li>如欲使用 Premium 功能，你須主動選擇月繳或年繳方案，並透過 PAYUNi 完成首次付款及續期扣款授權。訂閱價格、功能與適用條件以<a href="https://cherrytora.github.io/micords_offical_site/pricing/" target="_blank" rel="noopener noreferrer">方案與定價頁面</a>公告為準。</li>
+            <li>完成訂閱後，月繳方案按月、年繳方案按年自動續訂。你可在下一期扣款日前，透過帳號設定中的退訂功能取消續訂；取消後仍可使用至當期訂閱結束。</li>
+          </ul>
+
+          <h2>四、付款、退款與取消</h2>
+          <p>付款交易、信用卡授權及續期扣款由第三方金流服務商 PAYUNi 處理。為處理交易，Micords 得向 PAYUNi 提供訂單編號、交易金額、聯絡資訊及付款所必要資訊；完整信用卡卡號與安全碼由 PAYUNi 處理，Micords 不會儲存。</p>
+          <ul>
+            <li>月繳與年繳方案均可於付款後 7 日內申請全額退款。</li>
+            <li>付款滿 7 日後，原則上不受理退款；你仍可隨時取消下一期續訂。</li>
+            <li>若發生重複扣款、服務無預警停止超過 72 小時，或經確認的計費錯誤，Micords 將依個案處理退款。</li>
+            <li>退款申請請填寫<a href="https://docs.google.com/forms/d/e/1FAIpQLSct6PAw6GrwWH1swOEKO6GtUQQYo6Zqme5l8JHT9LgQTU9QmQ/viewform" target="_blank" rel="noopener noreferrer">退款表單</a>，並提供註冊 Email、付款日期與退款原因。我們將於 3 個工作日內以 Email 回覆；退款核准後，將於 14 個工作日內退回原付款方式。</li>
+          </ul>
+
+          <h2>五、使用規範</h2>
+          <p>你同意不會以本服務從事違法、侵害他人權益、干擾服務運作、未經授權擷取或複製內容、反向工程、反編譯或拆解本服務軟體等行為。若有違反，Micords 得在必要範圍內限制或終止你的使用權限。</p>
+
+          <h2>六、使用者內容與智慧財產權</h2>
+          <p>你保有輸入、上傳至本服務的貓咪紀錄、照片及檔案之權利。為提供本服務，你授予 Micords 在必要範圍內儲存、處理、備份及顯示該等內容的非專屬授權。</p>
+          <p>本服務的軟體、設計、商標及其他內容之智慧財產權，除另有標示外，均受相關法令保護。未經授權，不得使用、重製、散布或改作。</p>
+
+          <h2>七、健康資訊與責任限制</h2>
+          <p><strong>Micords 非醫療器材，亦不提供獸醫診斷服務。</strong>本服務提供的健康提醒、分析與資訊僅供一般照護參考，不構成獸醫專業建議。若你的寵物有健康疑慮，請儘速諮詢合格獸醫師。</p>
+          <p>在適用法令允許的最大範圍內，Micords 不對因依賴本服務資訊所生的間接、附帶、特殊或衍生性損害負責；但本條不排除或限制依法不得排除或限制的責任。</p>
+
+          <h2>八、服務變更、中斷與終止</h2>
+          <p>Micords 得為維護、安全、功能改善或法令遵循而更新、調整或中斷部分服務。若屬重大且可能影響已訂閱用戶權益的變更，我們將以合理方式事前通知。因維護、不可抗力、第三方服務異常或主管機關要求所致的服務中斷，我們將盡合理努力恢復服務。</p>
+
+          <h2>九、隱私權</h2>
+          <p>Micords 對個人資料的蒐集、處理及利用，依本頁的隱私權政策辦理；隱私權政策為本條款的一部分。</p>
+
+          <h2>十、條款修改</h2>
+          <p>Micords 得因服務、法令或營運需求修改本條款。修改後的條款將公布於本頁並載明更新日期；如屬重大不利變更，將以合理方式事前通知。你於生效日後繼續使用本服務，即視為同意修改後的條款；依法得行使的權利不受影響。</p>
+
+          <h2>十一、準據法與爭議處理</h2>
+          <p>本條款以中華民國法律為準據法。因本條款所生爭議，雙方應先本於誠信原則協商處理；如有消費爭議，你得依適用法令向相關機關申訴或循法律程序處理。法律對管轄法院另有強制規定者，從其規定。</p>
+
+          <h2>十二、聯絡我們</h2>
+          <p>若你對本條款、訂閱、退款或個人資料有任何問題，請透過<a href="https://cherrytora.github.io/micords_offical_site/contact/" target="_blank" rel="noopener noreferrer">聯絡我們</a>頁面，或寄送 Email 至 <a href="mailto:m85592527@gmail.com">m85592527@gmail.com</a>。</p>
+        </div>
+      </section>
     </div>
   </div>
 
   <Footer />
 </BaseLayout>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-legal-tab]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-legal-panel]');
+
+  tabs.forEach((tab) => tab.addEventListener('click', () => {
+    const activeTab = tab.dataset.legalTab;
+    tabs.forEach((item) => {
+      const isActive = item.dataset.legalTab === activeTab;
+      item.setAttribute('aria-selected', String(isActive));
+      item.classList.toggle('text-brand-orange', isActive);
+      item.classList.toggle('border-brand-orange', isActive);
+      item.classList.toggle('text-slate-500', !isActive);
+      item.classList.toggle('border-transparent', !isActive);
+    });
+    panels.forEach((panel) => { panel.hidden = panel.dataset.legalPanel !== activeTab; });
+  }));
+</script>

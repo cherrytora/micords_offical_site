@@ -37,7 +37,7 @@ plans:
     annualSaveNote: "(比月繳省約 18%)"
     popular: true
     dark: false
-    cta: "升級 Premium"
+    cta: "請至 Micords 服務內升級"
     features:
       - "最多 5 隻貓咪"
       - "第 6 隻起，每隻 +NT$10/月；年繳 +NT$100/年"
@@ -55,12 +55,12 @@ plans:
 notes:
   - title: "📅 訂閱與計費"
     items:
-      - "每個帳號可申請一次 30 天 Premium 方案免費試用"
-      - "免費試用期間未取消，系統將於期滿後自動以月繳費用扣款。"
+      - "每個帳號可使用一次 30 天 Premium 方案免費試用，期間無須提供付款資訊。"
+      - "免費試用期滿後將自動回到 Free 方案；除非主動訂閱 Premium，否則不會自動扣款。"
       - "月繳方案每月自動扣款；年繳方案一次支付 12 個月費用，自動續訂。"
       - "取消後仍可使用至本期訂閱結束，不會立即失效。"
       - "年繳比月繳省約 18%，適合長期使用的貓奴。"
-      - "Micords 保有修改方案內容的權利。"
+      - "Micords 得修改方案內容；如屬重大且影響既有訂閱權益的變更，將以合理方式事前通知。"
 
   - title: "💳 退款政策"
     items:
@@ -70,16 +70,16 @@ notes:
       - "取消訂閱後仍可使用至當期結束"
       - "特殊情況退款：系統異常導致的重複扣款 / 服務無預警停止超過 72 小時 / 經客服確認之計費錯誤"
       - '退款流程：填寫<a href="https://docs.google.com/forms/d/e/1FAIpQLSct6PAw6GrwWH1swOEKO6GtUQQYo6Zqme5l8JHT9LgQTU9QmQ/viewform" target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">退款表單</a>（含註冊 Email、付款日期、退款原因）→ 3 個工作日內以 Email 回覆 → 核准後 14 個工作日退回信用卡'
-      - '如有訂閱或退款問題，歡迎至<a href="/contact" class="text-brand-orange hover:underline font-semibold">聯絡我們</a>頁面了解更多管道'
+      - '如有訂閱或退款問題，歡迎至<a href="https://cherrytora.github.io/micords_offical_site/contact/" class="text-brand-orange hover:underline font-semibold">聯絡我們</a>頁面了解更多管道'
 
   - title: "☁️ 服務型態說明"
     items:
       - '<span style="color:#dc2626;font-weight:700">⚠️ Micords 非醫療器材，亦不提供獸醫診斷服務。</span>'
-      - '<span style="color:#dc2626;font-weight:700">本服務提供之健康提醒及資訊僅供參考，不構成獸醫專業建議。寵物如有任何健康問題，請務必請教合格獸醫師。Micords 對因使用本服務所產生之任何直接或間接損害不負賠償責任。</span>'
+      - '<span style="color:#dc2626;font-weight:700">本服務提供之健康提醒及資訊僅供參考，不構成獸醫專業建議。寵物如有任何健康問題，請務必請教合格獸醫師。在法律允許的最大範圍內，Micords 不對因使用本服務所生的間接、附帶、特殊或衍生性損害負責。</span>'
       - "Micords 為 SaaS 雲端訂閱服務，無實體商品。"
       - "訂閱後立即開通，透過網際網路提供所有功能，不進行實體配送。"
       - "所有資料儲存於雲端，支援跨裝置使用。"
 
-ctaTitle: "開始守護你的毛孩健康"
+ctaTitle: "開始守護毛孩健康"
 ctaSubtitle: "免費開始，隨時可升級。"
 ctaButton: "立即免費體驗"
