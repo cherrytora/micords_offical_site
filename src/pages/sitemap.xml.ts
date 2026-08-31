@@ -10,6 +10,8 @@ export const GET: APIRoute = async () => {
     'blog',
     'contact',
     'faq',
+    'pricing',
+    'privacy',
     'release-notes',
     'roadmap',
     'tutorial',
@@ -25,10 +27,14 @@ export const GET: APIRoute = async () => {
     })
   );
 
-  // Blog articles only in zh-tw for now
-  const articleUrls = articles.map(
-    (article) => `  <url><loc>${siteUrl}/blog/${article.slug}/</loc></url>`
-  );
+  const articleUrls = articles.map((article) => {
+    const [locale] = article.id.split('/');
+    const pureSlug = article.slug.replace(`${locale}/`, '');
+    const path = locale === 'zh-tw'
+      ? `/blog/${pureSlug}/`
+      : `/${locale}/blog/${pureSlug}/`;
+    return `  <url><loc>${siteUrl}${path}</loc></url>`;
+  });
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
