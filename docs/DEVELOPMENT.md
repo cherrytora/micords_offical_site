@@ -5,7 +5,7 @@ Micords 官網，使用 [Astro](https://astro.build/) + Tailwind CSS 建置，�
 ## 目錄結構
 
 ```
-micord_offical_site/
+micords_offical_site/
 ├── public/                        # 靜態資源（圖片、Logo）
 │   └── Micords.png / Micords去背.png
 ├── src/
@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-啟動後開啟瀏覽器：**http://localhost:4321/micord_offical_site**
+啟動後開啟瀏覽器：**http://localhost:4321/**
 
 > 若 4321 被佔用會自動換 port（4322、4323…），Terminal 會顯示實際 URL。
 > 存檔後瀏覽器會自動熱重載，不需要手動重整。
@@ -113,14 +113,16 @@ summary: "支援多隻貓咪帳戶切換。"
 
 ---
 
-## 部署到 GitHub Pages
+## 部署到 Firebase Hosting
 
 ### 自動部署（推薦）
 
-1. Push 到 `main` branch，GitHub Actions 會自動 build 並部署。
-2. 第一次使用前，到 GitHub repo → **Settings → Pages → Source**，選 **GitHub Actions**。
+1. 在 Firebase 專案 `rilalab` 建立 GitHub Secret：`FIREBASE_SERVICE_ACCOUNT_RILALAB`。其值是具有 Firebase Hosting 部署權限的服務帳戶 JSON 金鑰。
+2. Push 到 `main` branch，GitHub Actions 會自動 build 並部署到 Firebase Hosting site `micordshq`。
 
-部署完成後網站位於：**https://cherrytora.github.io/micord_offical_site/**
+部署完成後網站位於：**https://micordshq.web.app/**
+
+GitHub 仍保留為原始碼與 Decap CMS 的內容後端；網站公開服務不再使用 GitHub Pages。
 
 ### 手動 Build
 

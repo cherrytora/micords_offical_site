@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cherrytora.github.io/micords_offical_site/sitemap.xml
+Sitemap: https://micordshq.web.app/sitemap.xml

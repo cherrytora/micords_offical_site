@@ -5,7 +5,7 @@ backend:
   base_url: https://round-butterfly-d457.m85592527.workers.dev
 
 media_folder: public/images
-public_folder: /micords_offical_site/images
+public_folder: /images
 
 # ── YAML anchors for reusable field definitions ──────────────────────────────
 

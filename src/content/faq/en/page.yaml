@@ -2,7 +2,7 @@ faqs:
   - question: What is Micords?
     answer: Micords is a health record tool designed specifically for cats. The name comes from "Mi (cat) + Records." It supports Quick Records, Today’s Care check-ins, food and weight tracking, blood test management, medication reminders, expense tracking, and supplies inventory — helping cat owners manage everyday care in one place. Built with PWA technology, it works on iPhone, Android, and any desktop browser.
   - question: Is Micords free?
-    answer: Micords offers both free and paid plans, so you can choose the option that best fits your needs. View our <a href="https://cherrytora.github.io/micords_offical_site/pricing/" class="text-brand-orange hover:underline font-semibold">plans and pricing</a>.
+    answer: Micords offers both free and paid plans, so you can choose the option that best fits your needs. View our <a href="https://micordshq.web.app/pricing/" class="text-brand-orange hover:underline font-semibold">plans and pricing</a>.
   - question: What is a PWA? Do I need to download it from the App Store?
     answer: No! Micords is a PWA (Progressive Web App). Just open the URL in your mobile browser and tap "Add to Home Screen" to install it on your phone. Both iOS (Safari) and Android (Chrome) are supported — no App Store or Google Play download needed.
   - question: How do I create an account? What login methods are supported?

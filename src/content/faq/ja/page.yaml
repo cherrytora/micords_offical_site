@@ -2,7 +2,7 @@ faqs:
   - question: Micordsとは何ですか？
     answer: Micordsは猫のために設計された健康記録ツールです。名前は「Mi（猫）+ Records」に由来します。クイック記録、今日のケアチェック、食事・体重管理、血液検査管理、投薬リマインダー、支出記録、用品在庫管理などに対応し、毎日のケアを1か所で管理できます。PWA技術を採用しており、iPhone・Android・パソコンのブラウザで利用できます。
   - question: Micordsは無料ですか？
-    answer: Micordsには無料プランと有料プランがあり、ニーズに合わせてお選びいただけます。詳しくは<a href="https://cherrytora.github.io/micords_offical_site/pricing/" class="text-brand-orange hover:underline font-semibold">料金プラン</a>をご覧ください。
+    answer: Micordsには無料プランと有料プランがあり、ニーズに合わせてお選びいただけます。詳しくは<a href="https://micordshq.web.app/pricing/" class="text-brand-orange hover:underline font-semibold">料金プラン</a>をご覧ください。
   - question: PWAとは何ですか？App Storeからダウンロードする必要はありますか？
     answer: 不要です！MicordsはPWA（Progressive Web App）です。スマートフォンのブラウザでURLを開き、「ホーム画面に追加」をタップするだけでインストールできます。iOS（Safari）とAndroid（Chrome）の両方に対応しており、App StoreやGoogle Playのダウンロードは一切不要です。
   - question: アカウントの登録方法は？どのログイン方法に対応していますか？

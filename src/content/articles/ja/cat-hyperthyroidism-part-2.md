@@ -42,7 +42,7 @@ tags:
 「やると決めた」から「実際にやる」までの待機期間が最もつらかった。不安で眠れない夜に、ひたすらネットで調べ続けました。
 
 ### Micords 治療追跡のヒント
-放射線治療前の待機期間中も、[Micordsでの記録](https://cherrytora.github.io/micords_offical_site/tutorial/)を続けることが大切です！\
+放射線治療前の待機期間中も、[Micordsでの記録](https://micordshq.web.app/tutorial/)を続けることが大切です！\
 投薬中止前後の変化を把握し、症状の悪化を早期に発見できます。
 
 **記録推奨項目：**

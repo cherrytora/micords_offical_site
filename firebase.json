@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "micordshq",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

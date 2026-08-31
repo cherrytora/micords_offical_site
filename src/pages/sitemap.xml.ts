@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async () => {
-  const siteUrl = 'https://cherrytora.github.io/micords_offical_site';
+  const siteUrl = 'https://micordshq.web.app';
   const locales = ['', 'en', 'ja']; // '' = zh-tw default (no prefix)
 
   const staticPages = [

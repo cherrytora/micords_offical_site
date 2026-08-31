@@ -2,7 +2,7 @@ faqs:
   - question: Micords 是什麼？
     answer: Micords 是一款專為貓咪設計的健康紀錄小工具，名稱來自「貓（Mi）+ Records」。支援快速紀錄、今日照護打卡、飲食與體重追蹤、血檢管理、用藥提醒、記帳簿與物品倉庫等功能，幫助每位貓奴全面掌握毛孩的健康狀況。使用 PWA 技術，iPhone、Android 都可以加到主畫面當 APP 用，電腦網頁也能直接開啟！
   - question: Micords 是免費的嗎？
-    answer: Micords 提供免費版與付費版方案，你可以依照需求選擇。查看完整的<a href="https://cherrytora.github.io/micords_offical_site/pricing/" class="text-brand-orange hover:underline font-semibold">方案與價格</a>。
+    answer: Micords 提供免費版與付費版方案，你可以依照需求選擇。查看完整的<a href="https://micordshq.web.app/pricing/" class="text-brand-orange hover:underline font-semibold">方案與價格</a>。
   - question: 什麼是 PWA？需要去 App Store 下載嗎？
     answer: 不需要！Micords 是 PWA（Progressive Web App），直接用手機瀏覽器開啟網址，點選「加入主畫面」就可以安裝到手機桌面。iOS（Safari）和 Android（Chrome）都支援，完全不需要透過 App Store 或 Google Play 下載。
   - question: 如何註冊帳號？支援哪些登入方式？

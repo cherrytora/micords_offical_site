@@ -22,7 +22,7 @@ const { Content } = await article.render();
 const { title, publishDate, excerpt, tags, coverImage } = article.data;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const siteUrl = 'https://cherrytora.github.io/micords_offical_site';
+const siteUrl = 'https://micordshq.web.app';
 const { data: { ctaUrl } } = await getEntry('global', 'settings');
 const t = useTranslations('zh-tw');
 const labels = t.blogPost;

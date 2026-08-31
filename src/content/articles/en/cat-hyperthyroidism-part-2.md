@@ -42,7 +42,7 @@ The hospital gave a thorough explanation of the costs, hospitalization process, 
 The waiting period between "deciding to do it" and "actually doing it" was the hardest part. I was worried and scared, up at night googling everything.
 
 ### Micords Tracking Reminder
-During the waiting period before radioactive iodine therapy, keeping up with [Micords records](https://cherrytora.github.io/micords_offical_site/tutorial/) is especially important!\
+During the waiting period before radioactive iodine therapy, keeping up with [Micords records](https://micordshq.web.app/tutorial/) is especially important!\
 It gives you a clear picture of changes before and after stopping medication, and helps prevent symptoms from spiraling out of control.
 
 **Recommended items to track:**

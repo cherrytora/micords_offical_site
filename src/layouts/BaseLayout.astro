@@ -19,12 +19,12 @@ const locale = (Astro.currentLocale ?? 'zh-tw') as Locale;
 const lang = htmlLang[locale] ?? 'zh-TW';
 const ogLoc = ogLocale[locale] ?? 'zh_TW';
 
-const siteUrl = 'https://cherrytora.github.io/micords_offical_site';
+const siteUrl = 'https://micordshq.web.app';
 const currentUrl = `${siteUrl}${Astro.url.pathname}`;
 const ogImage = `${siteUrl}/Micords.png`;
 
 // hreflang alternate URLs for SEO
-const pagePathRaw = Astro.url.pathname.replace(/^\/micords_offical_site/, '') || '/';
+const pagePathRaw = Astro.url.pathname || '/';
 const hreflangs = [
   { hreflang: 'zh-TW', href: `${siteUrl}${pagePathRaw}` },
   { hreflang: 'en',    href: `${siteUrl}/en${pagePathRaw === '/' ? '' : pagePathRaw}` },

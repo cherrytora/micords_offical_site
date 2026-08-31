@@ -38,7 +38,7 @@ My little tyrant is doing great — energetic and very much still in charge. I h
 ---
 
 ### Micords Tracking Reminder
-Post-treatment tracking matters even more. Keep up with [Micords records](https://cherrytora.github.io/micords_offical_site/tutorial/):
+Post-treatment tracking matters even more. Keep up with [Micords records](https://micordshq.web.app/tutorial/):
 
 - Weekly weight changes (especially important)
 - Water intake and urine output

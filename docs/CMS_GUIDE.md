@@ -9,18 +9,18 @@ Decap CMS 是一個純前端的內容管理介面，讓你不需要碰程式碼�
 ### 1. Push 代碼到 GitHub
 
 ```bash
-cd /Users/sirius/docs/micord_offical_site
+cd /Users/sirius/docs/micords_offical_site
 git add .
 git commit -m "feat: add Decap CMS"
 git push origin main
 ```
 
-### 2. 開啟 GitHub Pages
+### 2. 設定 Firebase Hosting 自動部署
 
-1. 到 [repo 設定頁](https://github.com/cherrytora/micord_offical_site/settings/pages)
-2. **Source** 選「**GitHub Actions**」
-3. 等 Actions 跑完（約 1-2 分鐘），網站上線於：  
-   `https://cherrytora.github.io/micord_offical_site`
+1. 在 GitHub repo 的 **Settings → Secrets and variables → Actions** 建立 `FIREBASE_SERVICE_ACCOUNT_RILALAB` Secret。
+2. 將具有 Firebase Hosting 部署權限的服務帳戶 JSON 金鑰貼入 Secret 值。
+3. Push 到 `main` 後，GitHub Actions 會自動部署到：  
+   `https://micordshq.web.app`
 
 ### 3. 建立 GitHub OAuth App
 
@@ -31,8 +31,8 @@ git push origin main
    | 欄位 | 值 |
    |---|---|
    | Application name | `Micords CMS` |
-   | Homepage URL | `https://cherrytora.github.io/micord_offical_site` |
-   | Authorization callback URL | `https://cherrytora.github.io/micord_offical_site/admin/` |
+   | Homepage URL | `https://micordshq.web.app` |
+   | Authorization callback URL | `https://micordshq.web.app/admin/` |
 
 4. 點「**Register application**」
 5. 複製產生的 **Client ID**（格式類似 `Ov23liXXXXXXXX`）
@@ -67,7 +67,7 @@ git push origin main
 
 等部署完成後，開啟後台網址：
 
-**https://cherrytora.github.io/micord_offical_site/admin/**
+**https://micordshq.web.app/admin/**
 
 點「**Login with GitHub**」→ 在跳出的視窗授權 → 進入 CMS 後台。
 
