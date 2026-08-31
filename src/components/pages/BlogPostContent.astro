@@ -28,6 +28,13 @@ const {
   showCoverInHeader = false,
   Content,
 } = Astro.props;
+
+const publicBaseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const coverImageUrl = coverImage?.startsWith('/')
+  ? `${publicBaseUrl}${coverImage.slice(1)}`
+  : coverImage;
 ---
 
 <div class="pt-28 pb-20 px-6">
@@ -55,7 +62,7 @@ const {
       )}
       <h1 class="text-3xl font-bold text-slate-900 leading-snug mb-4">{title}</h1>
       {showCoverInHeader && coverImage && (
-        <img src={coverImage} alt={title} class="w-full rounded-3xl shadow-lg mb-6 object-cover max-h-80" loading="eager" />
+        <img src={coverImageUrl} alt={title} class="w-full rounded-3xl shadow-lg mb-6 object-cover max-h-80" loading="eager" />
       )}
       <time class="text-sm text-slate-400 font-medium" datetime={publishDate}>
         {formatDate(publishDate, locale)}
