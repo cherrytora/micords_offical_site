@@ -5,13 +5,14 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import ReleaseNotesContent from '../components/pages/ReleaseNotesContent.astro';
 import { useTranslations } from '../i18n/index';
+import { compareReleaseNotes } from '../lib/utils';
 
 const t = useTranslations('zh-tw');
 const r = t.releaseNotes;
 
-// 依日期降序（最新在前），只取 zh-tw 版本
+// 依日期、版本號降序（最新在前），只取 zh-tw 版本
 const notes = (await getCollection('release-notes')).filter(n => n.id.startsWith('zh-tw/')).sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  (a, b) => compareReleaseNotes(a.data, b.data)
 );
 ---
 

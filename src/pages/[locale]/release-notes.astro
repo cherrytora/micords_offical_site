@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import ReleaseNotesContent from '../../components/pages/ReleaseNotesContent.astro';
 import type { Locale } from '../../i18n/index';
 import { useTranslations } from '../../i18n/index';
+import { compareReleaseNotes } from '../../lib/utils';
 
 export function getStaticPaths() {
   return [
@@ -19,7 +20,7 @@ const t = useTranslations(locale);
 const r = t.releaseNotes;
 
 const notes = (await getCollection('release-notes')).filter(n => n.id.startsWith(`${locale}/`)).sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  (a, b) => compareReleaseNotes(a.data, b.data)
 );
 ---
 
