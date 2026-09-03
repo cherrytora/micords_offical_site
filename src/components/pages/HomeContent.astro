@@ -12,6 +12,8 @@ interface Props {
     ctaSecondaryHref: string;
     featuresTitle: string;
     features: { icon: string; title: string; desc: string }[];
+    featuresImage?: string;
+    featuresImageAlt?: string;
     storyEyebrow: string;
     storyTitle: string;
     storyContent: string;
@@ -29,7 +31,7 @@ const {
   heroTitle, heroSubtitle,
   ctaPrimary,
   ctaSecondary, ctaSecondaryHref,
-  featuresTitle, features,
+  featuresTitle, features, featuresImage, featuresImageAlt,
   storyEyebrow, storyTitle, storyContent,
   ctaTitle, ctaButton,
 } = data;
@@ -85,11 +87,23 @@ const {
 <section class="py-24 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
     <h2 class="text-3xl font-bold mb-12 text-center text-slate-900">{featuresTitle}</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-      {features.map(({ icon, title, desc }) => (
-        <FeatureCard icon={icon} title={title} desc={desc} />
-      ))}
-    </div>
+    {featuresImage ? (
+      <img
+        src={`${publicBaseUrl}${featuresImage}`}
+        alt={featuresImageAlt || featuresTitle}
+        class="w-full rounded-3xl border border-orange-100 shadow-sm"
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {features.map(({ icon, title, desc }) => (
+          <FeatureCard icon={icon} title={title} desc={desc} />
+        ))}
+      </div>
+    )}
   </div>
 </section>
 

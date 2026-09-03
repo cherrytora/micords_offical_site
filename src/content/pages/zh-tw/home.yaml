@@ -8,6 +8,8 @@ ctaPrimary: 立即體驗
 ctaSecondary: 查看教學
 ctaSecondaryLink: /tutorial
 featuresTitle: 從日常到醫療，陪你記下貓咪的每一天
+featuresImage: scenario.png
+featuresImageAlt: Micords 六個照護情境：日常紀錄、照護打卡、健康趨勢、醫療病歷、健康指數與照護資料管理
 features:
   - icon: 📝
     title: 快速紀錄

@@ -20,6 +20,8 @@ const pages = defineCollection({
     ctaSecondaryLink: z.string(),
     featuresTitle: z.string(),
     features: z.array(z.object({ icon: z.string(), title: z.string(), desc: z.string() })),
+    featuresImage: z.string().optional(),
+    featuresImageAlt: z.string().optional(),
     storyEyebrow: z.string(),
     storyTitle: z.string(),
     storyContent: z.string(),
