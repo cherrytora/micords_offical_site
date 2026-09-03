@@ -7,6 +7,8 @@ ctaPrimary: Try Now
 ctaSecondary: View Tutorial
 ctaSecondaryLink: /tutorial
 featuresTitle: From daily care to medical visits, keep track of every day with your cat
+featuresImage: scenario_en.png
+featuresImageAlt: "Six Micords care scenarios: daily records, care check-ins, health trends, medical records, health scores, and care management"
 features:
   - icon: 📝
     title: Quick Records

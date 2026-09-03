@@ -7,6 +7,8 @@ ctaPrimary: 今すぐ試す
 ctaSecondary: チュートリアルを見る
 ctaSecondaryLink: /tutorial
 featuresTitle: 日常から医療まで、猫との毎日を記録します
+featuresImage: scenario_jp.png
+featuresImageAlt: Micordsの6つのケアシーン：日常記録、ケアチェック、健康トレンド、医療記録、健康スコア、ケア資料管理
 features:
   - icon: 📝
     title: クイック記録
