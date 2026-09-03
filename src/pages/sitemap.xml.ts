@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async () => {
-  const siteUrl = 'https://micordshq.web.app';
+  const siteUrl = 'https://micords.com';
   const locales = ['', 'en', 'ja']; // '' = zh-tw default (no prefix)
 
   const staticPages = [

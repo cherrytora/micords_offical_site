@@ -50,7 +50,7 @@ tags:
 
 ---
 
-### [日常記録チュートリアル](https://micordshq.web.app/tutorial/)：Micordsで猫の毎日の変化を把握
+### [日常記録チュートリアル](https://micords.com/tutorial/)：Micordsで猫の毎日の変化を把握
 
 毎日の状況を記録して、小さな変化も見逃さないようにしましょう。
 

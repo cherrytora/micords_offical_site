@@ -38,7 +38,7 @@ tags:
 ---
 
 ### Micords 追跡のヒント
-放射線治療後こそ長期記録が重要です！[Micordsでの記録](https://micordshq.web.app/tutorial/)を続けましょう：
+放射線治療後こそ長期記録が重要です！[Micordsでの記録](https://micords.com/tutorial/)を続けましょう：
 
 - 毎週の体重変化（特に重要）
 - 飲水量と尿量

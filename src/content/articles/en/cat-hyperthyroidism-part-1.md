@@ -50,7 +50,7 @@ If I'd noticed the weight loss earlier, I might have caught this before it got s
 
 ---
 
-### [Daily Tracking Tutorial](https://micordshq.web.app/tutorial/): Use Micords to Stay on Top of Every Change
+### [Daily Tracking Tutorial](https://micords.com/tutorial/): Use Micords to Stay on Top of Every Change
 
 Stay ahead of subtle changes with daily records.
 

@@ -27,7 +27,7 @@ micords_offical_site/
 │   │       └── 1-1-0.md
 │   └── styles/
 │       └── global.css             # Tailwind base + 品牌色系
-├── astro.config.mjs               # Astro 設定（含 GitHub Pages base path）
+├── astro.config.mjs               # Astro 設定（正式網域與 i18n）
 ├── tailwind.config.mjs            # Tailwind 設定
 └── .github/workflows/deploy.yml   # GitHub Actions 自動部署
 ```
@@ -113,16 +113,15 @@ summary: "支援多隻貓咪帳戶切換。"
 
 ---
 
-## 部署到 Firebase Hosting
+## 部署到 GitHub Pages
 
-### 自動部署（推薦）
+### 自動部署
 
-1. 在 Firebase 專案 `rilalab` 建立 GitHub Secret：`FIREBASE_SERVICE_ACCOUNT_RILALAB`。其值是具有 Firebase Hosting 部署權限的服務帳戶 JSON 金鑰。
-2. Push 到 `main` branch，GitHub Actions 會自動 build 並部署到 Firebase Hosting site `micordshq`。
+Push 到 `main` branch，GitHub Actions 會自動 build 並部署到 GitHub Pages。GitHub Pages Custom Domain 設為 `micords.com`。
 
-部署完成後網站位於：**https://micordshq.web.app/**
+部署完成後網站位於：**https://micords.com/**
 
-GitHub 仍保留為原始碼與 Decap CMS 的內容後端；網站公開服務不再使用 GitHub Pages。
+GitHub 同時作為原始碼、Decap CMS 的內容後端與網站公開服務。
 
 ### 手動 Build
 

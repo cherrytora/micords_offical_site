@@ -15,12 +15,10 @@ git commit -m "feat: add Decap CMS"
 git push origin main
 ```
 
-### 2. 設定 Firebase Hosting 自動部署
+### 2. 確認 GitHub Pages 自動部署
 
-1. 在 GitHub repo 的 **Settings → Secrets and variables → Actions** 建立 `FIREBASE_SERVICE_ACCOUNT_RILALAB` Secret。
-2. 將具有 Firebase Hosting 部署權限的服務帳戶 JSON 金鑰貼入 Secret 值。
-3. Push 到 `main` 後，GitHub Actions 會自動部署到：  
-   `https://micordshq.web.app`
+Push 到 `main` 後，GitHub Actions 會自動部署到 GitHub Pages Custom Domain：
+`https://micords.com`
 
 ### 3. 建立 GitHub OAuth App
 
@@ -31,8 +29,8 @@ git push origin main
    | 欄位 | 值 |
    |---|---|
    | Application name | `Micords CMS` |
-   | Homepage URL | `https://micordshq.web.app` |
-   | Authorization callback URL | `https://micordshq.web.app/admin/` |
+   | Homepage URL | `https://micords.com` |
+   | Authorization callback URL | `https://micords.com/admin/` |
 
 4. 點「**Register application**」
 5. 複製產生的 **Client ID**（格式類似 `Ov23liXXXXXXXX`）
@@ -67,7 +65,7 @@ git push origin main
 
 等部署完成後，開啟後台網址：
 
-**https://micordshq.web.app/admin/**
+**https://micords.com/admin/**
 
 點「**Login with GitHub**」→ 在跳出的視窗授權 → 進入 CMS 後台。
 

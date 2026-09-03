@@ -70,7 +70,7 @@ notes:
       - "キャンセル後も現在の期間終了まで引き続きご利用いただけます。"
       - "特別例外：システム障害による重複請求 / 予告なしの72時間以上のサービス停止 / サポートが確認した請求エラー。"
       - '返金をご希望の場合は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSct6PAw6GrwWH1swOEKO6GtUQQYo6Zqme5l8JHT9LgQTU9QmQ/viewform" target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:underline font-semibold">返金フォーム</a>（登録メールアドレス・支払日・理由を記入）を送信してください → 3営業日以内にメールで回答 → 承認後14営業日以内にカードへ返金。'
-      - 'サブスクリプションや返金に関するご質問は、<a href="https://micordshq.web.app/contact/" class="text-brand-orange hover:underline font-semibold">お問い合わせ</a>ページをご覧ください。'
+      - 'サブスクリプションや返金に関するご質問は、<a href="https://micords.com/contact/" class="text-brand-orange hover:underline font-semibold">お問い合わせ</a>ページをご覧ください。'
 
   - title: "☁️ サービスについて"
     items:
