@@ -18,7 +18,6 @@ const { data: globalSettings } = await getEntry('global', 'settings');
 const ctaHref = globalSettings.ctaUrl;
 
 const navLinks = [
-  { href: localePath(locale, '/blog',          base), label: t.nav.blog },
   { href: localePath(locale, '/tutorial',      base), label: t.nav.tutorial },
   { href: localePath(locale, '/pricing',       base), label: t.nav.pricing },
   { href: localePath(locale, '/privacy',       base), label: t.nav.privacy },
