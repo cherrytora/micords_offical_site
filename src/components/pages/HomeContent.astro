@@ -23,7 +23,7 @@ interface Props {
   ctaUrl: string;
 }
 
-const { data, ctaUrl } = Astro.props;
+const { data, ctaUrl, locale } = Astro.props;
 const publicBaseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
@@ -104,6 +104,26 @@ const {
         ))}
       </div>
     )}
+  </div>
+</section>
+
+<!-- AI integrations -->
+<section class="py-20 px-6 bg-brand-cream">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-[1fr_1.35fr] gap-10 items-center">
+    <div>
+      <p class="text-brand-orange font-bold tracking-widest text-sm mb-3">AI INTEGRATION</p>
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">{locale === 'en' ? 'Bring your cat’s health data into the AI you use' : locale === 'ja' ? 'いつものAIで、猫の健康記録を活用' : '把貓咪健康紀錄帶進你常用的 AI'}</h2>
+      <p class="text-slate-600 leading-relaxed">{locale === 'en' ? 'Connect Micords securely with ChatGPT, Claude, or Grok to ask about authorised health records in a natural conversation. Gemini is not supported at this time.' : locale === 'ja' ? 'ChatGPT、Claude、Grokと安全に接続し、許可した健康記録について会話形式で確認できます。Geminiは現在未対応です。' : '可安全串接 ChatGPT、Claude 或 Grok，以自然對話方式查詢你已授權的健康紀錄；Gemini 目前暫不支援。'}</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-3">
+      {['ChatGPT', 'Claude', 'Grok'].map((service) => (
+        <div class="rounded-2xl bg-white border border-orange-100 p-5 text-center shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mx-auto mb-3 font-bold">AI</div>
+          <p class="font-bold text-slate-800">{service}</p>
+          <p class="text-xs text-emerald-600 mt-1">{locale === 'en' ? 'Supported' : locale === 'ja' ? '対応' : '支援中'}</p>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 

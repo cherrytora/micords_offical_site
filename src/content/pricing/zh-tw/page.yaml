@@ -27,6 +27,7 @@ plans:
       - "照片上傳（每筆 1 張）"
       - "單次提醒（疫苗/回診）"
       - "記帳與醫療基金追蹤"
+      - "整合 ChatGPT、Claude、Grok（最近 1 個月健康資料）"
 
   - id: premium
     label: "PREMIUM"
@@ -51,6 +52,7 @@ plans:
       - "健康指數 + 風險提醒"
       - "AI 日常健康摘要（10 次/月）"
       - "AI 看診報告摘要（10 次/月）"
+      - "整合 ChatGPT、Claude、Grok（完整健康資料，不限時間）"
 
 notes:
   - title: "📅 訂閱與計費"

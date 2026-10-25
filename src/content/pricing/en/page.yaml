@@ -27,6 +27,7 @@ plans:
       - "Photo upload (1 per record)"
       - "Single reminders (vaccine / follow-up)"
       - "Expense tracking & medical fund"
+      - "ChatGPT, Claude & Grok integration (last month of health data)"
 
   - id: premium
     label: "PREMIUM"
@@ -51,6 +52,7 @@ plans:
       - "Health Score + Risk Alerts"
       - "AI daily health summary (10/month)"
       - "AI visit report summary (10/month)"
+      - "ChatGPT, Claude & Grok integration (full health history)"
 
 notes:
   - title: "📅 Subscription & Billing"
